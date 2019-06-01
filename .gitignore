@@ -255,3 +255,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/windows,macos,linux,visualstudiocode,webstorm+all,node
+
+dist/vavilon-dev.js*
