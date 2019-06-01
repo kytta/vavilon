@@ -1,0 +1,23 @@
+{
+  "name": "vavilon.js",
+  "version": "0.1.0",
+  "description": "A quick and easy-to-use i18n engine for static websites",
+  "main": "dist/vavilon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickKaramoff/vavilon.js.git"
+  },
+  "keywords": [
+    "i18n",
+    "static"
+  ],
+  "author": "Nikita Karamov <nick@karamoff.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NickKaramoff/vavilon.js/issues"
+  },
+  "homepage": "https://github.com/NickKaramoff/vavilon.js#readme"
+}
