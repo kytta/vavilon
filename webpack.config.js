@@ -5,7 +5,7 @@ module.exports = {
     bail: true,
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].min.js'
+        filename: '[name].min.js' // TODO: replace with two outputs instead of two files
     },
     resolve: {
         extensions: ['.js'],
@@ -24,5 +24,6 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
-    },
+    }
+    // TODO: add UglifyJS
 };
