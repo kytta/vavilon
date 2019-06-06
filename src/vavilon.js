@@ -1,32 +1,44 @@
-import { loadJson } from './json.js';
-
-const tag = ['%c[vavilon]', 'font-weight:bold;'];
-
 const vavilon = {
-    elements: [],
-    dictionaries: [] // TODO: distinguish language codes
+    curLang: null, // TODO: determine language
+    els: [],
+    dictCount: 0,
+    dicts: {}
 };
 
-console.debug(...tag, 'Waiting for the page to load...');
+function loadOneDictionary (url, language) {
+    // eslint-disable-next-line no-undef
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+            vavilon.dicts[language] = JSON.parse(xhr.responseText);
 
-window.onload = function () {
-    console.debug(...tag, 'Loading dictionaries...');
-    for (const script of document.scripts) {
-        if (script.dataset.vavilonDict) {
-            loadJson(script.src, addDictionary);
+            if (Object.keys(vavilon.dicts).length === vavilon.dictCount) {
+                replaceData();
+            }
+        }
+    };
+
+    xhr.open('GET', url, true);
+    xhr.send(null);
+}
+
+function loadDictionaries () {
+    console.debug('Loading dictionaries...');
+    const dictionaryScripts = Array.from(document.scripts).filter((e) => e.dataset.vavilonDict);
+    vavilon.dictCount = dictionaryScripts.length;
+    dictionaryScripts.forEach((s) => loadOneDictionary(s.src, s.dataset.vavilonDict));
+    // TODO: load only the dictionary for the current language if present
+}
+
+function replaceData () {
+    if (vavilon.curLang !== null && (vavilon.curLang in vavilon.dicts)) {
+        console.debug('Loading elements...');
+        vavilon.els = document.getElementsByClassName('vavilon');
+        for (const el of vavilon.els) {
+            el.innerText = vavilon.dicts[vavilon.curLang][el.dataset.vavilon];
         }
     }
-
-    console.debug(...tag, 'Loading elements...');
-    vavilon.elements = document.getElementsByClassName('vavilon');
-
-    console.debug(vavilon.elements);
-    console.debug(vavilon.dictionaries);
-
-    // TODO: determine when all dictionaries are loaded
-};
-
-function addDictionary (dictionary) {
-    dictionary = JSON.parse(dictionary);
-    vavilon.dictionaries.push(dictionary);
 }
+
+console.debug('Waiting for the page to load...');
+window.onload = loadDictionaries;
