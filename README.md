@@ -40,16 +40,16 @@ A quick (done in 15 ms), lightweight (1.4 KB gzipped) and easy-to-use i18n engin
    <script type="text/javascript" src="path/to/vavilon.min.js"></script>
    ```
    
-3. Tag the strings in your HTML page with and IDs that you want using the
-   `data-vavilon` attribute:
+3. Tag the strings in your HTML page with any IDs that you want using the
+   `data-vavilon` attribute and `vavilon` class:
    
    ```html
       <html lang="en">
           <head>
-              <title data-vavilon="hello-world">Hello World!</title>
+              <title class="vavilon" data-vavilon="hello-world">Hello World!</title>
           </head>
           <body>
-              <h1 data-vavilon="how-are-you">How are you?</h1>
+              <h1 class="vavilon" data-vavilon="how-are-you">How are you?</h1>
           </body>
       </html>
    ```
