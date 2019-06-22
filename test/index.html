@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vavilon.js Test Suite</title>
+</head>
+<body>
+<h1>vavilon.js</h1>
+<h2>Test Suite</h2>
+<ul>
+  <li>
+    <a href="ruRU-en/">
+      <code>ru-RU</code> page,
+      <code>en</code> dictionary
+      (should translate even if browser on <code>en-US</code>)
+    </a>
+  </li>
+  <li>
+    <a href="en-enUS">
+      <code>en</code> page,
+      <code>en-US</code> dictionary
+      (should translate if browser on <code>en-US</code>)
+    </a>
+  </li>
+  <li>
+    <a href="enUK-enUS">
+      <code>en-UK</code> page,
+      <code>en-US</code> dictionary
+      (should translate if browser on <code>en-US</code>)
+    </a>
+  </li>
+  <li>
+    <a href="enUS-en">
+      <code>en-US</code> page,
+      <code>en</code> dictionary
+      (should not translate if browser in en-US)
+    </a>
+  </li>
+</ul>
+</body>
+</html>
