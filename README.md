@@ -1,5 +1,7 @@
 # vavilon.js
 
+*__version 0.1.0__*
+
 A quick (done in 15 ms), lightweight (1.4 KB gzipped) and easy-to-use i18n engine for static websites.
 
 *Note: this project is in development stage. Use it with caution!*
