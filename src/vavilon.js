@@ -93,7 +93,7 @@ function replaceAllElements () {
 }
 
 function loadOtherDictionaries () {
-    for (const dictName in Object.keys(vavilon.dictUrls)) {
+    for (const dictName of Object.keys(vavilon.dictUrls)) {
         if (dictName !== vavilon.replaceDict) {
             loadDictionary(dictName);
         }
