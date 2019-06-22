@@ -1,4 +1,4 @@
-export function getLangCookie () {
+export function getCookieLocale () {
     console.debug('Getting language from cookie...');
     const parts = ('; ' + document.cookie).split('; vavilon-lang=');
     if (parts.length === 2) {
@@ -10,7 +10,7 @@ export function getLangCookie () {
     }
 }
 
-export function setLangCookie (lang) {
+export function setCookieLocale (lang) {
     const date = new Date();
     date.setTime(date.getTime() + (315360000000));
     const expires = `; expires=${date.toUTCString()}`;
