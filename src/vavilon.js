@@ -7,7 +7,7 @@ const vav = {
         c: null, // country
         n: null // normalized value
     }, // browser or cookie locale
-    pL: decodeLocale(document.documentElement.l), // page locale
+    pL: decodeLocale(document.documentElement.lang), // page locale
     e: [], // elements: the elements on the page
     dU: null, // dictionary urls
     rD: null, // replace dictionary: the dictionary that will be used

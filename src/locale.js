@@ -9,7 +9,7 @@ export function decodeLocale (localeString) {
     return {
         l: lang,
         c: country,
-        n: encodeLocale({ lang: l, country: c })
+        n: encodeLocale({ l: lang, c: country })
     };
 }
 
