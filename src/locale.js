@@ -7,12 +7,12 @@ export function decodeLocale (localeString) {
     }
 
     return {
-        lang,
-        country,
-        normalized: encodeLocale({ lang, country })
+        l: lang,
+        c: country,
+        n: encodeLocale({ lang: l, country: c })
     };
 }
 
 export function encodeLocale (locale) {
-    return locale.lang + (locale.country ? `-${locale.country}` : '');
+    return locale.l + (locale.c ? `-${locale.c}` : '');
 }

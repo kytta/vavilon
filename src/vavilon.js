@@ -1,27 +1,27 @@
 import { getCookieLocale, setCookieLocale } from './cookie';
 import { decodeLocale } from './locale';
 
-const vavilon = {
-    loc: {
-        lang: null,
-        country: null,
-        normalized: null
-    },
-    pageLoc: decodeLocale(document.documentElement.lang),
-    els: [],
-    dictUrls: null,
-    replaceDict: null,
-    dicts: {}
+const vav = {
+    vL: {
+        l: null, // language
+        c: null, // country
+        n: null // normalized value
+    }, // browser or cookie locale
+    pL: decodeLocale(document.documentElement.l), // page locale
+    e: [], // elements: the elements on the page
+    dU: null, // dictionary urls
+    rD: null, // replace dictionary: the dictionary that will be used
+    d: {} // dictionries: the actual dictionaries
 };
 
 /* ========================================================================== */
 
 function setPreferredLocale () {
     const cookieLang = getCookieLocale();
-    vavilon.loc = decodeLocale(cookieLang || navigator.language || navigator.userLanguage || navigator.browserLanguage);
-    console.debug('Language set to', vavilon.loc.normalized);
+    vav.vL = decodeLocale(cookieLang || navigator.language || navigator.userLanguage || navigator.browserLanguage);
+    console.debug('Language set to', vav.vL.n);
     if (!cookieLang) {
-        setCookieLocale(vavilon.loc.normalized);
+        setCookieLocale(vav.vL.n);
     }
 }
 
@@ -32,20 +32,20 @@ function getDictUrls () {
         obj[s.dataset.vavilonDict] = s.src;
     }
 
-    vavilon.dictUrls = obj;
+    vav.dU = obj;
 }
 
 function loadDictionary (name, async = true) {
-    if (vavilon.dictUrls && !(name in vavilon.dicts)) {
+    if (vav.dU && !(name in vav.d)) {
         // eslint-disable-next-line no-undef
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                vavilon.dicts[name] = JSON.parse(xhr.responseText);
+                vav.d[name] = JSON.parse(xhr.responseText);
             }
         };
 
-        xhr.open('GET', vavilon.dictUrls[name], async);
+        xhr.open('GET', vav.dU[name], async);
         xhr.send(null);
     }
 }
@@ -55,23 +55,23 @@ function loadDictionary (name, async = true) {
 setPreferredLocale();
 getDictUrls();
 
-if (vavilon.loc.normalized === vavilon.pageLoc.normalized) {
+if (vav.vL.n === vav.pL.n) {
     console.debug('Translation not needed');
 } else {
-    if (vavilon.loc.lang === vavilon.pageLoc.lang) {
-        if (vavilon.dictUrls.hasOwnProperty(vavilon.loc.normalized)) {
-            loadDictionary(vavilon.loc.normalized, false);
-            vavilon.replaceDict = vavilon.loc.normalized;
+    if (vav.vL.l === vav.pL.l) {
+        if (vav.dU.hasOwnProperty(vav.vL.n)) {
+            loadDictionary(vav.vL.n, false);
+            vav.rD = vav.vL.n;
         }
     } else {
-        if (vavilon.dictUrls.hasOwnProperty(vavilon.loc.normalized)) {
-            loadDictionary(vavilon.loc.normalized, false);
-            vavilon.replaceDict = vavilon.loc.normalized;
-        } else if (vavilon.dictUrls.hasOwnProperty(vavilon.loc.lang)) {
-            loadDictionary(vavilon.loc.lang, false);
-            vavilon.replaceDict = vavilon.loc.lang;
+        if (vav.dU.hasOwnProperty(vav.vL.n)) {
+            loadDictionary(vav.vL.n, false);
+            vav.rD = vav.vL.n;
+        } else if (vav.dU.hasOwnProperty(vav.vL.l)) {
+            loadDictionary(vav.vL.l, false);
+            vav.rD = vav.vL.l;
         } else {
-            console.warn('No dictionary found for', vavilon.loc.normalized);
+            console.warn('No dictionary found for', vav.vL.n);
         }
     }
 }
@@ -79,13 +79,13 @@ if (vavilon.loc.normalized === vavilon.pageLoc.normalized) {
 /* ========================================================================== */
 
 function findAllElements () {
-    vavilon.els = document.getElementsByClassName('vavilon');
+    vav.e = document.getElementsByClassName('vavilon');
 }
 
 function replaceAllElements () {
-    for (const el of vavilon.els) {
-        if (vavilon.dicts[vavilon.replaceDict].hasOwnProperty(el.dataset.vavilon)) {
-            el.innerText = vavilon.dicts[vavilon.replaceDict][el.dataset.vavilon];
+    for (const el of vav.e) {
+        if (vav.d[vav.rD].hasOwnProperty(el.dataset.vavilon)) {
+            el.innerText = vav.d[vav.rD][el.dataset.vavilon];
         } else {
             console.warn(`${el.dataset.vavilon} not in dictionary`);
         }
@@ -93,8 +93,8 @@ function replaceAllElements () {
 }
 
 function loadOtherDictionaries () {
-    for (const dictName of Object.keys(vavilon.dictUrls)) {
-        if (dictName !== vavilon.replaceDict) {
+    for (const dictName of Object.keys(vav.dU)) {
+        if (dictName !== vav.rD) {
             loadDictionary(dictName);
         }
     }
@@ -103,11 +103,11 @@ function loadOtherDictionaries () {
 /* ========================================================================== */
 
 window.onload = function () {
-    console.debug(vavilon);
+    console.debug(vav);
 
     findAllElements();
 
-    if (vavilon.replaceDict) {
+    if (vav.rD) {
         replaceAllElements();
         console.debug('Translation finished');
     }
