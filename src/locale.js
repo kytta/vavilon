@@ -1,18 +1,27 @@
+/**
+ * Decodes locale from a string into a Locale object
+ *
+ * @param localeString {string} string, containing locale info
+ * @returns {Locale} locale object
+ */
 export function decodeLocale (localeString) {
-    const split = localeString.split('-');
-    const lang = split[0].toLowerCase();
-    let country = null;
-    if (split.length > 1) {
-        country = split[1].toUpperCase();
+    /**
+     * @type {Locale}
+     */
+    const result = {};
+    result.language = localeString.slice(0, 2).toLowerCase();
+    if (localeString.length === 5) {
+        result.country = localeString.slice(3, 5).toUpperCase();
     }
 
-    return {
-        l: lang,
-        c: country,
-        n: encodeLocale({ l: lang, c: country })
-    };
+    return result;
 }
 
+/**
+ * Encodes a locale object into a valid locale string
+ * @param locale {Locale} locale object
+ * @returns {string} normalized locale string
+ */
 export function encodeLocale (locale) {
-    return locale.l + (locale.c ? `-${locale.c}` : '');
+    return locale.language + (locale.country ? `-${locale.country}` : '');
 }
