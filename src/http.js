@@ -1,27 +1,27 @@
 /**
- * Performs a GET HTTP-request and returns the JSON-parsed response data
+ * Performs a GET HTTP-request and runs callback with response data
  *
- * @param url {string}
+ * @param {string} url
  *        URL of the JSON resource
  *
- * @returns {Promise<object>}
- *          response object
+ * @param {boolean} async
+ *        should the request be asynchronous
+ *
+ * @param {function} callback
+ *        a function to call after the request is successful
  */
-export function getJson (url) {
-    return new Promise(function (resolve, reject) {
-        // eslint-disable-next-line no-undef
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
-        xhr.onload = function () {
-            if (this.status < 300 && this.status >= 200) {
-                resolve(JSON.parse(xhr.responseText));
-            } else {
-                reject(new Error(this.statusText));
+export function getJson (url, async, callback) {
+    // eslint-disable-next-line no-undef
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (this.status < 300 && this.status >= 200) {
+            if (callback) {
+                callback(xhr.response);
             }
-        };
-        xhr.onerror = function () {
-            reject(new Error(this.statusText));
-        };
-        xhr.send();
-    });
+        } else {
+            throw new Error(this.statusText);
+        }
+    };
+    xhr.open('GET', url, async);
+    xhr.send();
 }

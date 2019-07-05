@@ -29,7 +29,7 @@ function getPageLocale () {
  *
  * This results in complete translation of all vavilon-enabled elements
  *
- * @param localeString {Locale}
+ * @param {Locale} localeString
  *        the locale to change to
  */
 window.changeLocale = function (localeString) {
@@ -61,7 +61,7 @@ window.changeLocale = function (localeString) {
  *          object, where the keys are dictionary locales and the values are
  *          {@link Dictionary}s with no strings
  */
-async function getDictionaries () {
+function getDictionaries () {
     const dictionaries = {};
     const vavilonDictScripts = Array.from(document.scripts).filter((e) => e.dataset.vavilonDict);
 
@@ -78,9 +78,10 @@ async function getDictionaries () {
 
         if (dictLocale === vavilon.userLocale || (dictLocale.slice(0, 2) === vavilon.userLocale.slice(0, 2) && !vavilon.useDict)) {
             vavilon.useDict = dictLocale;
+            getJson(s.src, false, r => { dictionary.strings = JSON.parse(r); });
+        } else {
+            getJson(s.src, true, r => { dictionary.strings = JSON.parse(r); });
         }
-
-        dictionary.strings = await getJson(s.src);
 
         dictionaries[dictLocale] = dictionary;
     }
@@ -140,7 +141,7 @@ const vavilon = {
 window.onload = async function () {
     vavilon.dictionaries = await getDictionaries();
 
-    console.debug('Vavilon: ', vavilon);
+    console.warn('Vavilon: ', vavilon);
 
     findAllElements();
 
