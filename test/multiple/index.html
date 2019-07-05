@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title class="vavilon" data-vavilon="hello-world">Hello world</title>
+  <script src="ru.json" type="application/json" data-vavilon-dict="ru"></script>
+  <script src="de.json" type="application/json" data-vavilon-dict="de"></script>
+  <script src="../../dist/vavilon-dev.js"></script>
+</head>
+<body>
+<h1 class="vavilon" data-vavilon="title">This is the title that should be translated</h1>
+<h2>This is the subtitle that should not be translated</h2>
+<hr>
+<button onclick="changeLocale('ru')">Russian</button>
+<button onclick="changeLocale('en')">English</button>
+<button onclick="changeLocale('de')">German</button>
+</body>
+</html>

@@ -1,117 +1,150 @@
-import { getCookieLocale, setCookieLocale } from './cookie';
-import { decodeLocale } from './locale';
+import { getLocaleCookie, setLocaleCookie } from './cookie';
+import { getJson } from './http';
 
-const vavilon = {
-    loc: {
-        lang: null,
-        country: null,
-        normalized: null
-    },
-    pageLoc: decodeLocale(document.documentElement.lang),
-    els: [],
-    dictUrls: null,
-    replaceDict: null,
-    dicts: {}
+/* ================================= LOCALE ================================= */
+
+/**
+ * Returns the user preferred {@link Locale}
+ *
+ * The locale is based on the value of `vavilon-locale` cookie. If the cookie
+ * is not present, the browser language is used instead.
+ *
+ * @returns {Locale} the user-preferred locale
+ */
+function getUserLocale () {
+    return (getLocaleCookie() || navigator.language || navigator.userLanguage || navigator.browserLanguage).toLowerCase();
+}
+
+/**
+ * Returns the {@link Locale} of the page
+ *
+ * @returns {Locale} the locale of the page
+ */
+function getPageLocale () {
+    return document.documentElement.lang.toLowerCase();
+}
+
+/**
+ * Changes the locale on the page
+ *
+ * This results in complete translation of all vavilon-enabled elements
+ *
+ * @param localeString {Locale}
+ *        the locale to change to
+ */
+window.changeLocale = function (localeString) {
+    localeString = localeString.toLowerCase();
+
+    if (vavilon.dictionaries[localeString]) {
+        vavilon.useDict = localeString;
+    } else {
+        const lang = localeString.slice(0, 2);
+
+        if (vavilon.dictionaries[lang]) {
+            vavilon.useDict = lang;
+        } else {
+            console.error('No dictionary for', localeString);
+            return;
+        }
+    }
+
+    replaceAllElements();
+    setLocaleCookie(vavilon.useDict);
 };
 
-/* ========================================================================== */
+/* ============================== DICTIONARIES ============================== */
 
-function setPreferredLocale () {
-    const cookieLang = getCookieLocale();
-    vavilon.loc = decodeLocale(cookieLang || navigator.language || navigator.userLanguage || navigator.browserLanguage);
-    console.debug('Language set to', vavilon.loc.normalized);
-    if (!cookieLang) {
-        setCookieLocale(vavilon.loc.normalized);
-    }
-}
+/**
+ * Returns the dictionaries with urls but with no data loaded
+ *
+ * @returns {Object<string, Dictionary>}
+ *          object, where the keys are dictionary locales and the values are
+ *          {@link Dictionary}s with no strings
+ */
+async function getDictionaries () {
+    const dictionaries = {};
+    const vavilonDictScripts = Array.from(document.scripts).filter((e) => e.dataset.vavilonDict);
 
-function getDictUrls () {
-    let obj = {};
+    for (const s of vavilonDictScripts) {
+        const dictLocale = s.dataset.vavilonDict.toLowerCase();
 
-    for (const s of Array.from(document.scripts).filter((e) => e.dataset.vavilonDict)) {
-        obj[s.dataset.vavilonDict] = s.src;
-    }
-
-    vavilon.dictUrls = obj;
-}
-
-function loadDictionary (name, async = true) {
-    if (vavilon.dictUrls && !(name in vavilon.dicts)) {
-        // eslint-disable-next-line no-undef
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                vavilon.dicts[name] = JSON.parse(xhr.responseText);
-            }
+        /**
+         * @type {Dictionary}
+         */
+        const dictionary = {
+            url: s.src,
+            strings: {}
         };
 
-        xhr.open('GET', vavilon.dictUrls[name], async);
-        xhr.send(null);
+        if (dictLocale === vavilon.userLocale || (dictLocale.slice(0, 2) === vavilon.userLocale.slice(0, 2) && !vavilon.useDict)) {
+            vavilon.useDict = dictLocale;
+        }
+
+        dictionary.strings = await getJson(s.src);
+
+        dictionaries[dictLocale] = dictionary;
     }
+
+    return dictionaries;
 }
 
-/* ========================================================================== */
+/* ============================= ELEMENTS =================================== */
 
-setPreferredLocale();
-getDictUrls();
-
-if (vavilon.loc.normalized === vavilon.pageLoc.normalized) {
-    console.debug('Translation not needed');
-} else {
-    if (vavilon.loc.lang === vavilon.pageLoc.lang) {
-        if (vavilon.dictUrls.hasOwnProperty(vavilon.loc.normalized)) {
-            loadDictionary(vavilon.loc.normalized, false);
-            vavilon.replaceDict = vavilon.loc.normalized;
-        }
-    } else {
-        if (vavilon.dictUrls.hasOwnProperty(vavilon.loc.normalized)) {
-            loadDictionary(vavilon.loc.normalized, false);
-            vavilon.replaceDict = vavilon.loc.normalized;
-        } else if (vavilon.dictUrls.hasOwnProperty(vavilon.loc.lang)) {
-            loadDictionary(vavilon.loc.lang, false);
-            vavilon.replaceDict = vavilon.loc.lang;
-        } else {
-            console.warn('No dictionary found for', vavilon.loc.normalized);
-        }
-    }
-}
-
-/* ========================================================================== */
-
+/**
+ * Finds all vavilon-enabled elements on the page and stores them inside
+ * {@link Vavilon} object
+ */
 function findAllElements () {
-    vavilon.els = document.getElementsByClassName('vavilon');
+    vavilon.elements = document.getElementsByClassName('vavilon');
 }
 
+/**
+ * Replaces all elements' texts with strings provided in the dictionary
+ */
 function replaceAllElements () {
-    for (const el of vavilon.els) {
-        if (vavilon.dicts[vavilon.replaceDict].hasOwnProperty(el.dataset.vavilon)) {
-            el.innerText = vavilon.dicts[vavilon.replaceDict][el.dataset.vavilon];
-        } else {
-            console.warn(`${el.dataset.vavilon} not in dictionary`);
+    if (vavilon.elements && vavilon.useDict) {
+        if (!vavilon.dictionaries[vavilon.pageLocale]) {
+            vavilon.dictionaries[vavilon.pageLocale] = {
+                url: null,
+                strings: {}
+            };
+        }
+        for (const el of vavilon.elements) {
+            if (vavilon.dictionaries[vavilon.useDict].strings[el.dataset.vavilon]) {
+                if (!vavilon.dictionaries[vavilon.pageLocale].strings[el.dataset.vavilon]) {
+                    vavilon.dictionaries[vavilon.pageLocale].strings[el.dataset.vavilon] = el.innerText;
+                }
+                el.innerText = vavilon.dictionaries[vavilon.useDict].strings[el.dataset.vavilon];
+            } else {
+                console.warn(`${el.dataset.vavilon} not in dictionary`);
+            }
         }
     }
 }
 
-function loadOtherDictionaries () {
-    for (const dictName of Object.keys(vavilon.dictUrls)) {
-        if (dictName !== vavilon.replaceDict) {
-            loadDictionary(dictName);
-        }
-    }
-}
+/* =============================== CORE ===================================== */
 
-/* ========================================================================== */
+/**
+ * Core vavilon object instance
+ *
+ * This object stores the data about the page, where vavilon is executed.
+ *
+ * @type {Vavilon}
+ */
+const vavilon = {
+    userLocale: getUserLocale(),
+    pageLocale: getPageLocale(),
+    dictionaries: {}
+};
 
-window.onload = function () {
-    console.debug(vavilon);
+window.onload = async function () {
+    vavilon.dictionaries = await getDictionaries();
+
+    console.debug('Vavilon: ', vavilon);
 
     findAllElements();
 
-    if (vavilon.replaceDict) {
+    if (vavilon.useDict) {
         replaceAllElements();
-        console.debug('Translation finished');
     }
-
-    loadOtherDictionaries();
-    console.debug('All dictionaries loaded');
 };
