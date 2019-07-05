@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - node
-  - lts/*
 cache: npm
 
 before_script: npm ci
@@ -24,7 +23,6 @@ jobs:
     - stage: test
       script: npm test
     - stage: deploy
-      node_js: node
       script: echo "Deploying to GitHub Releases"
       deploy:
         provider: releases
