@@ -2,7 +2,8 @@
 
 *__version 0.1.0__*
 
-A quick (done in 15 ms), lightweight (1.34 KB gzipped) and easy-to-use i18n engine for static websites.
+A quick (done in 1 ms), lightweight (3.7 KB gzipped, will be improved) and 
+easy-to-use i18n engine for static websites.
 
 *Note: this project is in development stage. Use it with caution!*
 
@@ -11,8 +12,8 @@ A quick (done in 15 ms), lightweight (1.34 KB gzipped) and easy-to-use i18n engi
 * [x] Automatic language switch
 * [x] Multiple dictionaries loading
 * [x] Storing users preference in cookies
-* [ ] Fully asynchronous requests
-* [ ] Manual language switch
+* [x] Manual language switch
+* [ ] Optimized async requests
 * [ ] Styling support
 * [ ] NPM deploy
 * [ ] Testing
@@ -35,6 +36,8 @@ A quick (done in 15 ms), lightweight (1.34 KB gzipped) and easy-to-use i18n engi
        </body>
    </html>
    ```
+   
+   Hint: the country-specific codes (like `en-us`) are supported as well!
 
 2. [Download][releases] and connect the latest version of `vavilon.js` library 
    like so:
@@ -58,7 +61,7 @@ A quick (done in 15 ms), lightweight (1.34 KB gzipped) and easy-to-use i18n engi
    ```
    
 4. Create a JSON file for your languages. Keys are string IDs and values are the
-   strings themselves. Here's an example for Russian:
+   strings themselves. Here's an example for Russian (`ru.json`):
    
    ```json
    {
