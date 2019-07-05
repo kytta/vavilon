@@ -7,7 +7,7 @@ const getFilename = (min) => {
     return `dist/vavilon${min ? '.min' : ''}.js`;
 };
 
-const input = 'src/vavilon.js';
+const input = 'src/index.js';
 
 const commonPlugins = [
     strip({

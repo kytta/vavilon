@@ -2,7 +2,7 @@
   "name": "vavilon.js",
   "version": "0.2.1",
   "description": "A quick and easy-to-use i18n engine for static websites",
-  "main": "src/vavilon.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "rollup -c",
     "test": "echo \"So far no tests here...\" && exit 0"

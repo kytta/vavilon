@@ -137,11 +137,10 @@ const vavilon = {
     pageLocale: getPageLocale(),
     dictionaries: {}
 };
+vavilon.dictionaries = getDictionaries();
 
-window.onload = async function () {
-    vavilon.dictionaries = await getDictionaries();
-
-    console.warn('Vavilon: ', vavilon);
+window.onload = function () {
+    console.log('Vavilon: ', vavilon);
 
     findAllElements();
 
