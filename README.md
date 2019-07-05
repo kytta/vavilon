@@ -16,6 +16,9 @@ A quick (done in 15 ms), lightweight (1.34 KB gzipped) and easy-to-use i18n engi
 * [ ] Styling support
 * [ ] NPM deploy
 * [ ] Testing
+* [ ] CI
+* [ ] Ensured compatibility with React, Vue, Angular, Svelte, jQuery
+* [ ] `gettext`-like JSON support
 
 ## How to use
 
