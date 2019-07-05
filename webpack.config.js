@@ -39,7 +39,7 @@ module.exports = {
                     options: {
                         presets: babelPresets,
                         plugins: [
-                            ['@babel/plugin-transform-runtime', {regenerator: true}]
+                            ['@babel/plugin-transform-runtime', { regenerator: true }]
                         ]
                     }
                 }],

@@ -25,5 +25,3 @@ export function setLocaleCookie (locale) {
     const expires = `; expires=${date.toUTCString()}`;
     document.cookie = `vavilon-locale=${locale || ''}${expires}; path=/`;
 }
-
-
