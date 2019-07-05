@@ -1,26 +1,36 @@
 language: node_js
 node_js:
-- node
-- lts/*
+  - node
+  - lts/*
 cache: npm
+
+before_script: npm ci
+
+stages:
+  - build
+  - test
+  - deploy
 
 jobs:
   include:
-  - stage: build
-    before_script: npm ci
-    script:
-    - npm run build-dev
-    - npm run build
-  - stage: test
-    script: npm test
-  - stage: deploy
-    node_js: node
-    script: echo "Deploying to GitHub Releases"
-    deploy:
-      provider: releases
-      api_key:
-        secure: RYw4wyJTcGWcksTZKw7HyxgBMbiN0Do6ZA36r9Zqz9eu0g71Uh7MjQ3TSs9uGVb74lmrZRFjP0vrc+3dnH1LafW7HQNQfH5RRe4jntgy8xdcOaCdhVzYup7CI0r80PI/U/NuDbStBK70qf9ekJfYxhOTOj1DOKKToaAgIOAnDufiUHnHQCx6YuUGQwX9Q+SlJb4S9cI2j2wZmNDW3c7n9pbGfVOzLQSTBpcUi55gwhQBByl0jY4y7s4mb869/w3XWlPSrssYhLsm9wuODkKa4bm9QhZ50cW5m9FtAuklusCN5sD9x/a3o3kmJ9JHJiFuT5XEUpzDf2Ac6wGHgFo79MxtxmpFNLy5mCICj8Eu1xYSV/ygE9oD7vm+KJInL2o6pGv39eVlxotQ1tv7AiCZFVtZkOh5A29y7vfPFJWfpRM23ZlaZ7Urj4YAzT7UzfwbxEFfNVjPX0uKvM+XVbaRVWTiwZvxPsI4CwTiVy25IVoIUZg/z8UalE3R5VX7ANiUunfk7kf99YNEtnmpZd3qGbKTTKTWJEGMV704PWCf9uYW9XwX1lAbNE5Xbzj5zJMgNV+PI6vad9ZzmcGV6/mAWGYKLzpIFUnFxYQJxnB18q6RImfnE8qZU1xi8tiHF8Lw/lT5PnErxSNs1fLBEQpNXV+vocisHDVcywvgCnYGKgU=
-      file: "./dist/vavilon.min.js"
-      skip_cleanup: true
-      on:
-        tags: true
+    - stage: build
+      name: "Development build"
+      script:
+        - npm run build-dev
+    - stage: build
+      name: "Production build"
+      script:
+        - npm run build
+    - stage: test
+      script: npm test
+    - stage: deploy
+      node_js: node
+      script: echo "Deploying to GitHub Releases"
+      deploy:
+        provider: releases
+        api_key:
+          secure: RYw4wyJTcGWcksTZKw7HyxgBMbiN0Do6ZA36r9Zqz9eu0g71Uh7MjQ3TSs9uGVb74lmrZRFjP0vrc+3dnH1LafW7HQNQfH5RRe4jntgy8xdcOaCdhVzYup7CI0r80PI/U/NuDbStBK70qf9ekJfYxhOTOj1DOKKToaAgIOAnDufiUHnHQCx6YuUGQwX9Q+SlJb4S9cI2j2wZmNDW3c7n9pbGfVOzLQSTBpcUi55gwhQBByl0jY4y7s4mb869/w3XWlPSrssYhLsm9wuODkKa4bm9QhZ50cW5m9FtAuklusCN5sD9x/a3o3kmJ9JHJiFuT5XEUpzDf2Ac6wGHgFo79MxtxmpFNLy5mCICj8Eu1xYSV/ygE9oD7vm+KJInL2o6pGv39eVlxotQ1tv7AiCZFVtZkOh5A29y7vfPFJWfpRM23ZlaZ7Urj4YAzT7UzfwbxEFfNVjPX0uKvM+XVbaRVWTiwZvxPsI4CwTiVy25IVoIUZg/z8UalE3R5VX7ANiUunfk7kf99YNEtnmpZd3qGbKTTKTWJEGMV704PWCf9uYW9XwX1lAbNE5Xbzj5zJMgNV+PI6vad9ZzmcGV6/mAWGYKLzpIFUnFxYQJxnB18q6RImfnE8qZU1xi8tiHF8Lw/lT5PnErxSNs1fLBEQpNXV+vocisHDVcywvgCnYGKgU=
+        file: "./dist/vavilon.min.js"
+        skip_cleanup: true
+        on:
+          tags: true
