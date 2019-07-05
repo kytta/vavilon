@@ -19,7 +19,7 @@ easy-to-use i18n engine for static websites.
 * [ ] Testing
 * [ ] CI
 * [ ] Ensured compatibility with React, Vue, Angular, Svelte, jQuery
-* [ ] `gettext`-like JSON support
+* [ ] `gettext`-like JSON support (where the keys are the strings in original language)
 
 ## How to use
 
@@ -75,6 +75,12 @@ easy-to-use i18n engine for static websites.
 
    ```html
    <script type="application/json" src="path/to/ru.json" data-vavilon-dict="ru"></script>
+   ```
+   
+6. You can setup the language switching using the `changeLocale` function:
+
+   ```html
+   <button onclick="changeLocale('en')">English version</button>
    ```
    
 You're done! The page will now be automatically translated for users who have
