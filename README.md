@@ -1,14 +1,16 @@
-# vavilon.js
+<h1 align="center">vavilon.js</h1>
 
-[![Travis CI build status](https://img.shields.io/travis/com/vavilon-js/vavilon.js.svg)](https://travis-ci.com/vavilon-js/vavilon.js)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg)](https://codeclimate.com/github/vavilon-js/vavilon.js)
-
-*__version 0.2.0__*
+<p align="center">
+  <a href="https://github.com/vavilon-js/vavilon.js/releases">
+    <img alt="GitHub release" src="https://img.shields.io/github/release-pre/vavilon-js/vavilon.js.svg?label=pre-release">
+  </a>
+</p>
 
 A quick (done in 1 ms), lightweight (3.7 KB gzipped, will be improved) and
 easy-to-use i18n engine for static websites.
 
-*Note: this project is in development stage. Use it with caution!*
+[![Travis CI build status](https://img.shields.io/travis/com/vavilon-js/vavilon.js.svg)](https://travis-ci.com/vavilon-js/vavilon.js)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg)](https://codeclimate.com/github/vavilon-js/vavilon.js)
 
 ## Readiness
 
