@@ -1,6 +1,7 @@
 # vavilon.js
 
 [![Travis CI build status](https://img.shields.io/travis/com/vavilon-js/vavilon.js.svg)](https://travis-ci.com/vavilon-js/vavilon.js)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg)](https://codeclimate.com/github/vavilon-js/vavilon.js)
 
 *__version 0.1.0__*
 
