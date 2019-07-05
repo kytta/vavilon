@@ -37,7 +37,10 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: babelPresets
+                        presets: babelPresets,
+                        plugins: [
+                            ['@babel/plugin-transform-runtime', {regenerator: true}]
+                        ]
                     }
                 }],
                 exclude: /node_modules/

@@ -12,8 +12,7 @@ import { getJson } from './http';
  * @returns {Locale} the user-preferred locale
  */
 function getUserLocale () {
-    vavilon.userLocale = (getLocaleCookie() || navigator.language || navigator.userLanguage || navigator.browserLanguage).toLowerCase();
-    console.debug('Locale set to', vavilon.userLocale);
+    return (getLocaleCookie() || navigator.language || navigator.userLanguage || navigator.browserLanguage).toLowerCase();
 }
 
 /**
@@ -33,7 +32,7 @@ function getPageLocale () {
  * @param localeString {Locale}
  *        the locale to change to
  */
-function changeLocale (localeString) {
+window.changeLocale = function (localeString) {
     localeString = localeString.toLowerCase();
 
     if (vavilon.dictionaries[localeString]) {
@@ -51,7 +50,7 @@ function changeLocale (localeString) {
 
     replaceAllElements();
     setLocaleCookie(vavilon.useDict);
-}
+};
 
 /* ============================== DICTIONARIES ============================== */
 
@@ -79,10 +78,9 @@ async function getDictionaries () {
 
         if (dictLocale === vavilon.userLocale || (dictLocale.slice(0, 2) === vavilon.userLocale.slice(0, 2) && !vavilon.useDict)) {
             vavilon.useDict = dictLocale;
-            dictionary.strings = await getJson(s.src);
-        } else {
-            dictionary.strings = getJson(s.src);
         }
+
+        dictionary.strings = await getJson(s.src);
 
         dictionaries[dictLocale] = dictionary;
     }
@@ -112,11 +110,11 @@ function replaceAllElements () {
             };
         }
         for (const el of vavilon.elements) {
-            if (vavilon.dictionaries[vavilon.useDict][el.dataset.vavilon]) {
+            if (vavilon.dictionaries[vavilon.useDict].strings[el.dataset.vavilon]) {
                 if (!vavilon.dictionaries[vavilon.pageLocale].strings[el.dataset.vavilon]) {
                     vavilon.dictionaries[vavilon.pageLocale].strings[el.dataset.vavilon] = el.innerText;
                 }
-                el.innerText = vavilon.dictionaries[vavilon.useDict][el.dataset.vavilon];
+                el.innerText = vavilon.dictionaries[vavilon.useDict].strings[el.dataset.vavilon];
             } else {
                 console.warn(`${el.dataset.vavilon} not in dictionary`);
             }
@@ -139,9 +137,9 @@ const vavilon = {
     dictionaries: {}
 };
 
-getDictionaries();
+window.onload = async function () {
+    vavilon.dictionaries = await getDictionaries();
 
-window.onload = function () {
     console.debug('Vavilon: ', vavilon);
 
     findAllElements();
@@ -149,6 +147,4 @@ window.onload = function () {
     if (vavilon.useDict) {
         replaceAllElements();
     }
-
-    window.changeLocale = changeLocale;
 };
