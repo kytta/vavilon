@@ -6,7 +6,7 @@
   </a>
 </p>
 
-A quick (done in 1 ms), lightweight (3.7 KB gzipped, will be improved) and
+A quick (done in 1 ms), lightweight (3.4 KB gzipped, will be improved) and
 easy-to-use i18n engine for static websites.
 
 [![Travis CI build status](https://img.shields.io/travis/com/vavilon-js/vavilon.js.svg)](https://travis-ci.com/vavilon-js/vavilon.js)
