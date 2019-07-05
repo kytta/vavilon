@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/vavilon-js/vavilon.js/releases">
-    <img alt="GitHub release" src="https://img.shields.io/github/release-pre/vavilon-js/vavilon.js.svg?label=pre-release">
+    <img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg">
   </a>
 </p>
 
