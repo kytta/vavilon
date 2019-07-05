@@ -1,20 +1,20 @@
 /**
- * Performs a GET HTTP-request and returns the response data
+ * Performs a GET HTTP-request and returns the JSON-parsed response data
  *
  * @param url {string}
- *        URL of the resource
+ *        URL of the JSON resource
  *
- * @returns {Promise<string>}
- *          response text
+ * @returns {Promise<object>}
+ *          response object
  */
-export function get (url) {
+export function getJson (url) {
     return new Promise(function (resolve, reject) {
         // eslint-disable-next-line no-undef
         const xhr = new XMLHttpRequest();
         xhr.open('GET', url);
         xhr.onload = function () {
             if (this.status < 300 && this.status >= 200) {
-                resolve(xhr.responseText);
+                resolve(JSON.parse(xhr.responseText));
             } else {
                 reject(new Error(this.statusText));
             }

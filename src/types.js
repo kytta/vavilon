@@ -5,16 +5,19 @@
  * A vavilon object contains information about tha locale used in browser, the
  * locale found in cookie, available dictionaries, etc.
  *
- * @typedef Vavilon
+ * @typedef {Object} Vavilon
  *
- * @property {Locale|null} userLocale
+ * @property {Locale} userLocale
  *           locale from the cookie value; if a locale hasn't been stored in
  *           cookie, the browser locale is used instead.
  *
  * @property {Locale} pageLocale
  *           locale of the page; comes from html `lang` attribute.
  *
- * @property {Array<Element>} elements
+ * @property {Locale} [useDict]
+ *           locale of the dictionary that will be used to translate the page
+ *
+ * @property {HTMLCollectionOf} [elements]
  *           vavilon-enabled elements on the page.
  *
  * @property {Object<string, Dictionary>} dictionaries
@@ -25,17 +28,13 @@
 /**
  * Locale
  *
- * A locale is a set of parameters, that defines the linguistic environment.
- * A locale consists of the language and the country as well as the normalized
- * value (in form `'languagecode-COUNTRYCODE'`, e.g. `'en-US'`)
+ * A locale is a lowercase string that defines the linguistic environment.
+ * A locale consists of the language and the country in form
+ * `'languagecode-countrycode'`, e.g. `'en-us'`
  *
  * @typedef Locale
  *
- * @property {string} language
- *           ISO 639-1 language code (e.g. 'en')
- *
- * @property {string} [country]
- *           ISO 3166-1 alpha-2 country code (e.g. 'US')
+ * @type {string}
  */
 
 /**
@@ -47,24 +46,11 @@
  *
  * @typedef Dictionary
  *
- * @property {Locale} locale
- *           the locale of the dictionary
- *
- * @property {string} url
- *           the URL for dictionary's original JSON file
+ * @property {string|null} url
+ *           the URL for dictionary's original JSON file.
+ *           Can be nullable only if the dictionary is the default dictionary.
  *
  * @property {Object<string, string>} strings
  *           the strings of the dictionary
  *
- */
-
-/**
- * Element
- *
- * An element is a basic HTML element, that has to be replaced in the process
- * of translation.
- *
- * @typedef Element
- *
- * @type {HTMLElement}
  */
