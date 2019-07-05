@@ -5,7 +5,7 @@
 
 *__version 0.2.0__*
 
-A quick (done in 1 ms), lightweight (3.7 KB gzipped, will be improved) and
+A quick (done in 1 ms), lightweight (3.4 KB gzipped, will be improved) and
 easy-to-use i18n engine for static websites.
 
 *Note: this project is in development stage. Use it with caution!*
