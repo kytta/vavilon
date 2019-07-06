@@ -1,6 +1,6 @@
 {
   "name": "vavilon",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A quick, lightweight and easy-to-use i18n engine for static websites",
   "license": "MIT",
   "keywords": [
