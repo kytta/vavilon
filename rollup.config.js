@@ -4,11 +4,11 @@ import { uglify } from 'rollup-plugin-uglify';
 import cleanup from 'rollup-plugin-cleanup';
 import filesize from 'rollup-plugin-filesize';
 
-const getFilename = (postfix) => {
+export const getFilename = (postfix) => {
     return `dist/vavilon${postfix ? '.' + postfix : ''}.js`;
 };
 
-const input = 'src/index.js';
+export const input = 'src/index.js';
 
 const commonPlugins = [
     strip({
