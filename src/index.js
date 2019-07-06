@@ -1,5 +1,5 @@
 import { getLocaleCookie, setLocaleCookie } from './cookie';
-import { getJson } from './http';
+import { get, getJsonSync } from './http';
 
 /* ================================= LOCALE ================================= */
 
@@ -78,10 +78,8 @@ function getDictionaries () {
 
         if (dictLocale === vavilon.userLocale || (dictLocale.slice(0, 2) === vavilon.userLocale.slice(0, 2) && !vavilon.useDict)) {
             vavilon.useDict = dictLocale;
-            getJson(s.src, false, r => { dictionary.strings = JSON.parse(r); });
-        } else {
-            getJson(s.src, true, r => { dictionary.strings = JSON.parse(r); });
         }
+        get(s.src, r => { dictionary.strings = JSON.parse(r); });
 
         dictionaries[dictLocale] = dictionary;
     }
