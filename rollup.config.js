@@ -2,9 +2,10 @@ import strip from 'rollup-plugin-strip';
 import babel from 'rollup-plugin-babel';
 import { uglify } from 'rollup-plugin-uglify';
 import cleanup from 'rollup-plugin-cleanup';
+import filesize from 'rollup-plugin-filesize';
 
-const getFilename = (min) => {
-    return `dist/vavilon${min ? '.min' : ''}.js`;
+const getFilename = (postfix) => {
+    return `dist/vavilon${postfix ? '.' + postfix : ''}.js`;
 };
 
 const input = 'src/index.js';
@@ -25,20 +26,23 @@ export default [
     {
         input: input,
         output: {
-            file: getFilename(true),
+            file: getFilename('min'),
             format: 'iife'
         },
         plugins: [
             ...commonPlugins,
             uglify({
                 sourcemap: false
+            }),
+            filesize({
+                showMinifiedSize: false
             })
         ]
     },
     {
         input: input,
         output: {
-            file: getFilename(false),
+            file: getFilename(),
             format: 'iife'
         },
         plugins: [
