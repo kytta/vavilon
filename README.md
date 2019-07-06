@@ -6,30 +6,55 @@
         A quick, lightweight and easy-to-use i18n engine for static websites
     </p>
     <p>
-        <a href="https://github.com/vavilon-js/vavilon.js/releases">
-            <img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg">
-        </a>
+        <a href="https://github.com/vavilon-js/vavilon.js/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg?logo=github&logoColor=white"></a>
+        <a href="https://www.npmjs.com/package/vavilon"><img alt="npm release" src="https://img.shields.io/npm/v/vavilon.svg?label=release&logo=npm"></a>
     </p>
     <p>
-        <a href="https://travis-ci.com/vavilon-js/vavilon.js">
-            <img alt="Travis CI build status" src="https://img.shields.io/travis/com/vavilon-js/vavilon.js.svg">
-        </a>
-        <a href="https://codeclimate.com/github/vavilon-js/vavilon.js">
-            <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg">
-        </a>
+        <a href="https://github.com/vavilon-js/vavilon.js/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vavilon-js/vavilon.js.svg"></a>
+        <a href="https://travis-ci.com/vavilon-js/vavilon.js"><img alt="Travis CI build status" src="https://img.shields.io/travis/com/vavilon-js/vavilon.js/master.svg"></a>
+        <a href="https://codeclimate.com/github/vavilon-js/vavilon.js"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg"></a>
     </p>
 </div>
 
 ## How to Install
 
+To use `vavilon.js` on your website you should connect the script in your
+webpage's `<head>`. Here are some ways to get this going:
+
+### via CDN (recommended)
+
+You can get `vavilon.js` via jsDelivr. This is the fastest and the most reliable
+way:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vavilon@0.3.0/dist/vavilon.min.js"
+        integrity="sha256-5AWuW4hwqHRUPGy+81tX/nobtCDi2l9heakX2rHCOF4="
+        crossorigin="anonymous">
+</script>
+```
+
+### via NPM
+
+If you use NPM with your static website, you can install `vavilon.js` using npm:
+
+```sh
+npm install vavilon
+```
+
+Then you can include the script in your webpage like so:
+
+```html
+<script src="./path/to/node_modules/vavilon/dist/vavilon.min.js"></script>
+```
+
 ### Manual download
 
 You can find latest version of `vavilon.js` in [Releases][releases]
 section on GitHub. Download either the minified or the uncompressed version and
-include it in your `<head>`:
+include it in your document:
 
 ```html
-<script src="./path/to/vavilon.min.js" type="script.js"></script>
+<script src="./path/to/vavilon.min.js"></script>
 ```
 
 ## How to use
