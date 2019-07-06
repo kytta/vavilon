@@ -1,5 +1,5 @@
 import { getLocaleCookie, setLocaleCookie } from './cookie';
-import { getJson } from './http';
+import { get } from './http';
 
 /* ================================= LOCALE ================================= */
 
@@ -29,7 +29,7 @@ function getPageLocale () {
  *
  * This results in complete translation of all vavilon-enabled elements
  *
- * @param localeString {Locale}
+ * @param {Locale} localeString
  *        the locale to change to
  */
 window.changeLocale = function (localeString) {
@@ -61,7 +61,7 @@ window.changeLocale = function (localeString) {
  *          object, where the keys are dictionary locales and the values are
  *          {@link Dictionary}s with no strings
  */
-async function getDictionaries () {
+function getDictionaries () {
     const dictionaries = {};
     const vavilonDictScripts = Array.from(document.scripts).filter((e) => e.dataset.vavilonDict);
 
@@ -78,9 +78,17 @@ async function getDictionaries () {
 
         if (dictLocale === vavilon.userLocale || (dictLocale.slice(0, 2) === vavilon.userLocale.slice(0, 2) && !vavilon.useDict)) {
             vavilon.useDict = dictLocale;
-        }
+            get(s.src, r => {
+                dictionary.strings = JSON.parse(r);
+                useDictLoaded = true;
 
-        dictionary.strings = await getJson(s.src);
+                if (pageLoaded) {
+                    replaceAllElements();
+                }
+            });
+        } else {
+            get(s.src, r => { dictionary.strings = JSON.parse(r); });
+        }
 
         dictionaries[dictLocale] = dictionary;
     }
@@ -137,14 +145,16 @@ const vavilon = {
     dictionaries: {}
 };
 
-window.onload = async function () {
-    vavilon.dictionaries = await getDictionaries();
+let pageLoaded = false;
+let useDictLoaded = false;
 
-    console.debug('Vavilon: ', vavilon);
+vavilon.dictionaries = getDictionaries();
 
+window.onload = function () {
     findAllElements();
+    pageLoaded = true;
 
-    if (vavilon.useDict) {
+    if (useDictLoaded) {
         replaceAllElements();
     }
 };

@@ -18,7 +18,7 @@ jobs:
         - npm run build
 
     - stage: deploy
-      name: "Deploy to GitHub Releases"
+      name: Deploy to GitHub Releases
       script: npm run build
       before_deploy:
         - echo "Deploying to GitHub Releases"
@@ -30,5 +30,20 @@ jobs:
           - ./dist/vavilon.min.js
           - ./dist/vavilon.js
         skip_cleanup: true
+        draft: true
+        on:
+          tags: true
+    - stage: deploy
+      name: Deploy to NPM
+      script: npm run build
+      before_deploy:
+        - echo "Deploying to GitHub Releases"
+      deploy:
+        provider: npm
+        email: nick@karamoff.ru
+        api_key:
+          secure: qfXx0/gnyCHzbqp4Zv6Q7zhcJu76AmDxe6ISfNgUCy3k7yf036XVpXDKbtrJE2TOZBqGDeV8/0ClcOdGZNRndt/Hps4Bd/tD/zX9p2xDKCl5wFEgcg9HP8hy602+YOKFC7jpfLsrLCoO/cEhCn23qSv14GV3LNn3tcyFa2FCCPOUgFXiUY0g77vQ6j4PABcVe0hyP9BomfwHKFcUF3dTEQTFwoDN747UkzYFFk58vFAikUb7cE723A11+jbd7JLM0etPSGrt6wxEISBVfWP6dfVvhLwK4hyd7QLZvTeUfNOPrHOat3qabdIlEaej0oeuhuzIawcXhNkpVLbD5PWrAWehMpB0n6RcOwCyNWiKDE3n1VirJyI/1G3Miavz0JaE2MkxFNXCPl1/nAPQ0x8XU2G9yGOKM4k7N0lqM5pcrG5wycXCzSMmlt5Vfw1jrVnTdAnbIT3ZWAy0pXMGjm/6hD41vgToToaC5XVZriog8dRaiPvBM0f366BHroqQcoH/R6o1sQKAvvr54/J1M4PKzwqgk2UqiiljLxu9haoumv2qfPF5xLHmoUF+N57T1f3Ce0UHY+rNL38qjP2T57pP1nggZ8vS+pmcE0ffP8vrY/1WUMYL2eRxRWua9j6ve+GS/DJ9sUNysNvkSyTwFiBMY4j7GZ/Jy0qj8GWM0g72od0=
+        skip_cleanup: true
+        draft: true
         on:
           tags: true

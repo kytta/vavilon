@@ -1,36 +1,41 @@
-<h1 align="center">vavilon.js</h1>
+<div align="center">
+    <h1>
+        <img src="docs/logo.png" width="300" alt="vavilon.js">
+    </h1>
+    <p>
+        A quick, lightweight and easy-to-use i18n engine for static websites
+    </p>
+    <p>
+        <a href="https://github.com/vavilon-js/vavilon.js/releases">
+            <img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg">
+        </a>
+    </p>
+    <p>
+        <a href="https://travis-ci.com/vavilon-js/vavilon.js">
+            <img alt="Travis CI build status" src="https://img.shields.io/travis/com/vavilon-js/vavilon.js.svg">
+        </a>
+        <a href="https://codeclimate.com/github/vavilon-js/vavilon.js">
+            <img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg">
+        </a>
+    </p>
+</div>
 
-<p align="center">
-  <a href="https://github.com/vavilon-js/vavilon.js/releases">
-    <img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg">
-  </a>
-</p>
+## How to Install
 
-A quick (done in 1 ms), lightweight (3.4 KB gzipped, will be improved) and
-easy-to-use i18n engine for static websites.
+### Manual download
 
-[![Travis CI build status](https://img.shields.io/travis/com/vavilon-js/vavilon.js.svg)](https://travis-ci.com/vavilon-js/vavilon.js)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg)](https://codeclimate.com/github/vavilon-js/vavilon.js)
+You can find latest version of `vavilon.js` in [Releases][releases]
+section on GitHub. Download either the minified or the uncompressed version and
+include it in your `<head>`:
 
-## Readiness
-
-* [x] Automatic language switch
-* [x] Multiple dictionaries loading
-* [x] Storing users preference in cookies
-* [x] Manual language switch
-* [ ] Optimized async requests
-* [ ] Styling support
-* [x] GitHub deploy
-* [ ] NPM deploy
-* [ ] Testing
-* [x] CI
-* [ ] Ensured compatibility with React, Vue, Angular, Svelte, jQuery
-* [ ] `gettext`-like JSON support (where the keys are the strings in original language)
+```html
+<script src="./path/to/vavilon.min.js" type="script.js"></script>
+```
 
 ## How to use
 
-1. Create your HTML page. Choose a language to be the default and use it in the
-   page. Don't forget about the `lang` attribute:
+1. Create your HTML page on open the one you've already created. Set the `lang`
+   attribute in your `<html>` tag:
 
    ```html
    <html lang="en">
@@ -43,17 +48,12 @@ easy-to-use i18n engine for static websites.
    </html>
    ```
 
-   Hint: the country-specific codes (like `en-us`) are supported as well!
+   If you rely on multiple versions of the same language (like US and UK English),
+   you can user the country-specific lang codes (i.e. `en-us`, `en-uk`)
 
-2. [Download][releases] and connect the latest version of `vavilon.js` library
-   like so:
-
-   ```html
-   <script type="text/javascript" src="path/to/vavilon.min.js"></script>
-   ```
-
-3. Tag the strings in your HTML page with any IDs that you want using the
-   `data-vavilon` attribute and `vavilon` class:
+2. Give unique IDs to every string on your HTML page that you want to have
+   translated. Put the IDs inside the `data-vavilon` attribute and add the
+   `vavilon` class to these elements:
 
    ```html
       <html lang="en">
@@ -66,8 +66,9 @@ easy-to-use i18n engine for static websites.
       </html>
    ```
 
-4. Create a JSON file for your languages. Keys are string IDs and values are the
-   strings themselves. Here's an example for Russian (`ru.json`):
+3. Create JSON dictionary files for the languages you want to support. Each file
+   should be an object, with the keys being the unique string IDs and values
+   being the translated strings. Here's an example for Russian language:
 
    ```json
    {
@@ -76,21 +77,68 @@ easy-to-use i18n engine for static websites.
    }
    ```
 
-5. Connect the dictionaries inside `<head>`. Tag them with `data-vavilon-dict`
-   and specify the dictionaries language:
+4. Connect the dictionaries inside `<head>` element. Add the `data-vavilon-dict`
+   attribute to specify the dictionaries language:
 
    ```html
    <script type="application/json" src="path/to/ru.json" data-vavilon-dict="ru"></script>
    ```
 
-6. You can setup the language switching using the `changeLocale` function:
+5. [Download and connect](#how-to-install) the latest version of `vavilon.js`.
+   Upon doing so, your page now will automatically change its language based
+   on the end user's browser locale.
+
+6. If you want your user to be able to switch languages, you can set it up by
+   using the `changeLocale` function:
 
    ```html
    <button onclick="changeLocale('en')">English version</button>
    ```
 
-You're done! The page will now be automatically translated for users who have
-a Russian localization enabled in their browser. You can connect as many
-dictionaries as you want.
+## Caveats
+
+As you may have guessed from the major version number being 0, the library is
+not completely finished. Here are some things that are not supported or don't
+work as expected:
+
+### Styling and inline tags
+
+Right now `vavilon.js` replaces the _text_ of the elements, not their HTML code,
+which means that the code like
+
+```html
+<p class="vavilon" data-vavilon="hello">Hello <b>world</b>!</p>
+```
+
+will not have the word "world" written in bold.
+
+The support for styling your strings will come in future releases. If this is
+crucial for you, you can use a workaround like this:
+
+```html
+<p>
+    <span class="vavilon" data-vavilon="hello-1">Hello</span>
+    <b class="vaviln" data-vavilon="hello-2">world</b>!
+</p>
+```
+
+This way you can define separate IDs for the words "Hello" and "world" inside
+your dictionary file.
+
+### Framework compatibility
+
+While it is possible to create static websites using frameworks like Vue.js,
+React and Svelte, the support for those has not been tested at all. If you use
+these frameworks I would highly recommend you use something other than `vavilon.js`,
+like the i18n plugins created specifically for these frameworks.
+
+With regard to jQuery, it has not been tested yet either, but I guess it should
+work just fine. If you want to play around with `vavilon.js` and jQuery, I
+encourage you do so.
+
+----
+
+If you encounter any bugs, don't hesitate [filing an issue][issues]
 
 [releases]: https://github.com/vavilon-js/vavilon.js/releases
+[issues]: https://github.com/vavilon-js/vavilon.js/issues
