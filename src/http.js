@@ -13,7 +13,7 @@ export function get (url, callback) {
     xhr.onload = function () {
         if (this.status < 300 && this.status >= 200) {
             if (callback) {
-                callback(xhr.response);
+                callback(xhr.responseText);
             }
         } else {
             throw new Error(this.statusText);

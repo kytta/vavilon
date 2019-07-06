@@ -1,5 +1,5 @@
 import { getLocaleCookie, setLocaleCookie } from './cookie';
-import { get, getJsonSync } from './http';
+import { get } from './http';
 
 /* ================================= LOCALE ================================= */
 
@@ -78,8 +78,17 @@ function getDictionaries () {
 
         if (dictLocale === vavilon.userLocale || (dictLocale.slice(0, 2) === vavilon.userLocale.slice(0, 2) && !vavilon.useDict)) {
             vavilon.useDict = dictLocale;
+            get(s.src, r => {
+                dictionary.strings = JSON.parse(r);
+                useDictLoaded = true;
+
+                if (pageLoaded) {
+                    replaceAllElements();
+                }
+            });
+        } else {
+            get(s.src, r => { dictionary.strings = JSON.parse(r); });
         }
-        get(s.src, r => { dictionary.strings = JSON.parse(r); });
 
         dictionaries[dictLocale] = dictionary;
     }
@@ -135,14 +144,17 @@ const vavilon = {
     pageLocale: getPageLocale(),
     dictionaries: {}
 };
+
+let pageLoaded = false;
+let useDictLoaded = false;
+
 vavilon.dictionaries = getDictionaries();
 
 window.onload = function () {
-    console.log('Vavilon: ', vavilon);
-
     findAllElements();
+    pageLoaded = true;
 
-    if (vavilon.useDict) {
+    if (useDictLoaded) {
         replaceAllElements();
     }
 };
