@@ -1,28 +1,43 @@
 {
-  "name": "vavilon.js",
+  "name": "vavilon",
   "version": "0.2.1",
-  "description": "A quick and easy-to-use i18n engine for static websites",
-  "main": "src/index.js",
+  "description": "A quick, lightweight and easy-to-use i18n engine for static websites",
+  "license": "MIT",
+  "keywords": [
+    "translation",
+    "i18n",
+    "internationalization",
+    "l10n",
+    "localization",
+    "browser",
+    "library"
+  ],
+  "homepage": "https://github.com/NickKaramoff/vavilon.js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickKaramoff/vavilon.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NickKaramoff/vavilon.js/issues"
+  },
+  "author": {
+    "name": "Nikita Karamov",
+    "email": "nick@karamoff.ru",
+    "url": "https://karamoff.ru/en"
+  },
+  "files": [
+    "dist/vavilon.js",
+    "dist/vavilon.min.js",
+    "src",
+    "docs"
+  ],
+  "browser": "dist/vavilon.js",
   "scripts": {
     "build": "rollup -c",
     "build-dev": "rollup -c --config-dev",
     "test": "echo \"So far no tests here...\" && exit 0",
     "watch": "rollup -c --config-dev -w"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NickKaramoff/vavilon.js.git"
-  },
-  "keywords": [
-    "i18n",
-    "static"
-  ],
-  "author": "Nikita Karamov <nick@karamoff.ru>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NickKaramoff/vavilon.js/issues"
-  },
-  "homepage": "https://github.com/NickKaramoff/vavilon.js#readme",
   "devDependencies": {
     "@babel/core": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
