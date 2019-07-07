@@ -12,13 +12,13 @@
     "browser",
     "library"
   ],
-  "homepage": "https://github.com/NickKaramoff/vavilon.js#readme",
+  "homepage": "https://github.com/vavilon-js/vavilon.js#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NickKaramoff/vavilon.js.git"
+    "url": "git+https://github.com/vavilon-js/vavilon.js.git"
   },
   "bugs": {
-    "url": "https://github.com/NickKaramoff/vavilon.js/issues"
+    "url": "https://github.com/vavilon-js/vavilon.js/issues"
   },
   "author": {
     "name": "Nikita Karamov",
