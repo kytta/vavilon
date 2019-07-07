@@ -1,6 +1,6 @@
 <div align="center">
     <h1>
-        <img src="docs/logo.png" width="300" alt="vavilon.js">
+        <img src="docs/logo.svg" width="300" alt="vavilon.js logo">
     </h1>
     <p>
         A quick, lightweight and easy-to-use i18n engine for static websites
@@ -27,7 +27,7 @@ You can get `vavilon.js` via jsDelivr. This is the fastest and the most reliable
 way:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vavilon@0.3.0/dist/vavilon.min.js"
+<script src="https://cdn.jsdelivr.net/npm/vavilon@0.3.1/dist/vavilon.min.js"
         integrity="sha256-5AWuW4hwqHRUPGy+81tX/nobtCDi2l9heakX2rHCOF4="
         crossorigin="anonymous">
 </script>
