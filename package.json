@@ -1,6 +1,6 @@
 {
   "name": "vavilon",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A quick, lightweight and easy-to-use i18n engine for static websites",
   "license": "MIT",
   "keywords": [
@@ -12,13 +12,13 @@
     "browser",
     "library"
   ],
-  "homepage": "https://github.com/NickKaramoff/vavilon.js#readme",
+  "homepage": "https://github.com/vavilon-js/vavilon.js#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NickKaramoff/vavilon.js.git"
+    "url": "git+https://github.com/vavilon-js/vavilon.js.git"
   },
   "bugs": {
-    "url": "https://github.com/NickKaramoff/vavilon.js/issues"
+    "url": "https://github.com/vavilon-js/vavilon.js/issues"
   },
   "author": {
     "name": "Nikita Karamov",
