@@ -4,27 +4,6 @@ import { get } from './http';
 /* ================================= LOCALE ================================= */
 
 /**
- * Returns the user preferred {@link Locale}
- *
- * The locale is based on the value of `vavilon-locale` cookie. If the cookie
- * is not present, the browser language is used instead.
- *
- * @returns {Locale} the user-preferred locale
- */
-function getUserLocale () {
-    return (getLocaleCookie() || navigator.language || navigator.userLanguage || navigator.browserLanguage).toLowerCase();
-}
-
-/**
- * Returns the {@link Locale} of the page
- *
- * @returns {Locale} the locale of the page
- */
-function getPageLocale () {
-    return document.documentElement.lang.toLowerCase();
-}
-
-/**
  * Changes the locale on the page
  *
  * This results in complete translation of all vavilon-enabled elements
