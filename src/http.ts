@@ -4,11 +4,10 @@
  * @param {string} url
  *        URL of the JSON resource
  *
- * @param {function} [callback]
+ * @param {Function} [callback]
  *        a function to call after the request is successful
  */
-export function get (url, callback) {
-    // eslint-disable-next-line no-undef
+export function get (url: string, callback: Function) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (this.status < 300 && this.status >= 200 && callback) {
