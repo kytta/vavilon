@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["dom", "es6"],
+        "typeRoots": [
+            "./src"
+        ]
+    },
+    "files": [
+        "./src/index.ts"
+    ]
+}
