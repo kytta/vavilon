@@ -140,7 +140,7 @@ crucial for you, you can use a workaround like this:
 ```html
 <p>
     <span class="vavilon" data-vavilon="hello-1">Hello</span>
-    <b class="vaviln" data-vavilon="hello-2">world</b>!
+    <b class="vavilon" data-vavilon="hello-2">world</b>!
 </p>
 ```
 
