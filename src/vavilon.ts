@@ -11,12 +11,12 @@ import {getUserLocale, getPageLocale, Locale} from './locale';
 export class Vavilon {
     private static instance: Vavilon;
 
-    private userLocale: Locale;
-    private pageLocale: Locale;
-    
-    private elements: HTMLCollectionOf<Element>;
-    private dictionaries: {[key: string]: Dictionary};
-    private useDict: Locale;
+    userLocale: Locale;
+    pageLocale: Locale;
+
+    elements: HTMLCollectionOf<Element>;
+    dictionaries: {[key: string]: Dictionary};
+    useDict: Locale;
 
     private constructor() {
         Vavilon.instance.userLocale = getUserLocale();
