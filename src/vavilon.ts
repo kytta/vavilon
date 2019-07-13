@@ -1,5 +1,6 @@
 import { Dictionary } from './dictionary';
 import {getUserLocale, getPageLocale, Locale} from './locale';
+import {setLocaleCookie} from "./cookie";
 
 /**
  * ## Vavilon
@@ -92,5 +93,20 @@ export class Vavilon {
                     this.dictionaries[loc].load()
                 }
             });
+    }
+
+    changeLocale(localeString: string): void {
+        localeString = localeString.toLowerCase();
+
+        if (this.dictionaries[localeString]) {
+            this.pageDict = localeString;
+        } else if (this.dictionaries[localeString.slice(0, 2)]) {
+            this.pageDict = localeString.slice(0, 2)
+        } else {
+            return;
+        }
+
+        this.replaceAllElements();
+        setLocaleCookie(this.pageDict);
     }
 }
