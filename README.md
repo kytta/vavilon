@@ -114,10 +114,10 @@ include it in your document:
    on the end user's browser locale.
 
 6. If you want your user to be able to switch languages, you can set it up by
-   using the `changeLocale` function:
+   using the `setLang` function:
 
    ```html
-   <button onclick="changeLocale('en')">English version</button>
+   <button onclick="setLang('en')">English version</button>
    ```
 
 ## Caveats
