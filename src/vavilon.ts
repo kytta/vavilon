@@ -1,23 +1,58 @@
-import { Dictionary } from './dictionary';
+import {Dictionary} from './dictionary';
 import {getUserLocale, getPageLocale, Locale} from './locale';
 import {setLocaleCookie} from "./cookie";
 
 /**
- * ## Vavilon
+ * An object representing a Vavilon config
  *
  * A vavilon object is a set of parameters that configure the vavilon environment.
  * A vavilon object contains information about the locale used in browser, the
- * locale found in cookie, available dictionaries, etc.
+ * locale found in cookie, dictionaries and elements
  */
 export class Vavilon {
+
+    /**
+     * A singleton Vavilon instance to be shared over the website
+     */
     private static instance: Vavilon;
 
+    /**
+     * The user-preferred locale
+     *
+     * The locale comes from user-set cookie or browser language
+     */
     userLocale: Locale;
+
+    /**
+     * The original page locale
+     *
+     * The locale comes from the `lang` attribute of the `<html>` tag
+     */
     pageLocale: Locale;
 
+    /**
+     * The collection of all vavilon-enabled elements on the page
+     */
     elements: HTMLCollectionOf<HTMLElement>;
-    dictionaries: {[key: string]: Dictionary};
+
+    /**
+     * The map of available dictionaries
+     *
+     * The keys are the {@link Locale} codes, whereas the values are the actual {@link Dictionary}s
+     */
+    dictionaries: { [key: string]: Dictionary };
+
+    /**
+     * The dictionary that is used to translate the page
+     *
+     * If the {@link userLocale} matches the {@link pageLocale}, the value of this is `null`.
+     * However, if the user switches to a new language, and then back to {@link pageLocale}, the value will be {@link pageLocale}.
+     */
     pageDict: Locale;
+
+    /**
+     * Indicates whether the {@link pageDict} has been loaded
+     */
     pageDictLoaded: boolean;
 
     private constructor() {
@@ -31,11 +66,9 @@ export class Vavilon {
     }
 
     /**
-     * ### getVavilonInstance
-     *
      * Returns a static singleton instance of Vavilon object
      */
-    static getVavilonInstance() {
+    static getVavilonInstance(): Vavilon {
         if (!Vavilon.instance) {
             Vavilon.instance = new Vavilon();
         }
@@ -53,7 +86,7 @@ export class Vavilon {
     /**
      * Replaces all elements' texts with strings provided in the dictionary
      */
-    replaceAllElements () {
+    replaceAllElements(): void {
         if (this.elements && this.pageDict) {
             if (!this.dictionaries[this.pageLocale]) {
                 this.dictionaries[this.pageLocale] = new Dictionary(null);
@@ -71,7 +104,12 @@ export class Vavilon {
         }
     }
 
-    registerDictionaries() {
+    /**
+     * Finds the urls of dictionaries on the page and saves them to memory.
+     *
+     * Note that the dictionaries aren't being loaded, only the URLs are parsed
+     */
+    registerDictionaries():void {
         Array.from(document.scripts)
             .filter(e => e.dataset.hasOwnProperty('vavilonDict'))
             .forEach(ds => {
@@ -80,10 +118,18 @@ export class Vavilon {
             });
     }
 
-    loadDictionaries(primaryCb?: Function){
+    /**
+     * Loads the dictionaries based on previously saved URLs
+     *
+     * If no dictionaries are saved, this method doesn't do anything, even if the dictionary `<script>`s are present.
+     * This is why it's important to call {@link registerDictionaries} before this.
+     *
+     * @param primaryCb - an optional callback to execute after the {@link pageDict} has been loaded
+     */
+    loadDictionaries(primaryCb?: Function): void {
         Object.keys(this.dictionaries)
             .forEach(loc => {
-                if (loc === this.userLocale || loc.slice(0,2) === this.userLocale.slice(0,2) && !this.pageDict) {
+                if (loc === this.userLocale || loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict) {
                     this.pageDict = loc;
                     this.dictionaries[loc].load(() => {
                         this.pageDictLoaded = true;
@@ -95,7 +141,12 @@ export class Vavilon {
             });
     }
 
-    changeLocale(localeString: string): void {
+    /**
+     * Changes the locale of the page
+     *
+     * @param localeString - the {@link Locale} to change to
+     */
+    changeLocale(localeString: Locale): void {
         localeString = localeString.toLowerCase();
 
         if (this.dictionaries[localeString]) {

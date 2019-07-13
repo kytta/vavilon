@@ -3,8 +3,7 @@ import { Locale } from './locale';
 /**
  * Gets the value of `vavilon-locale` cookie
  *
- * @returns {string|null}
- *          the value of the cookie, if it's present; `null` otherwise
+ * @returns the value of the cookie, if it is present; `null` otherwise
  */
 export function getLocaleCookie(): string {
     const parts = ('; ' + document.cookie).split('; vavilon-locale=');
@@ -18,8 +17,7 @@ export function getLocaleCookie(): string {
 /**
  * Sets the value for `vavilon-locale` cookie
  *
- * @param {string} locale
- *        the locale string to be saved in cookies
+ * @param locale - the locale string to be saved in cookies
  */
 export function setLocaleCookie(locale: Locale): void {
     const date = new Date();
