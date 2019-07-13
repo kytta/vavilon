@@ -14,7 +14,7 @@ export class Vavilon {
     userLocale: Locale;
     pageLocale: Locale;
 
-    elements: HTMLCollectionOf<Element>;
+    elements: HTMLCollectionOf<HTMLElement>;
     dictionaries: {[key: string]: Dictionary};
     useDict: Locale;
 
@@ -28,11 +28,46 @@ export class Vavilon {
         Vavilon.instance.useDict = null;
     }
 
+    /**
+     * ### getVavilonInstance
+     *
+     * Returns a static singleton instance of Vavilon object
+     */
     static getVavilonInstance() {
         if (!Vavilon.instance) {
             Vavilon.instance = new Vavilon();
         }
 
         return Vavilon.instance;
+    }
+
+    /**
+     * Finds all vavilon-enabled elements on the page and stores them inside {@link elements}.
+     */
+    findAllElements() {
+        this.elements = document.getElementsByClassName('vavilon') as HTMLCollectionOf<HTMLElement>;
+    }
+
+    /**
+     * Replaces all elements' texts with strings provided in the dictionary
+     */
+    replaceAllElements () {
+        if (this.elements && this.useDict) {
+            if (!this.dictionaries[this.pageLocale]) {
+                this.dictionaries[this.pageLocale] = new Dictionary(null);
+            }
+
+            Array.from(this.elements).forEach(el => {
+                const strId = el.dataset.vavilon;
+                if (this.dictionaries[this.useDict].hasString(strId)) {
+                    if (!this.dictionaries[this.pageLocale].hasString(strId)) {
+                        this.dictionaries[this.pageLocale].strings[strId] = el.innerText;
+                    }
+                    el.innerText = this.dictionaries[this.useDict].strings[strId];
+                } else {
+                    console.warn(`${strId} not in dictionary`);
+                }
+            });
+        }
     }
 }
