@@ -42,6 +42,7 @@
     "watch": "rollup -c --config-dev -w"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
     "cz-customizable": "^6.2.0",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
@@ -49,6 +50,7 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
+    "husky": "^3.0.0",
     "rollup": "^1.16.6",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-filesize": "^6.1.1",
@@ -63,6 +65,12 @@
     },
     "cz-customizable": {
       "config": "config/git/commitizen.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './config/git/commitlint.js'",
+      "pre-commit": "npm run build"
     }
   }
 }
