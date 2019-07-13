@@ -32,9 +32,6 @@
     "docs"
   ],
   "browser": "dist/vavilon.js",
-  "browserslist": [
-    "since 2011-03-14"
-  ],
   "scripts": {
     "build": "rollup -c",
     "build-dev": "rollup -c --config-dev",
