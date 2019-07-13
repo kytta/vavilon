@@ -5,7 +5,7 @@
  *
  * @param callback - an optional callback to execute after the request is successful. The response text is given as a parameter
  */
-export function get (url: string, callback?: Function): void {
+export function get(url: string, callback?: Function): void {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (this.status < 300 && this.status >= 200 && callback) {

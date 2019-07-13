@@ -1,4 +1,4 @@
-import { getLocaleCookie } from './cookie';
+import {getLocaleCookie} from './cookie';
 
 /**
  * A lowercase string that defines the linguistic environment

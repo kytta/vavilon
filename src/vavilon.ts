@@ -109,7 +109,7 @@ export class Vavilon {
      *
      * Note that the dictionaries aren't being loaded, only the URLs are parsed
      */
-    registerDictionaries():void {
+    registerDictionaries(): void {
         Array.from(document.scripts)
             .filter(e => e.dataset.hasOwnProperty('vavilonDict'))
             .forEach(ds => {
