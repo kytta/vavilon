@@ -1,5 +1,5 @@
 import { input, output } from './vars';
-import { babel, cleanup, filesize, strip, uglify } from './plugins';
+import { cleanup, filesize, strip, typescript, uglify } from './plugins';
 
 export default [
     {
@@ -9,9 +9,9 @@ export default [
             format: 'iife'
         },
         plugins: [
-            strip(),
-            babel(),
+            typescript(),
             cleanup(),
+            strip(),
             filesize()
         ]
     },
@@ -22,10 +22,11 @@ export default [
             format: 'iife'
         },
         plugins: [
-            strip(),
-            babel(),
+            typescript(),
             uglify(),
+            cleanup(),
+            strip(),
             filesize()
         ]
     }
-]
+];

@@ -1,5 +1,5 @@
 import { input, output } from './vars';
-import { cleanup } from './plugins';
+import { cleanup, typescript } from './plugins';
 
 export default {
     input,
@@ -8,6 +8,7 @@ export default {
         format: 'iife'
     },
     plugins: [
+        typescript(),
         cleanup()
     ]
 };

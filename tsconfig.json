@@ -2,11 +2,15 @@
     "compilerOptions": {
         "target": "es5",
         "lib": ["dom", "es6"],
-        "typeRoots": [
-            "./src"
-        ]
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "module": "es2015"
     },
     "files": [
         "./src/index.ts"
-    ]
+    ],
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": ["node_modules"]
 }

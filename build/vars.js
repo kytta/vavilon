@@ -1,7 +1,7 @@
 /**
  * Generates output file name
  *
- * @param {string} postfix
+ * @param {string} [postfix]
  *        postfix to add to the file name between 'vavilon' and 'js'
  */
 export const output = (postfix) =>
@@ -12,4 +12,4 @@ export const output = (postfix) =>
  *
  * @type {string}
  */
-export const input = 'src/index.js';
+export const input = 'src/index.ts';
