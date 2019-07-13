@@ -1,7 +1,10 @@
 {
-    "extends": "standard",
-    "rules": {
-        "indent": ["error", 4],
-        "semi": ["error", "always"]
-    }
+  "parser": "@typescript-eslint/parser",
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "eqeqeq": ["error", "smart"],
+    "no-var": "error",
+    "spaced-comment": ["warn", "always"]
+  }
 }

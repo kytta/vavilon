@@ -1,6 +1,5 @@
 import {Locale} from "./locale";
 import {Vavilon} from "./vavilon";
-import {setLocaleCookie} from "./cookie";
 
 declare global {
     interface Window {
@@ -32,16 +31,16 @@ const vavilon: Vavilon = new Vavilon();
 /**
  * Indicates whether the whole page has been loaded
  */
-let pageLoaded: boolean = false;
+let pageLoaded = false;
 
 vavilon.registerDictionaries();
-vavilon.loadDictionaries(() => {
+vavilon.loadDictionaries((): void => {
     if (pageLoaded) {
         vavilon.replaceAllElements();
     }
 });
 
-window.onload = function () {
+window.onload = function (): void {
     vavilon.findAllElements();
     pageLoaded = true;
 
@@ -62,7 +61,6 @@ function changeLocale(localeString: Locale): void {
 
     if (changeSuccessful) {
         vavilon.replaceAllElements();
-        setLocaleCookie(vavilon.pageDict);
     }
 }
 

@@ -9,7 +9,7 @@ import {get} from "./http";
  */
 export class Dictionary {
 
-    constructor(url: string, strings: { [id: string]: string } = {}) {
+    public constructor(url: string, strings: { [id: string]: string } = {}) {
         this.url = url;
         this.strings = strings;
     }
@@ -17,21 +17,21 @@ export class Dictionary {
     /**
      * Dictionary JSON-file URL
      */
-    url: string;
+    public url: string;
 
     /**
      * Dictionary strings with IDs
      *
      * The keys in this object are the unique string ID, whereas the values are the translated strings themselves
      */
-    strings: { [id: string]: string };
+    public strings: { [id: string]: string };
 
     /**
      * Returns true if a string with certain ID exists in the dictionary
      *
      * @param id - the string ID
      */
-    hasString(id: string): boolean {
+    public hasString(id: string): boolean {
         return this.strings.hasOwnProperty(id);
     }
 
@@ -40,8 +40,8 @@ export class Dictionary {
      *
      * @param cb - an optional callback to be executed after loading is finished
      */
-    load(cb?: Function): void {
-        get(this.url, (r: string) => {
+    public load(cb?: Function): void {
+        get(this.url, (r: string): void => {
             this.strings = JSON.parse(r);
             if (cb) cb();
         })

@@ -7,7 +7,7 @@
  */
 export function get(url: string, callback?: Function): void {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    xhr.onload = function (): void {
         if (this.status < 300 && this.status >= 200 && callback) {
             callback(xhr.responseText);
         }
