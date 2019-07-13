@@ -1,5 +1,13 @@
-import {Locale} from './types';
 import { getLocaleCookie } from './cookie';
+
+/**
+ * ## Locale
+ *
+ * A locale is a lowercase string that defines the linguistic environment.
+ * A locale consists of the language and the country in form
+ * `'languagecode-countrycode'`, e.g. `'en-us'`
+ */
+export type Locale = string;
 
 /**
  * Returns the user preferred locale
@@ -10,7 +18,7 @@ import { getLocaleCookie } from './cookie';
  * @returns {Locale} the user-preferred locale
  */
 export function getUserLocale(): Locale {
-    return (getLocaleCookie() || navigator.language).toLowerCase();
+    return (getLocaleCookie() || window.navigator.language || window.browserLanguage || window.userLanguage).toLowerCase();
 }
 
 /**

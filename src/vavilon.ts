@@ -1,5 +1,5 @@
-import { Dictionary, Locale } from './types';
-import { getUserLocale, getPageLocale } from './locale';
+import { Dictionary } from './types';
+import {getUserLocale, getPageLocale, Locale} from './locale';
 
 /**
  * ## Vavilon
