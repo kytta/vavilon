@@ -1,6 +1,6 @@
 {
   "name": "vavilon",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "A quick, lightweight and easy-to-use i18n engine for static websites",
   "license": "MIT",
   "keywords": [
@@ -12,7 +12,7 @@
     "browser",
     "library"
   ],
-  "homepage": "https://github.com/vavilon-js/vavilon.js#readme",
+  "homepage": "https://vavilon.js.org/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vavilon-js/vavilon.js.git"
@@ -39,19 +39,33 @@
     "watch": "rollup -c --config-dev -w"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.0",
-    "@babel/preset-env": "^7.5.0",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
+    "@commitlint/cli": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "cz-customizable": "^6.2.0",
+    "eslint": "^6.0.1",
+    "husky": "^3.0.0",
     "rollup": "^1.16.6",
-    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-strip": "^1.2.1",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-typescript2": "^0.22.0",
+    "rollup-plugin-uglify": "^6.0.2",
+    "typescript": "^3.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "config/git/commitizen.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "eslint ./src/**/*.ts",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './config/git/commitlint.js'",
+      "pre-push": "npm run build"
+    }
   }
 }

@@ -1,10 +1,11 @@
+import {Locale} from './locale';
+
 /**
  * Gets the value of `vavilon-locale` cookie
  *
- * @returns {string|null}
- *          the value of the cookie, if it's present; `null` otherwise
+ * @returns the value of the cookie, if it is present; `null` otherwise
  */
-export function getLocaleCookie () {
+export function getLocaleCookie(): string {
     const parts = ('; ' + document.cookie).split('; vavilon-locale=');
     if (parts.length === 2) {
         return parts[1].split(';')[0];
@@ -16,10 +17,9 @@ export function getLocaleCookie () {
 /**
  * Sets the value for `vavilon-locale` cookie
  *
- * @param {string} locale
- *        the locale string to be saved in cookies
+ * @param locale - the locale string to be saved in cookies
  */
-export function setLocaleCookie (locale) {
+export function setLocaleCookie(locale: Locale): void {
     const date = new Date();
     date.setTime(date.getTime() + (315360000000)); // one year in ms
     const expires = `; expires=${date.toUTCString()}`;

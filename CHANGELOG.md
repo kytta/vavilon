@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 1.0.0
+
+**Critical changes:**
+- manual language switching is now done with `setLang` method
+
+**New & Improved:**
+- bundle size is even smaller
+
+**Code-related changes:**
+- library is rewritten in TypeScript
+- the complexity of some methods was reduced
+- most methods moved into an isolated Vavilon object
+
+All of the above ensures that th code works safely and is easily changed.
+
 ## 0.3.0
 
 **New & Improved:**

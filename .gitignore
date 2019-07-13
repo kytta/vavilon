@@ -257,3 +257,5 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/windows,macos,linux,visualstudiocode,webstorm+all,node
 
 dist/
+
+\.rpt2_cache/

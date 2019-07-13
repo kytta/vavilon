@@ -8,6 +8,7 @@
     <p>
         <a href="https://github.com/vavilon-js/vavilon.js/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg?logo=github&logoColor=white"></a>
         <a href="https://www.npmjs.com/package/vavilon"><img alt="npm release" src="https://img.shields.io/npm/v/vavilon.svg?label=release&logo=npm"></a>
+        <a href="https://www.npmjs.com/package/vavilon"><img alt="npm downloads" src="https://img.shields.io/npm/dm/vavilon.svg"></a>
     </p>
     <p>
         <a href="https://github.com/vavilon-js/vavilon.js/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vavilon-js/vavilon.js.svg"></a>
@@ -27,10 +28,7 @@ You can get `vavilon.js` via jsDelivr. This is the fastest and the most reliable
 way:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vavilon@0.3.1/dist/vavilon.min.js"
-        integrity="sha256-5AWuW4hwqHRUPGy+81tX/nobtCDi2l9heakX2rHCOF4="
-        crossorigin="anonymous">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/vavilon@1.0.0/dist/vavilon.min.js"></script>
 ```
 
 ### via NPM
@@ -114,10 +112,10 @@ include it in your document:
    on the end user's browser locale.
 
 6. If you want your user to be able to switch languages, you can set it up by
-   using the `changeLocale` function:
+   using the `setLang` function:
 
    ```html
-   <button onclick="changeLocale('en')">English version</button>
+   <button onclick="setLang('en')">English version</button>
    ```
 
 ## Caveats
@@ -143,7 +141,7 @@ crucial for you, you can use a workaround like this:
 ```html
 <p>
     <span class="vavilon" data-vavilon="hello-1">Hello</span>
-    <b class="vaviln" data-vavilon="hello-2">world</b>!
+    <b class="vavilon" data-vavilon="hello-2">world</b>!
 </p>
 ```
 
