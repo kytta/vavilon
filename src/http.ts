@@ -7,7 +7,7 @@
  * @param {Function} [callback]
  *        a function to call after the request is successful
  */
-export function get (url: string, callback: Function) {
+export function get (url: string, callback: Function): void {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
         if (this.status < 300 && this.status >= 200 && callback) {

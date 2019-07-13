@@ -21,7 +21,7 @@ export function getLocaleCookie(): string {
  * @param {string} locale
  *        the locale string to be saved in cookies
  */
-export function setLocaleCookie (locale: Locale) {
+export function setLocaleCookie(locale: Locale): void {
     const date = new Date();
     date.setTime(date.getTime() + (315360000000)); // one year in ms
     const expires = `; expires=${date.toUTCString()}`;
