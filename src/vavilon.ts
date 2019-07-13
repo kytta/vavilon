@@ -70,4 +70,25 @@ export class Vavilon {
             });
         }
     }
+
+    registerDictionaries() {
+        Array.from(document.scripts)
+            .filter(e => e.dataset.hasOwnProperty('vavilonDict'))
+            .forEach(ds => {
+                const dictLocale = ds.dataset.vavilonDict.toLowerCase();
+                this.dictionaries[dictLocale] = new Dictionary(ds.src);
+            });
+    }
+
+    loadDictionaries(primaryCb?: Function){
+        Object.keys(this.dictionaries)
+            .forEach(loc => {
+                if (loc === this.userLocale || loc.slice(0,2) === this.userLocale.slice(0,2) && !this.useDict) {
+                    this.useDict = loc;
+                    this.dictionaries[loc].load(primaryCb)
+                } else {
+                    this.dictionaries[loc].load()
+                }
+            });
+    }
 }
