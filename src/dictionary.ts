@@ -1,10 +1,4 @@
 /**
- * # types.ts
- *
- * Type declarations for vavilon
- */
-
-/**
  * ## Dictionary
  *
  * A dictionary contains the language, the original url and an object, the keys
@@ -20,6 +14,10 @@ export class Dictionary {
         else this.strings = {};
     }
 
-    url: string|null;
-    strings: {[key: string]: string}
+    url: string;
+    strings: {[key: string]: string};
+
+    hasString(id: string): boolean {
+        return this.strings.hasOwnProperty(id);
+    }
 }

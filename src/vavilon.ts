@@ -1,11 +1,11 @@
-import { Dictionary } from './types';
+import { Dictionary } from './dictionary';
 import {getUserLocale, getPageLocale, Locale} from './locale';
 
 /**
  * ## Vavilon
  *
  * A vavilon object is a set of parameters that configure the vavilon environment.
- * A vavilon object contains information about tha locale used in browser, the
+ * A vavilon object contains information about the locale used in browser, the
  * locale found in cookie, available dictionaries, etc.
  */
 export class Vavilon {
