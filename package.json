@@ -1,6 +1,6 @@
 {
   "name": "vavilon",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "A quick, lightweight and easy-to-use i18n engine for static websites",
   "license": "MIT",
   "keywords": [
@@ -12,7 +12,7 @@
     "browser",
     "library"
   ],
-  "homepage": "https://github.com/vavilon-js/vavilon.js#readme",
+  "homepage": "https://vavilon.js.org/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vavilon-js/vavilon.js.git"
@@ -32,9 +32,6 @@
     "docs"
   ],
   "browser": "dist/vavilon.js",
-  "browserslist": [
-    "since 2011-03-14"
-  ],
   "scripts": {
     "build": "rollup -c",
     "build-dev": "rollup -c --config-dev",
