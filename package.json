@@ -12,7 +12,7 @@
     "browser",
     "library"
   ],
-  "homepage": "https://github.com/vavilon-js/vavilon.js#readme",
+  "homepage": "https://vavilon.js.org/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vavilon-js/vavilon.js.git"
