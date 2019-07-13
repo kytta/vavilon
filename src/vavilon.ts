@@ -16,7 +16,7 @@ export class Vavilon {
 
     elements: HTMLCollectionOf<HTMLElement>;
     dictionaries: {[key: string]: Dictionary};
-    useDict: Locale;
+    pageDict: Locale;
 
     private constructor() {
         Vavilon.instance.userLocale = getUserLocale();
@@ -25,7 +25,7 @@ export class Vavilon {
         Vavilon.instance.elements = null;
         Vavilon.instance.dictionaries = {};
 
-        Vavilon.instance.useDict = null;
+        Vavilon.instance.pageDict = null;
     }
 
     /**
@@ -52,18 +52,18 @@ export class Vavilon {
      * Replaces all elements' texts with strings provided in the dictionary
      */
     replaceAllElements () {
-        if (this.elements && this.useDict) {
+        if (this.elements && this.pageDict) {
             if (!this.dictionaries[this.pageLocale]) {
                 this.dictionaries[this.pageLocale] = new Dictionary(null);
             }
 
             Array.from(this.elements).forEach(el => {
                 const strId = el.dataset.vavilon;
-                if (this.dictionaries[this.useDict].hasString(strId)) {
+                if (this.dictionaries[this.pageDict].hasString(strId)) {
                     if (!this.dictionaries[this.pageLocale].hasString(strId)) {
                         this.dictionaries[this.pageLocale].strings[strId] = el.innerText;
                     }
-                    el.innerText = this.dictionaries[this.useDict].strings[strId];
+                    el.innerText = this.dictionaries[this.pageDict].strings[strId];
                 } else {
                     console.warn(`${strId} not in dictionary`);
                 }
@@ -83,8 +83,8 @@ export class Vavilon {
     loadDictionaries(primaryCb?: Function){
         Object.keys(this.dictionaries)
             .forEach(loc => {
-                if (loc === this.userLocale || loc.slice(0,2) === this.userLocale.slice(0,2) && !this.useDict) {
-                    this.useDict = loc;
+                if (loc === this.userLocale || loc.slice(0,2) === this.userLocale.slice(0,2) && !this.pageDict) {
+                    this.pageDict = loc;
                     this.dictionaries[loc].load(primaryCb)
                 } else {
                     this.dictionaries[loc].load()
