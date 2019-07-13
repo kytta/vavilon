@@ -8,6 +8,7 @@
     <p>
         <a href="https://github.com/vavilon-js/vavilon.js/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg?logo=github&logoColor=white"></a>
         <a href="https://www.npmjs.com/package/vavilon"><img alt="npm release" src="https://img.shields.io/npm/v/vavilon.svg?label=release&logo=npm"></a>
+        <a href="https://www.npmjs.com/package/vavilon"><img alt="npm downloads" src="https://img.shields.io/npm/dm/vavilon.svg"></a>
     </p>
     <p>
         <a href="https://github.com/vavilon-js/vavilon.js/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vavilon-js/vavilon.js.svg"></a>
