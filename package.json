@@ -66,8 +66,9 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "eslint ./src/**/*.ts",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './config/git/commitlint.js'",
-      "pre-commit": "npm run build"
+      "pre-push": "npm run build"
     }
   }
 }
