@@ -65,8 +65,6 @@ export class Vavilon {
                         this.dictionaries[this.pageLocale].strings[strId] = el.innerText;
                     }
                     el.innerText = this.dictionaries[this.pageDict].strings[strId];
-                } else {
-                    console.warn(`${strId} not in dictionary`);
                 }
             });
         }
