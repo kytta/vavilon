@@ -17,6 +17,7 @@ export class Vavilon {
     elements: HTMLCollectionOf<HTMLElement>;
     dictionaries: {[key: string]: Dictionary};
     pageDict: Locale;
+    pageDictLoaded: boolean;
 
     private constructor() {
         Vavilon.instance.userLocale = getUserLocale();
@@ -85,7 +86,10 @@ export class Vavilon {
             .forEach(loc => {
                 if (loc === this.userLocale || loc.slice(0,2) === this.userLocale.slice(0,2) && !this.pageDict) {
                     this.pageDict = loc;
-                    this.dictionaries[loc].load(primaryCb)
+                    this.dictionaries[loc].load(() => {
+                        this.pageDictLoaded = true;
+                        primaryCb();
+                    })
                 } else {
                     this.dictionaries[loc].load()
                 }
