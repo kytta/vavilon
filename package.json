@@ -42,6 +42,7 @@
     "watch": "rollup -c --config-dev -w"
   },
   "devDependencies": {
+    "cz-customizable": "^6.2.0",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.18.0",
@@ -55,5 +56,13 @@
     "rollup-plugin-typescript2": "^0.22.0",
     "rollup-plugin-uglify": "^6.0.2",
     "typescript": "^3.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "config/git/commitizen.js"
+    }
   }
 }
