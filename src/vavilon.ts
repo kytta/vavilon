@@ -10,12 +10,6 @@ import {setLocaleCookie} from "./cookie";
  * locale found in cookie, dictionaries and elements
  */
 export class Vavilon {
-
-    /**
-     * A singleton Vavilon instance to be shared over the website
-     */
-    private static instance: Vavilon;
-
     /**
      * The user-preferred locale
      *
@@ -55,25 +49,14 @@ export class Vavilon {
      */
     pageDictLoaded: boolean;
 
-    private constructor() {
-        Vavilon.instance.userLocale = getUserLocale();
-        Vavilon.instance.pageLocale = getPageLocale();
+    constructor() {
+        this.userLocale = getUserLocale();
+        this.pageLocale = getPageLocale();
 
-        Vavilon.instance.elements = null;
-        Vavilon.instance.dictionaries = {};
+        this.elements = null;
+        this.dictionaries = {};
 
-        Vavilon.instance.pageDict = null;
-    }
-
-    /**
-     * Returns a static singleton instance of Vavilon object
-     */
-    static getVavilonInstance(): Vavilon {
-        if (!Vavilon.instance) {
-            Vavilon.instance = new Vavilon();
-        }
-
-        return Vavilon.instance;
+        this.pageDict = null;
     }
 
     /**
@@ -142,22 +125,21 @@ export class Vavilon {
     }
 
     /**
-     * Changes the locale of the page
+     * Checks if the locale switch is possible and switches to it
      *
-     * @param localeString - the {@link Locale} to change to
+     * @param localeString - locale to switch to
+     *
+     * @returns `true` if the switch was possible and successful, `false` if it was not possible
      */
-    changeLocale(localeString: Locale): void {
-        localeString = localeString.toLowerCase();
-
+    changeLocale(localeString: Locale): boolean {
         if (this.dictionaries[localeString]) {
             this.pageDict = localeString;
+            return true;
         } else if (this.dictionaries[localeString.slice(0, 2)]) {
-            this.pageDict = localeString.slice(0, 2)
-        } else {
-            return;
+            this.pageDict = localeString.slice(0, 2);
+            return true;
         }
 
-        this.replaceAllElements();
-        setLocaleCookie(this.pageDict);
+        return false;
     }
 }

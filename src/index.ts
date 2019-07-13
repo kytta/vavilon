@@ -1,5 +1,6 @@
 import {Locale} from "./locale";
 import {Vavilon} from "./vavilon";
+import {setLocaleCookie} from "./cookie";
 
 declare global {
     interface Window {
@@ -26,7 +27,7 @@ declare global {
  *
  * This object stores the data about the page, where vavilon is executed
  */
-const vavilon: Vavilon = Vavilon.getVavilonInstance();
+const vavilon: Vavilon = new Vavilon();
 
 /**
  * Indicates whether the whole page has been loaded
@@ -49,4 +50,20 @@ window.onload = function () {
     }
 };
 
-window.setLang = vavilon.changeLocale;
+/**
+ * Changes the locale of the page
+ *
+ * @param localeString - the {@link Locale} to change to
+ */
+function changeLocale(localeString: Locale): void {
+    localeString = localeString.toLowerCase();
+
+    const changeSuccessful: boolean = vavilon.changeLocale(localeString);
+
+    if (changeSuccessful) {
+        vavilon.replaceAllElements();
+        setLocaleCookie(vavilon.pageDict);
+    }
+}
+
+window.setLang = changeLocale;
