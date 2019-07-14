@@ -28,10 +28,12 @@
   "files": [
     "dist/vavilon.js",
     "dist/vavilon.min.js",
+    "dist/vavilon.d.ts",
     "src",
     "docs"
   ],
   "browser": "dist/vavilon.js",
+  "types": "dist/vavilon.d.ts",
   "scripts": {
     "build": "rollup -c",
     "build-dev": "rollup -c --config-dev",

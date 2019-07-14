@@ -75,4 +75,5 @@ fabric.properties
 
 # Output dir
 dist/
+!dist/*.d.ts
 
