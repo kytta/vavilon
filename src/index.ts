@@ -50,11 +50,15 @@ window.onload = function (): void {
 };
 
 /**
- * Changes the locale of the page
+ * Changes the page language
  *
- * @param localeString - the {@link Locale} to change to
+ * The execution of this method will change the {@link Vavilon.pageLocale}
+ * of the vavilon instance, save the selected locale to cookie and replace
+ * the text of all the vavilon-enabled elements on the page.
+ *
+ * @param localeString - the locale to switch to
  */
-function changeLocale(localeString: Locale): void {
+window.setLang = function (localeString: Locale): void {
     localeString = localeString.toLowerCase();
 
     const changeSuccessful: boolean = vavilon.changeLocale(localeString);
@@ -62,6 +66,4 @@ function changeLocale(localeString: Locale): void {
     if (changeSuccessful) {
         vavilon.replaceAllElements();
     }
-}
-
-window.setLang = changeLocale;
+};
