@@ -1,8 +1,8 @@
 module.exports = {
     types: [
         {
-            value: 'build',
-            name: 'build:    Project or dependency build setup'
+            value: 'chore',
+            name: 'chore:    Change to tools and libraries, such as dependencies updates, package.json fixes, version bumps'
         },
         {
             value: 'docs',
@@ -34,26 +34,89 @@ module.exports = {
         },
         {
             value: 'test',
-            name: 'test:     New or updated test'
+            name: 'test:     Change to testing (new tests or environments)'
         }
     ],
 
     scopes: [
-        { name: 'core' },
-        { name: 'types' },
-        { name: 'dictionaries' },
-        { name: 'locales' }
+        {
+            value: 'core',
+            name: 'core:         Change to the main logic of the lib'
+        },
+        {
+            value: 'dictionaries',
+            name: 'dictionaries: Change to the dictionaries (registering, loading, management)'
+        },
+        {
+            value: 'locales',
+            name: 'locales:      Change to the locales (encoding, transforming, checking)'
+        },
+        {
+            value: 'elements',
+            name: 'elements:     Change to the elements (parsing, replacing)'
+        }
     ],
 
+    scopeOverrides: {
+        'chore': [
+            {
+                value: 'build',
+                name: 'build:   Change to build config'
+            },
+            {
+                value: 'dep',
+                name: 'dep:     Add, update or remove dependencies'
+            },
+            {
+                value: 'lint',
+                name: 'lint:    Change to lint config'
+            },
+            {
+                value: 'version',
+                name: 'version: Update the version number'
+            },
+        ],
+        'docs': [
+            {
+                value: 'changelog',
+                name: 'changelog: Change or fix in CHANGELOG'
+            },
+            {
+                value: 'contrib',
+                name: 'contrib:   Change or fix in CONTRIBUTING guildelines'
+            },
+            {
+                value: 'license',
+                name: 'license:   Change or fix in LICENSE'
+            },
+            {
+                value: 'readme',
+                name: 'readme:    Change or fix in README'
+            },
+        ],
+        'style': [],
+        'test': [
+            {
+                value: 'unit',
+                name: 'unit: Change to unit tests'
+            },
+            {
+                value: 'e2e',
+                name: 'e2e:  Change to e2e (integration) tests'
+            }
+        ]
+    },
+
     messages: {
-        type: 'What kind of changes are you committing?',
-        scope: 'What scope is the change related to? (optional)',
-        customScope: 'Enter the name of a custom scope',
-        subject: 'Describe the change in a short, imperative sentence',
-        body: 'Add detailed description (optional). Use "|" for newlines',
-        breaking: 'If there are any breaking changes, describe them (optional)',
-        footer: 'Add metadata such as links or issue numbers (optional)',
-        confirmCommit: 'Does the commit look good?'
+        type: 'What kind of changes are you committing?         ',
+        scope: 'What scope is the change related to?            ',
+        customScope: 'Enter the name of a custom scope:         ',
+        subject: 'Describe the change shortly and imperatively: ',
+        body: 'Add detailed description. Use "|" for newlines:  ',
+        breaking: 'Describe any breaking changes:               ',
+        footer: 'Add metadata such as links or issue numbers:   ',
+
+        confirmCommit: 'Does the commit look good? '
     },
 
     allowCustomScopes: true,
