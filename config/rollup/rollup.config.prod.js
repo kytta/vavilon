@@ -10,8 +10,8 @@ export default [
         },
         plugins: [
             typescript(),
-            cleanup(),
             strip(),
+            cleanup(),
             filesize()
         ]
     },
@@ -24,8 +24,8 @@ export default [
         plugins: [
             typescript(),
             uglify(),
-            cleanup(),
             strip(),
+            cleanup(),
             filesize()
         ]
     }
