@@ -74,6 +74,6 @@ fabric.properties
 ### Project-specific ###
 
 # Output dir
-dist/
-!dist/*.d.ts
+/dist/*
+!/dist/*.d.ts
 
