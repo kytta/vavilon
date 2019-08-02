@@ -62,14 +62,14 @@ export class Vavilon {
     /**
      * Finds all vavilon-enabled elements on the page and stores them inside {@link elements}.
      */
-    public findAllElements(): void {
+    public find(): void {
         this.elements = document.getElementsByClassName('vavilon') as HTMLCollectionOf<HTMLElement>;
     }
 
     /**
      * Replaces all elements' texts with strings provided in the dictionary
      */
-    public replaceAllElements(): void {
+    public replace(): void {
         if (this.elements && this.pageDict) {
             if (!this.dictionaries[this.pageLocale]) {
                 this.dictionaries[this.pageLocale] = new Dictionary(null);
@@ -79,7 +79,7 @@ export class Vavilon {
                 const strId = el.dataset.vavilon;
                 if (this.dictionaries[this.pageDict].hasString(strId)) {
                     if (!this.dictionaries[this.pageLocale].hasString(strId)) {
-                        this.dictionaries[this.pageLocale].strings[strId] = el.innerText;
+                        this.dictionaries[this.pageLocale].strings[strId] = el.innerText.trim();
                     }
                     el.innerText = this.dictionaries[this.pageDict].strings[strId];
                 }
@@ -92,7 +92,7 @@ export class Vavilon {
      *
      * Note that the dictionaries aren't being loaded, only the URLs are parsed
      */
-    public registerDictionaries(): void {
+    public addDicts(): void {
         Array.from(document.scripts)
             .filter((e): boolean => e.dataset.hasOwnProperty('vavilonDict'))
             .forEach((ds): void => {
@@ -105,11 +105,11 @@ export class Vavilon {
      * Loads the dictionaries based on previously saved URLs
      *
      * If no dictionaries are saved, this method doesn't do anything, even if the dictionary `<script>`s are present.
-     * This is why it's important to call {@link registerDictionaries} before this.
+     * This is why it's important to call {@link addDicts} before this.
      *
      * @param primaryCb - an optional callback to execute after the {@link pageDict} has been loaded
      */
-    public loadDictionaries(primaryCb?: Function): void {
+    public loadDicts(primaryCb?: Function): void {
         Object.keys(this.dictionaries)
             .forEach((loc): void => {
                 if (loc === this.userLocale || loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict) {
@@ -131,7 +131,7 @@ export class Vavilon {
      *
      * @returns `true` if the switch was possible and successful, `false` if it was not possible
      */
-    public changeLocale(localeString: Locale): boolean {
+    public setLocale(localeString: Locale): boolean {
         if (this.dictionaries[localeString]) {
             this.pageDict = localeString;
             setLocaleCookie(this.pageDict);

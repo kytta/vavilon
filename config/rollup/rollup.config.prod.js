@@ -1,5 +1,5 @@
 import { input, output } from './vars';
-import { cleanup, filesize, strip, typescript, uglify } from './plugins';
+import { banner, cleanup, filesize, strip, typescript, uglify } from './plugins';
 
 export default [
     {
@@ -10,8 +10,9 @@ export default [
         },
         plugins: [
             typescript(),
-            cleanup(),
             strip(),
+            cleanup(),
+            banner(),
             filesize()
         ]
     },
@@ -24,8 +25,9 @@ export default [
         plugins: [
             typescript(),
             uglify(),
-            cleanup(),
             strip(),
+            cleanup(),
+            banner(),
             filesize()
         ]
     }

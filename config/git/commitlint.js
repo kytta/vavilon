@@ -18,7 +18,7 @@ module.exports = {
             2,
             'always',
             [
-                'build',
+                'chore',
                 'docs',
                 'feat',
                 'fix',

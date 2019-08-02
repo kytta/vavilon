@@ -33,35 +33,37 @@ const vavilon: Vavilon = new Vavilon();
  */
 let pageLoaded = false;
 
-vavilon.registerDictionaries();
-vavilon.loadDictionaries((): void => {
+vavilon.addDicts();
+vavilon.loadDicts((): void => {
     if (pageLoaded) {
-        vavilon.replaceAllElements();
+        vavilon.replace();
     }
 });
 
 window.onload = function (): void {
-    vavilon.findAllElements();
+    vavilon.find();
     pageLoaded = true;
 
     if (vavilon.pageDictLoaded) {
-        vavilon.replaceAllElements();
+        vavilon.replace();
     }
 };
 
 /**
- * Changes the locale of the page
+ * Changes the page language
  *
- * @param localeString - the {@link Locale} to change to
+ * The execution of this method will change the {@link Vavilon.pageLocale}
+ * of the vavilon instance, save the selected locale to cookie and replace
+ * the text of all the vavilon-enabled elements on the page.
+ *
+ * @param localeString - the locale to switch to
  */
-function changeLocale(localeString: Locale): void {
+window.setLang = function (localeString: Locale): void {
     localeString = localeString.toLowerCase();
 
-    const changeSuccessful: boolean = vavilon.changeLocale(localeString);
+    const changeSuccessful: boolean = vavilon.setLocale(localeString);
 
     if (changeSuccessful) {
-        vavilon.replaceAllElements();
+        vavilon.replace();
     }
-}
-
-window.setLang = changeLocale;
+};

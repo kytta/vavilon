@@ -1,6 +1,6 @@
 {
   "name": "vavilon",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A quick, lightweight and easy-to-use i18n engine for static websites",
   "license": "MIT",
   "keywords": [
@@ -23,15 +23,17 @@
   "author": {
     "name": "Nikita Karamov",
     "email": "nick@karamoff.ru",
-    "url": "https://karamoff.ru/en"
+    "url": "https://karamoff.ru"
   },
   "files": [
     "dist/vavilon.js",
     "dist/vavilon.min.js",
+    "dist/vavilon.d.ts",
     "src",
     "docs"
   ],
   "browser": "dist/vavilon.js",
+  "types": "dist/vavilon.d.ts",
   "scripts": {
     "build": "rollup -c",
     "build-dev": "rollup -c --config-dev",
@@ -39,18 +41,20 @@
     "watch": "rollup -c --config-dev -w"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
+    "@commitlint/cli": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@typescript-eslint/parser": "^1.12.0",
     "cz-customizable": "^6.2.0",
     "eslint": "^6.0.1",
     "husky": "^3.0.0",
-    "rollup": "^1.16.6",
+    "rollup": "^1.16.7",
+    "rollup-plugin-banner": "^0.2.0",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-strip": "^1.2.1",
     "rollup-plugin-typescript2": "^0.22.0",
     "rollup-plugin-uglify": "^6.0.2",
+    "ts-transformer-minify-privates": "^0.1.0",
     "typescript": "^3.5.3"
   },
   "config": {
