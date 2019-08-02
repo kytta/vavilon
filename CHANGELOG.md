@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.1.0
+
+**New & Improved:**
+- vavilon.js now includes its type definitions
+- bundle size even smaller (876 bytes minzipped)
+
+**Fixed:**
+- spacing issue happening in some mobile browsers
+
 ## 1.0.0
 
 **Critical changes:**
