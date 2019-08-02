@@ -1,4 +1,4 @@
-// Type definitions for vavilon.js 1.0.0
+// Type definitions for vavilon.js 1.1.0
 // Definitions by: Nikita Karamov <nick@karamoff.ru>
 
 /**

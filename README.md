@@ -28,7 +28,7 @@ You can get `vavilon.js` via jsDelivr. This is the fastest and the most reliable
 way:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vavilon@1.0.0/dist/vavilon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vavilon@1.1.0/dist/vavilon.min.js"></script>
 ```
 
 ### via NPM
