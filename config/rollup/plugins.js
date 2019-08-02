@@ -1,9 +1,18 @@
+import rollupPluginBanner from 'rollup-plugin-banner';
 import rollupPluginCleanup from 'rollup-plugin-cleanup';
 import rollupPluginFilesize from 'rollup-plugin-filesize';
 import rollupPluginStrip from 'rollup-plugin-strip';
 import rollupPluginTypescript2 from 'rollup-plugin-typescript2';
 import minifyPrivatesTransformer from 'ts-transformer-minify-privates';
 import { uglify as rollupPluginUglify } from 'rollup-plugin-uglify';
+
+export const banner = () => rollupPluginBanner(
+    'vavilon.js\n' +
+    '<%= pkg.description %>\n' +
+    '\n' +
+    '@version <%= pkg.version %>\n' +
+    '@license MIT'
+);
 
 /**
  * Removes all the comments except for `@license` ones
