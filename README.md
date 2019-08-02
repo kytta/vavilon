@@ -14,6 +14,7 @@
         <a href="https://github.com/vavilon-js/vavilon.js/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vavilon-js/vavilon.js.svg"></a>
         <a href="https://travis-ci.com/vavilon-js/vavilon.js"><img alt="Travis CI build status" src="https://img.shields.io/travis/com/vavilon-js/vavilon.js/master.svg"></a>
         <a href="https://codeclimate.com/github/vavilon-js/vavilon.js"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg"></a>
+        <a href="https://www.codacy.com/app/vavilon/vavilon.js"><img alt="Codacy code quality grade" src="https://img.shields.io/codacy/grade/c121289c5b5e40a28276dfaaba7fba3e/master"></a>
     </p>
 </div>
 
@@ -28,7 +29,7 @@ You can get `vavilon.js` via jsDelivr. This is the fastest and the most reliable
 way:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vavilon@1.1.0/dist/vavilon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vavilon@1/dist/vavilon.min.js"></script>
 ```
 
 ### via NPM
