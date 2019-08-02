@@ -79,7 +79,7 @@ export class Vavilon {
                 const strId = el.dataset.vavilon;
                 if (this.dictionaries[this.pageDict].hasString(strId)) {
                     if (!this.dictionaries[this.pageLocale].hasString(strId)) {
-                        this.dictionaries[this.pageLocale].strings[strId] = el.innerText;
+                        this.dictionaries[this.pageLocale].strings[strId] = el.innerText.trim();
                     }
                     el.innerText = this.dictionaries[this.pageDict].strings[strId];
                 }
