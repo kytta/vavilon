@@ -8,6 +8,7 @@
     <p>
         <a href="https://github.com/vavilon-js/vavilon.js/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg?logo=github&logoColor=white"></a>
         <a href="https://www.npmjs.com/package/vavilon"><img alt="npm release" src="https://img.shields.io/npm/v/vavilon.svg?label=release&logo=npm"></a>
+<a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fvavilon-js%2Fvavilon.js?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fvavilon-js%2Fvavilon.js.svg?type=shield"/></a>
         <a href="https://www.npmjs.com/package/vavilon"><img alt="npm downloads" src="https://img.shields.io/npm/dm/vavilon.svg"></a>
     </p>
     <p>
@@ -166,3 +167,7 @@ If you encounter any bugs, don't hesitate [filing an issue][issues]
 
 [releases]: https://github.com/vavilon-js/vavilon.js/releases
 [issues]: https://github.com/vavilon-js/vavilon.js/issues
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fvavilon-js%2Fvavilon.js.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fvavilon-js%2Fvavilon.js?ref=badge_large)
