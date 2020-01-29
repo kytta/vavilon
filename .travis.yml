@@ -1,49 +1,9 @@
 language: node_js
 node_js:
   - node
-cache: npm
+  - lts/erbium
+  - lts/dubnium
+cache: yarn
 
-install: npm ci
-
-stages:
-  - build
-#  - test TODO: create tests
-  - deploy
-
-jobs:
-  include:
-    - stage: build
-      name: "Production build test"
-      script:
-        - npm run build
-
-    - stage: deploy
-      name: Deploy to GitHub Releases
-      script: npm run build
-      before_deploy:
-        - echo "Deploying to GitHub Releases"
-      deploy:
-        provider: releases
-        api_key:
-          secure: RYw4wyJTcGWcksTZKw7HyxgBMbiN0Do6ZA36r9Zqz9eu0g71Uh7MjQ3TSs9uGVb74lmrZRFjP0vrc+3dnH1LafW7HQNQfH5RRe4jntgy8xdcOaCdhVzYup7CI0r80PI/U/NuDbStBK70qf9ekJfYxhOTOj1DOKKToaAgIOAnDufiUHnHQCx6YuUGQwX9Q+SlJb4S9cI2j2wZmNDW3c7n9pbGfVOzLQSTBpcUi55gwhQBByl0jY4y7s4mb869/w3XWlPSrssYhLsm9wuODkKa4bm9QhZ50cW5m9FtAuklusCN5sD9x/a3o3kmJ9JHJiFuT5XEUpzDf2Ac6wGHgFo79MxtxmpFNLy5mCICj8Eu1xYSV/ygE9oD7vm+KJInL2o6pGv39eVlxotQ1tv7AiCZFVtZkOh5A29y7vfPFJWfpRM23ZlaZ7Urj4YAzT7UzfwbxEFfNVjPX0uKvM+XVbaRVWTiwZvxPsI4CwTiVy25IVoIUZg/z8UalE3R5VX7ANiUunfk7kf99YNEtnmpZd3qGbKTTKTWJEGMV704PWCf9uYW9XwX1lAbNE5Xbzj5zJMgNV+PI6vad9ZzmcGV6/mAWGYKLzpIFUnFxYQJxnB18q6RImfnE8qZU1xi8tiHF8Lw/lT5PnErxSNs1fLBEQpNXV+vocisHDVcywvgCnYGKgU=
-        file: 
-          - ./dist/vavilon.min.js
-          - ./dist/vavilon.js
-        skip_cleanup: true
-        draft: true
-        on:
-          tags: true
-    - stage: deploy
-      name: Deploy to NPM
-      script: npm run build
-      before_deploy:
-        - echo "Deploying to GitHub Releases"
-      deploy:
-        provider: npm
-        email: nick@karamoff.ru
-        api_key:
-          secure: qfXx0/gnyCHzbqp4Zv6Q7zhcJu76AmDxe6ISfNgUCy3k7yf036XVpXDKbtrJE2TOZBqGDeV8/0ClcOdGZNRndt/Hps4Bd/tD/zX9p2xDKCl5wFEgcg9HP8hy602+YOKFC7jpfLsrLCoO/cEhCn23qSv14GV3LNn3tcyFa2FCCPOUgFXiUY0g77vQ6j4PABcVe0hyP9BomfwHKFcUF3dTEQTFwoDN747UkzYFFk58vFAikUb7cE723A11+jbd7JLM0etPSGrt6wxEISBVfWP6dfVvhLwK4hyd7QLZvTeUfNOPrHOat3qabdIlEaej0oeuhuzIawcXhNkpVLbD5PWrAWehMpB0n6RcOwCyNWiKDE3n1VirJyI/1G3Miavz0JaE2MkxFNXCPl1/nAPQ0x8XU2G9yGOKM4k7N0lqM5pcrG5wycXCzSMmlt5Vfw1jrVnTdAnbIT3ZWAy0pXMGjm/6hD41vgToToaC5XVZriog8dRaiPvBM0f366BHroqQcoH/R6o1sQKAvvr54/J1M4PKzwqgk2UqiiljLxu9haoumv2qfPF5xLHmoUF+N57T1f3Ce0UHY+rNL38qjP2T57pP1nggZ8vS+pmcE0ffP8vrY/1WUMYL2eRxRWua9j6ve+GS/DJ9sUNysNvkSyTwFiBMY4j7GZ/Jy0qj8GWM0g72od0=
-        skip_cleanup: true
-        draft: true
-        on:
-          tags: true
+install: yarn
+script: yarn test
