@@ -1,64 +1,36 @@
-import rollupPluginBanner from 'rollup-plugin-banner';
-import rollupPluginCleanup from 'rollup-plugin-cleanup';
-import rollupPluginFilesize from 'rollup-plugin-filesize';
+/* eslint-disable import/no-extraneous-dependencies */
 import rollupPluginStrip from 'rollup-plugin-strip';
+import { terser as rollupPluginTerser } from 'rollup-plugin-terser';
 import rollupPluginTypescript2 from 'rollup-plugin-typescript2';
 import minifyPrivatesTransformer from 'ts-transformer-minify-privates';
-import { uglify as rollupPluginUglify } from 'rollup-plugin-uglify';
-
-export const banner = () => rollupPluginBanner(
-    'vavilon.js\n' +
-    '<%= pkg.description %>\n' +
-    '\n' +
-    '@version <%= pkg.version %>\n' +
-    '@license MIT'
-);
-
-/**
- * Removes all the comments except for `@license` ones
- */
-export const cleanup = () => rollupPluginCleanup({
-    comments: 'license',
-    extensions: ['.ts']
-});
-
-/**
- * Outputs the bundle size after build is complete.
- */
-export const filesize = () => rollupPluginFilesize({
-    showMinifiedSize: false
-});
 
 /**
  * Removes `debugger` calls, `console.log` and `console.debug`
  */
 export const strip = () => rollupPluginStrip({
-    debugger: true,
-    functions: ['console.log', 'console.debug'],
-    sourceMap: false
+  debugger: true,
+  functions: ['console.log', 'console.debug'],
+  sourceMap: false,
+});
+
+/**
+ * Minifies code with Terser
+ */
+export const terser = () => rollupPluginTerser({
+  ecma: 5,
+  mangle: {
+    properties: {
+      regex: /^_private_/,
+    },
+  },
 });
 
 /**
  * Transpiles TypeScript code
  */
 export const typescript = () => rollupPluginTypescript2({
-    transformers: [s =>({
-        before: [ minifyPrivatesTransformer(s.getProgram()) ],
-        after: []
-    })]
-});
-
-/**
- * Minifies code with UglifyJS2
- *
- * @param {boolean} sourcemap
- *        whether to generate a source map
- */
-export const uglify = (sourcemap = false) => rollupPluginUglify({
-    sourcemap,
-    mangle: {
-        properties: {
-            regex: /^_private_/
-        }
-    }
+  transformers: [(s) => ({
+    before: [minifyPrivatesTransformer(s.getProgram())],
+    after: [],
+  })],
 });
