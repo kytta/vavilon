@@ -26,11 +26,9 @@
     "url": "https://karamoff.dev"
   },
   "files": [
-    "dist/vavilon.js",
     "dist/vavilon.min.js",
     "dist/vavilon.d.ts",
-    "src",
-    "docs"
+    "src"
   ],
   "browser": "dist/vavilon.js",
   "types": "dist/vavilon.d.ts",
