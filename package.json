@@ -39,7 +39,7 @@
     "test:lint": "eslint .",
     "test:size": "size-limit",
     "test": "run-p test:*",
-    "watch": "rollup -c --config-dev -w"
+    "watch": "yarn build-dev -w"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^3.0.0",
