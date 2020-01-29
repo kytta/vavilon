@@ -1,21 +1,10 @@
-<div align="center">
-    <h1>
-        <img src="docs/logo.svg" width="300" alt="vavilon.js logo">
-    </h1>
-    <p>
-        A quick, lightweight and easy-to-use i18n engine for static websites
-    </p>
-    <p>
-        <a href="https://github.com/vavilon-js/vavilon.js/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/vavilon-js/vavilon.js.svg?logo=github&logoColor=white"></a>
-        <a href="https://www.npmjs.com/package/vavilon"><img alt="npm release" src="https://img.shields.io/npm/v/vavilon.svg?label=release&logo=npm"></a>
-        <a href="https://www.npmjs.com/package/vavilon"><img alt="npm downloads" src="https://img.shields.io/npm/dm/vavilon.svg"></a>
-    </p>
-    <p>
-        <a href="https://github.com/vavilon-js/vavilon.js/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vavilon-js/vavilon.js.svg"></a>
-        <a href="https://travis-ci.com/vavilon-js/vavilon.js"><img alt="Travis CI build status" src="https://img.shields.io/travis/com/vavilon-js/vavilon.js/master.svg"></a>
-        <a href="https://codeclimate.com/github/vavilon-js/vavilon.js"><img alt="Code Climate maintainability" src="https://img.shields.io/codeclimate/maintainability/vavilon-js/vavilon.js.svg"></a>
-        <a href="https://www.codacy.com/app/vavilon/vavilon.js"><img alt="Codacy code quality grade" src="https://img.shields.io/codacy/grade/c121289c5b5e40a28276dfaaba7fba3e/master"></a>
-    </p>
+<div>
+<img src="https://media.githubusercontent.com/media/vavilon-js/assets/master/vavilon.js/logo.png" width="150" alt="vavilon.js logo" align="left">
+<h1>vavilon.js</h1>
+<p>A quick, lightweight and easy-to-use i18n engine for static websites</p>
+<a href="https://www.npmjs.com/package/vavilon"><img alt="npm" src="https://img.shields.io/npm/v/vavilon?label=%20"></a>
+<a href="https://bundlephobia.com/result?p=vavilon"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/vavilon?color=222&label=%20"></a>
+<a href="https://travis-ci.com/vavilon-js/vavilon.js"><img alt="Travis build" src="https://img.shields.io/travis/com/vavilon-js/vavilon.js?label=%20"></a>
 </div>
 
 ## How to Install
