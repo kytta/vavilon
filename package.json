@@ -1,6 +1,6 @@
 {
   "name": "vavilon",
-  "version": "1.1.0",
+  "version": "2.0.0-indev",
   "description": "A quick, lightweight and easy-to-use i18n engine for static websites",
   "license": "MIT",
   "keywords": [
@@ -41,10 +41,8 @@
     "watch": "rollup -c --config-dev -w"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@typescript-eslint/parser": "^1.12.0",
-    "cz-customizable": "^6.2.0",
     "eslint": "^6.0.1",
     "husky": "^3.0.0",
     "rollup": "^1.16.7",
@@ -57,19 +55,9 @@
     "ts-transformer-minify-privates": "^0.1.0",
     "typescript": "^3.5.3"
   },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "config/git/commitizen.js"
-    }
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "eslint ./src/**/*.ts",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './config/git/commitlint.js'",
-      "pre-push": "npm run build"
+      "pre-commit": "eslint ./src/**/*.ts"
     }
   }
 }
