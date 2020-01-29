@@ -4,8 +4,7 @@
  * @param {string} [postfix]
  *        postfix to add to the file name between 'vavilon' and 'js'
  */
-export const output = (postfix) =>
-    `dist/vavilon${postfix ? '.' + postfix : ''}.js`;
+export const output = (postfix) => `dist/vavilon${postfix ? `.${postfix}` : ''}.js`;
 
 /**
  * Input file name
