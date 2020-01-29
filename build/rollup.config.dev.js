@@ -1,10 +1,10 @@
 import { input, output } from './vars';
-import { typescript } from './plugins';
+import { ts } from './plugins';
 
 export default {
   input,
   output: output('dev'),
   plugins: [
-    typescript(),
+    ts(true),
   ],
 };

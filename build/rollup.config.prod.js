@@ -1,11 +1,11 @@
 import { input, output } from './vars';
-import { strip, terser, typescript } from './plugins';
+import { strip, terser, ts } from './plugins';
 
 export default {
   input,
   output: output('min'),
   plugins: [
-    typescript(),
+    ts(false),
     strip(),
     terser(),
   ],

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import rollupPluginStrip from 'rollup-plugin-strip';
 import { terser as rollupPluginTerser } from 'rollup-plugin-terser';
-import rollupPluginTypescript2 from 'rollup-plugin-typescript2';
+import rollupPluginTs from '@wessberg/rollup-plugin-ts';
 import minifyPrivatesTransformer from 'ts-transformer-minify-privates';
 
 /**
@@ -27,10 +27,20 @@ export const terser = () => rollupPluginTerser({
 
 /**
  * Transpiles TypeScript code
+ *
+ * @param {boolean} dev
+ *        specifies whether it is a dev build or not
  */
-export const typescript = () => rollupPluginTypescript2({
-  transformers: [(s) => ({
-    before: [minifyPrivatesTransformer(s.getProgram())],
-    after: [],
-  })],
+export const ts = (dev) => rollupPluginTs({
+  browserslist: false,
+  hook: {
+    outputPath: (path, kind) => (!dev && kind === 'declaration' ? path.replace('.min', '') : undefined),
+  },
+  transformers: [
+    (s) => ({
+      before: [minifyPrivatesTransformer(s.program)],
+      after: [],
+    }),
+  ],
+  tsconfig: (resolvedOptions) => ({ ...resolvedOptions, declaration: !dev }),
 });
