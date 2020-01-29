@@ -33,8 +33,8 @@
   "browser": "dist/vavilon.js",
   "types": "dist/vavilon.d.ts",
   "scripts": {
-    "build": "rollup -c",
-    "build-dev": "rollup -c --config-dev",
+    "build": "rollup -c ./build/rollup.config.prod.js",
+    "build-dev": "rollup -c ./build/rollup.config.dev.js",
     "pretest": "yarn build",
     "test:lint": "eslint .",
     "test:size": "size-limit",

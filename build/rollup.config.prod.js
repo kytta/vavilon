@@ -1,7 +1,5 @@
 import { input, output } from './vars';
-import {
-  strip, terser, typescript,
-} from './plugins';
+import { strip, terser, typescript } from './plugins';
 
 export default {
   input,
