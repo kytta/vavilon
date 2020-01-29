@@ -13,6 +13,7 @@ things that you should know.
     * [Preparation](#preparation)
     * [Code Style](#code-style)
     * [Commit Message Style](#commit-message-style)
+    * [Submission](#submission)
 
 ## Ways to Contribute
 
@@ -71,30 +72,22 @@ to the code and commit message styles
 You can also edit the documentation, whether it being the docs on our website or
 the README, LICENSE, CONTRIBUTING (this guide). The **[workflow](#usual-workflow)**
 is similar to the one for code, except that you don't have mess around with NPM.
-However, we still recommend you use `commitizen` for commit messages.
 
 ## Usual Workflow
 
-So, you have decided to become a code or docs contributor for vavilon. Here's
+So, you have decided to become a code or docs contributor for vavilon.js. Here's
 how we do it.
 
 ### Preparation
 
 1. **Git**
+    1. Fork the repo
     1. Clone the repository to your local machine
-    2. Switch to the HEAD of `develop` branch
-    3. Start a new branch for your feature or bugfix. We try to follow the git-flow,
-       so it will be great if you prepend the branch name with `feature/` or `fix/`
-2. **NPM**
-    1. Install the packages with `npm install`. Don't worry, if it will update 
-       the package-lock.json
-    2. (optional) Install `commitizen` globally: `npm install -g commitizen`
-       
-       Since we follow the Conventional Commits guidelines, we use `commitizen`
-       to make the workflow easier. By using the `git cz` instead of
-       `git commit` you can commit your changes being sure that they follow the
-       guidelines.
-3. Check that everything is working: `npm run build`
+    3. Start a new branch for your feature or bugfix
+2. **Yarn**
+    1. Install the packages with `yarn`. Don't worry, if it will update the
+       yarn.lock file
+3. Check that everything is working: `yarn test`
 
 ### Code Style
 
@@ -103,62 +96,46 @@ IDE or text editor supports it, you will be notified about code style errors.
 You can learn about how to setup your editor [here][eslint-integrations].
 
 If your editor doesn't support ESLint or you don't want to set it up, you can
-run this command in project root: 
+run this command in project root:
 ```sh
-eslint ./src/**/*.ts
+yarn test:lint
 ```
 
-If you don't see any output, it means, that your code doesn't have Code Style
-issues.
+If you don't see any output and the script finishes with an exit code 0, it
+means, that your code doesn't have style issues.
 
 If your code does not follow the lint guidelines, the commit will not be
 possible, as there are git hooks that check the code before committing it.
 
 ### Commit Message Style
 
-vavilon.js follows the [Conventional Commits guidelines][con-comm]. However, we
-specify a distinct set of types and scopes, that is defined in our
-[commitizen config](./config/git/commitizen.js).
+vavilon.js used to follow the [Conventional Commits guidelines][con-comm].
+However, we decided to stop using it as it has added more hassle than it has
+provided help.
 
-If you have `commitizen` installed, you can run `git cz` and commit your changes
-interactively. In other cases you need to make sure that the commit message
-meets the following requirements:
+Nowadays we write the commits in simplified manner with easy to follow rules:
 
-- the commit message **should** have a subject
-  - the subject is structured as `<type>(<scope>): <decription>`
-  - the type is one of the following:
-    - `build` - project or dependency build setup
-    - `docs` - documentation update
-    - `feat` - new feature
-    - `fix` - error/bug fix
-    - `perf` - performance-related change
-    - `refactor` - change that doesn't add new features nor fixes bugs
-    - `revert` - revert to a previous commit
-    - `style` - style-related change (tabs, spaces, punctuation, etc.)
-    - `test` - new or updated test
-  - the scope is optional and specifies an area of code that you have worked on
-  - the description is a short, clear, imperative ("add", not "added") sentence
-    of 72 characters or shorter
-- the commit message can have a body
-  - the body should be separated from the subject with an empty line
-  - the body should be phrased imperatively as well
-  - if your commit introduces a breaking change, prepend the commit message with
-    "BREAKING CHANGE:"
-- the commit message can have a footer
-  - the footer should only include meta information, like links to issues, pull
-    requests
-    
-If your commit message does not follow the guidelines, the commit will not be
-possible, as there are git hooks that lint the commit message.
+  * use imperative case ("Add feature", not "Added feature")
+  * capitalize the commit message subject
+  * keep subject under 50 characters
+  * provide issue number (if applicable) in the commit message subject
+  * provide description, if you feel like it's needed
+  * wrap description at 80 characters per line
 
 You can see the examples of good commit messages in the repository's commit
-tree starting from July 13, 2019.
+tree starting from January 29, 2020.
+
+### Submission
+
+After you're ready with the fix/implementation, create a Pull Request. Leave the
+target branch at `master`, we will change it according to our workflow. Provide
+a clear description of what your PR does and specify the according issue number
+in the description.
 
 ----
 
 If you still have any questions about contribution or other parts of the project,
-you can reach us via E-Mail: vavilon(at)karamoff(dot)ru
-
+you can reach us via E-Mail: vavilon(at)karamoff(dot)dev
 
 
 
