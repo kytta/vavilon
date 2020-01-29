@@ -3,10 +3,7 @@ import { typescript } from './plugins';
 
 export default {
   input,
-  output: {
-    file: output('dev'),
-    format: 'iife',
-  },
+  output: output('dev'),
   plugins: [
     typescript(),
   ],

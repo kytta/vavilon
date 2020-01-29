@@ -1,14 +1,18 @@
 /**
- * Generates output file name
- *
- * @param {string} [postfix]
- *        postfix to add to the file name between 'vavilon' and 'js'
- */
-export const output = (postfix) => `dist/vavilon${postfix ? `.${postfix}` : ''}.js`;
-
-/**
  * Input file name
  *
  * @type {string}
  */
 export const input = 'src/index.ts';
+
+/**
+ * Generates output parameters
+ *
+ * @param {string} infix
+ *        infix to add to the file name between 'vavilon' and 'js'
+ */
+export const output = (infix) => ({
+  file: `dist/vavilon.${infix}.js`,
+  format: 'iife',
+  name: 'Vavilon',
+});

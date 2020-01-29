@@ -3,10 +3,7 @@ import { strip, terser, typescript } from './plugins';
 
 export default {
   input,
-  output: {
-    file: output('min'),
-    format: 'iife',
-  },
+  output: output('min'),
   plugins: [
     typescript(),
     strip(),
