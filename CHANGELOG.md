@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.1
+
+**New & Improved**
+- Yarn is now used for package management
+- development packages updated
+
 ## 1.1.0
 
 **New & Improved:**
