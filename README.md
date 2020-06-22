@@ -2,9 +2,7 @@
 <img src="https://media.githubusercontent.com/media/vavilon-js/assets/master/vavilon.js/logo.png" width="150" alt="vavilon.js logo" align="left">
 <h1>vavilon.js</h1>
 <p>A quick, lightweight and easy-to-use i18n engine for static websites</p>
-<a href="https://www.npmjs.com/package/vavilon"><img alt="npm" src="https://img.shields.io/npm/v/vavilon?label=%20"></a>
-<a href="https://bundlephobia.com/result?p=vavilon"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/vavilon?color=222&label=%20"></a>
-<a href="https://travis-ci.com/vavilon-js/vavilon.js"><img alt="Travis build" src="https://img.shields.io/travis/com/vavilon-js/vavilon.js?label=%20"></a>
+<a href="https://www.npmjs.com/package/vavilon"><img alt="npm" src="https://badgen.net/npm/v/vavilon?label="></a>&nbsp;<a href="https://bundlephobia.com/result?p=vavilon"><img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/vavilon?color=222&label="></a>
 </div>
 
 ## How to Install
