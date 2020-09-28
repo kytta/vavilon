@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-strip": "^2.0.0",
-    "@size-limit/preset-small-lib": "^4.6.0",
+    "@size-limit/file": "^4.6.0",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "cross-env": "^7.0.2",
@@ -65,7 +65,6 @@
   },
   "size-limit": [{
     "limit": "1024 B",
-    "path": "./dist/vavilon.min.js",
-    "webpack": false
+    "path": "./dist/vavilon.min.js"
   }]
 }
