@@ -1,5 +1,5 @@
 import { input, output } from './vars';
-import { banner, cleanup, filesize, strip, typescript, uglify } from './plugins';
+import { banner, cleanup, filesize, strip, typescript, terser } from './plugins';
 
 export default [
     {
@@ -24,7 +24,7 @@ export default [
         },
         plugins: [
             typescript(),
-            uglify(),
+            terser(),
             strip(),
             cleanup(),
             banner(),
