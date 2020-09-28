@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title class="vavilon" data-vavilon="page-title">vavilon.js test platform</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap-reboot.min.css">
+  <style>
+      body {
+          padding: 2em;
+      }
+  </style>
+
+  <script src="ru.json" type="application/json" data-vavilon-dict="ru"></script>
+  <script src="de.json" type="application/json" data-vavilon-dict="de"></script>
+  <script src="deCH.json" type="application/json" data-vavilon-dict="de-CH"></script>
+  <script src="vavilon.js"></script>
+</head>
+<body>
+<header>
+  <h1 class="vavilon" data-vavilon="page-title">vavilon.js test platform</h1>
+  <p class="vavilon" data-vavilon="use-the-buttons">Use the buttons below to switch between languages</p>
+  <div>
+    <button onclick="setLang('en')">English</button>
+    <button onclick="setLang('ru')">Русский / Russian</button>
+    <button onclick="setLang('de')">Deutsch / German</button>
+    <button onclick="setLang('de-CH')">Deutsch (Schweiz) / Swiss German</button>
+  </div>
+</header>
+<hr>
+<main>
+  <h1 class="vavilon" data-vavilon="title">This title should be translated</h1>
+  <h2>This subtitle should NOT be translated</h2>
+  <p class="vavilon" data-vavilon="pre-pangram">The pangram below is different in Swiss German than in German.</p>
+  <p class="vavilon" data-vavilon="pangram">The quick brown fox jumps over the lazy dog</p>
+  <h3 class="vavilon" data-vavilon="ru-missing">This title has no Russian locale — so, it falls back to English</h3>
+</main>
+</body>
+</html>
