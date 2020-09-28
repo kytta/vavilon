@@ -2,7 +2,6 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import minifyPrivatesTransformer from 'ts-transformer-minify-privates';
 import strip from '@rollup/plugin-strip';
-import filesize from 'rollup-plugin-filesize';
 
 const pkg = require('./package.json');
 const isDev = process.env.ROLLUP_WATCH || process.env.NODE_ENV === 'development';
@@ -54,9 +53,6 @@ export default {
             include: ['**/*.js'],
             functions: ['console.log', 'console.debug', 'assert.*'],
             sourceMap: false,
-        }),
-        !isDev && filesize({
-            showMinifiedSize: false
         })
     ]
 };
