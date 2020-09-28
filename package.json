@@ -39,6 +39,7 @@
     "build:dev": "cross-env NODE_ENV=development rollup -c",
     "test": "echo \"So far no tests here...\" && exit 0",
     "test:lint": "eslint ./src/**/*.ts",
+    "postversion": "run-s build",
     "watch": "rollup -c -w"
   },
   "devDependencies": {
