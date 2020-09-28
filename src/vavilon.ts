@@ -109,7 +109,7 @@ export class Vavilon {
      *
      * @param primaryCb - an optional callback to execute after the {@link pageDict} has been loaded
      */
-    public loadDicts(primaryCb?: Function): void {
+    public loadDicts(primaryCb?: () => void): void {
         Object.keys(this.dictionaries)
             .forEach((loc): void => {
                 if (loc === this.userLocale || loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict) {
