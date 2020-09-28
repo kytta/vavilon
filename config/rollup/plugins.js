@@ -2,9 +2,9 @@ import rollupPluginBanner from 'rollup-plugin-banner';
 import rollupPluginCleanup from 'rollup-plugin-cleanup';
 import rollupPluginFilesize from 'rollup-plugin-filesize';
 import rollupPluginStrip from 'rollup-plugin-strip';
+import { terser as rollupPluginTerser } from 'rollup-plugin-terser'
 import rollupPluginTypescript2 from 'rollup-plugin-typescript2';
 import minifyPrivatesTransformer from 'ts-transformer-minify-privates';
-import { uglify as rollupPluginUglify } from 'rollup-plugin-uglify';
 
 export const banner = () => rollupPluginBanner(
     'vavilon.js\n' +
@@ -49,13 +49,9 @@ export const typescript = () => rollupPluginTypescript2({
 });
 
 /**
- * Minifies code with UglifyJS2
- *
- * @param {boolean} sourcemap
- *        whether to generate a source map
+ * Minifies code with Terser
  */
-export const uglify = (sourcemap = false) => rollupPluginUglify({
-    sourcemap,
+export const terser = () => rollupPluginTerser({
     mangle: {
         properties: {
             regex: /^_private_/
