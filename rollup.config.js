@@ -1,7 +1,8 @@
-import { terser } from 'rollup-plugin-terser';
-import typescript from 'rollup-plugin-typescript2';
+import dev from 'rollup-plugin-dev';
 import minifyPrivatesTransformer from 'ts-transformer-minify-privates';
 import strip from '@rollup/plugin-strip';
+import { terser } from 'rollup-plugin-terser';
+import typescript from 'rollup-plugin-typescript2';
 
 const pkg = require('./package.json');
 const isDev = process.env.ROLLUP_WATCH || process.env.NODE_ENV === 'development';
@@ -45,6 +46,7 @@ export default {
                 after: []
             })]
         }),
+        isDev && dev('dev'),
         !isDev && strip({
             debugger: true,
             include: ['**/*.js'],
