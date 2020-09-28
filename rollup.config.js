@@ -6,27 +6,24 @@ import strip from '@rollup/plugin-strip';
 const pkg = require('./package.json');
 const isDev = process.env.ROLLUP_WATCH || process.env.NODE_ENV === 'development';
 
-const outputPath = (postfix = null) =>
-    `dist/vavilon${postfix ? '.' + postfix : ''}.js`;
-
-const banner = `/*! vavilon.js v${pkg.version} */`
+const banner = `/*! vavilon.js v${pkg.version} */`;
 
 export default {
     input: './src/index.ts',
     output:
         isDev
             ? {
-                file: outputPath('dev'),
+                file: `dev/vavilon.js`,
                 format: 'iife'
             }
             : [
                 {
-                    file: outputPath(),
+                    file: `dist/vavilon.js`,
                     format: 'iife',
                     banner
                 },
                 {
-                    file: outputPath('min'),
+                    file: `dist/vavilon.min.js`,
                     format: 'iife',
                     banner,
                     plugins: [terser({

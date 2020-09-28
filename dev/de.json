@@ -1,0 +1,8 @@
+{
+  "page-title": "Test-Plattform für vavilon.js",
+  "use-the-buttons": "Nutzen Sie die Tasten unten, um zwischen den Sprachen zu wechseln",
+  "title": "Dieser Titel muss übersetzt sein",
+  "pre-pangram": "Das folgende Pangramm ist auf Schweizerdeutsch anders als auf Deutsch.",
+  "pangram": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern",
+  "ru-missing": "Dieser Titel hat keine russische Lokalisierung — er fällt also auf Englisch zurück."
+}
