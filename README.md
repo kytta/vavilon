@@ -7,8 +7,8 @@
 
 ## How to Install
 
-To use `vavilon.js` on your website you should connect the script in your
-webpage's `<head>`. Here are some ways to get this going:
+To use `vavilon.js` on your website you need to add it as a script to your
+page's `<head>`. Here are some ways to get this done:
 
 ### via CDN (recommended)
 
@@ -21,7 +21,8 @@ way:
 
 ### via NPM
 
-If you use NPM with your static website, you can install `vavilon.js` using npm:
+If build your static website with help of other NPM packages, you can install
+`vavilon.js` using npm:
 
 ```sh
 npm install vavilon
@@ -35,9 +36,8 @@ Then you can include the script in your webpage like so:
 
 ### Manual download
 
-You can find latest version of `vavilon.js` in [Releases][releases]
-section on GitHub. Download either the minified or the uncompressed version and
-include it in your document:
+You can find the latest version of `vavilon.js` in the [Releases][releases]
+section on GitHub. Download the minified version and include it in your page:
 
 ```html
 <script src="./path/to/vavilon.min.js"></script>
@@ -45,41 +45,41 @@ include it in your document:
 
 ## How to use
 
-1. Create your HTML page on open the one you've already created. Set the `lang`
-   attribute in your `<html>` tag:
+1. Create an HTML page or open an already existing one. Set the `lang` attribute
+   in the `<html>` tag:
 
    ```html
    <html lang="en">
-       <head>
-           <title>Hello World!</title>
-       </head>
-       <body>
-           <h1>How are you?</h1>
-       </body>
+   <head>
+       <title>Hello World!</title>
+   </head>
+   <body>
+       <h1>How are you?</h1>
+   </body>
    </html>
    ```
 
-   If you rely on multiple versions of the same language (like US and UK English),
-   you can user the country-specific lang codes (i.e. `en-us`, `en-uk`)
+   If you rely on multiple versions of the same language (like US vs UK English),
+   you can user the country-specific language codes (i.e. `en-US`, `en-UK`)
 
-2. Give unique IDs to every string on your HTML page that you want to have
-   translated. Put the IDs inside the `data-vavilon` attribute and add the
-   `vavilon` class to these elements:
+2. Assign a unique ID to every element on the HTML page the contents of which
+   you want to have translated. Put the IDs in the `data-vavilon` attribute and
+   add the `vavilon` class to these elements:
 
    ```html
       <html lang="en">
-          <head>
-              <title class="vavilon" data-vavilon="hello-world">Hello World!</title>
-          </head>
-          <body>
-              <h1 class="vavilon" data-vavilon="how-are-you">How are you?</h1>
-          </body>
+      <head>
+          <title class="vavilon" data-vavilon="hello-world">Hello World!</title>
+      </head>
+      <body>
+          <h1 class="vavilon" data-vavilon="how-are-you">How are you?</h1>
+      </body>
       </html>
    ```
 
-3. Create JSON dictionary files for the languages you want to support. Each file
-   should be an object, with the keys being the unique string IDs and values
-   being the translated strings. Here's an example for Russian language:
+3. Create JSON dictionary files for every language you want to support. Each
+   file should be an object, with keys being the unique IDs and values being the
+   translated strings. Here's how it would look for Russian:
 
    ```json
    {
@@ -88,19 +88,19 @@ include it in your document:
    }
    ```
 
-4. Connect the dictionaries inside `<head>` element. Add the `data-vavilon-dict`
-   attribute to specify the dictionaries language:
+4. Add each dictionary file to the page. Use a `script` element in the `<head>`
+   with a `data-vavilon-dict` attribute holding the dictionary's language code:
 
    ```html
    <script type="application/json" src="path/to/ru.json" data-vavilon-dict="ru"></script>
    ```
 
-5. [Download and connect](#how-to-install) the latest version of `vavilon.js`.
-   Upon doing so, your page now will automatically change its language based
-   on the end user's browser locale.
+5. [Add](#how-to-install) the latest version of `vavilon.js` to the page. Now
+   your page will automatically change its language based on the end user's
+   browser locale.
 
-6. If you want your user to be able to switch languages, you can set it up by
-   using the `setLang` function:
+6. If you want your user to be able to switch languages manually, you can set it
+   up by using the exported `setLang` function:
 
    ```html
    <button onclick="setLang('en')">English version</button>
@@ -108,48 +108,49 @@ include it in your document:
 
 ## Caveats
 
-As you may have guessed from the major version number being 0, the library is
-not completely finished. Here are some things that are not supported or don't
-work as expected:
+Despite being a stable release, `vavilon.js` is not completely finished. Here
+are some things that are not yet supported or don't work as expected:
 
 ### Styling and inline tags
 
-Right now `vavilon.js` replaces the _text_ of the elements, not their HTML code,
-which means that the code like
+Right now `vavilon.js` replaces the _text_ of the elements, not their HTML code.
+Consider this snippet:
 
 ```html
-<p class="vavilon" data-vavilon="hello">Hello <b>world</b>!</p>
+<p class="vavilon" data-vavilon="hello"><b>Hello</b> world!</p>
 ```
 
-will not have the word "world" written in bold.
+The page will not have the word "Hello" in bold upon changing the language,
+because `vavilon.js` will have replaced the contents of the whole `<p>` with
+plain text.
 
 The support for styling your strings will come in future releases. If this is
-crucial for you, you can use a workaround like this:
+crucial for you right now, you can use a workaround like this:
 
 ```html
 <p>
-    <span class="vavilon" data-vavilon="hello-1">Hello</span>
-    <b class="vavilon" data-vavilon="hello-2">world</b>!
+    <b class="vavilon" data-vavilon="hello-1">Hello</b>
+    <span class="vavilon" data-vavilon="hello-2">world</span>!
 </p>
 ```
 
-This way you can define separate IDs for the words "Hello" and "world" inside
-your dictionary file.
+This way you can define separate IDs for the words "Hello" and "world" in your
+dictionary file and have different styles applied to them on the page.
 
 ### Framework compatibility
 
 While it is possible to create static websites using frameworks like Vue.js,
-React and Svelte, the support for those has not been tested at all. If you use
-these frameworks I would highly recommend you use something other than `vavilon.js`,
-like the i18n plugins created specifically for these frameworks.
+React and Svelte, the support not been tested at all. If you use these
+frameworks to generate your website, I highly recommend you use something else,
+like the i18n engines created specifically for these frameworks.
 
-With regard to jQuery, it has not been tested yet either, but I guess it should
-work just fine. If you want to play around with `vavilon.js` and jQuery, I
-encourage you do so.
+Regarding jQuery, it has not been tested yet either, but I guess it should work
+just fine. If you want to play around with `vavilon.js` and jQuery, I encourage
+you do so.
 
 ----
 
-If you encounter any bugs, don't hesitate [filing an issue][issues]
+If you encounter any bugs, don't hesitate [creating an issue][issues]
 
 [releases]: https://github.com/vavilon-js/vavilon.js/releases
 [issues]: https://github.com/vavilon-js/vavilon.js/issues
