@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    name: Node.js CI
+    name: Build and test library
     runs-on: ubuntu-latest
 
     steps:
