@@ -1,25 +1,25 @@
-import {Locale} from "./locale";
-import {Vavilon} from "./vavilon";
+import { Vavilon } from './vavilon';
+import { Locale } from './types';
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 declare global {
-    interface Window {
-        // IE navigator language settings (non-standard)
-        userLanguage: string;
-        browserLanguage: string;
+  interface Window {
+    // IE navigator language settings (non-standard)
+    userLanguage: string;
+    browserLanguage: string;
 
-        /**
-         * Changes the page language
-         *
-         * The execution of this method will change the {@link Vavilon.pageLocale}
-         * of the vavilon instance, save the selected locale to cookie and replace
-         * the text of all the vavilon-enabled elements on the page.
-         *
-         * @param localeString - the locale to switch to
-         */
-        setLang(localeString: Locale): void;
-    }
+    /**
+     * Changes the page language
+     *
+     * The execution of this method will change the {@link Vavilon.pageLocale}
+     * of the vavilon instance, save the selected locale to cookie and replace
+     * the text of all the vavilon-enabled elements on the page.
+     *
+     * @param localeString - the locale to switch to
+     */
+    setLang(localeString: Locale): void;
+  }
 }
-
 
 /**
  * Core vavilon object instance
@@ -35,18 +35,18 @@ let pageLoaded = false;
 
 vavilon.addDicts();
 vavilon.loadDicts((): void => {
-    if (pageLoaded) {
-        vavilon.replace();
-    }
+  if (pageLoaded) {
+    vavilon.replace();
+  }
 });
 
-window.onload = function (): void {
-    vavilon.find();
-    pageLoaded = true;
+window.onload = function onload(): void {
+  vavilon.find();
+  pageLoaded = true;
 
-    if (vavilon.pageDictLoaded) {
-        vavilon.replace();
-    }
+  if (vavilon.pageDictLoaded) {
+    vavilon.replace();
+  }
 };
 
 /**
@@ -58,12 +58,10 @@ window.onload = function (): void {
  *
  * @param localeString - the locale to switch to
  */
-window.setLang = function (localeString: Locale): void {
-    localeString = localeString.toLowerCase();
+window.setLang = function setLang(localeString: Locale): void {
+  const changeSuccessful: boolean = vavilon.setLocale(localeString.toLowerCase());
 
-    const changeSuccessful: boolean = vavilon.setLocale(localeString);
-
-    if (changeSuccessful) {
-        vavilon.replace();
-    }
+  if (changeSuccessful) {
+    vavilon.replace();
+  }
 };

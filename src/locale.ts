@@ -1,12 +1,5 @@
-import {getLocaleCookie} from './cookie';
-
-/**
- * A lowercase string that defines the linguistic environment
- *
- * A locale consists of the language code and the country code in form
- * `'{languagecode}-{countrycode}'`, e.g. `'en-us'`
- */
-export type Locale = string;
+import { getLocaleCookie } from './cookie';
+import { Locale } from './types';
 
 /**
  * Returns the user preferred locale
@@ -17,7 +10,11 @@ export type Locale = string;
  * @returns the user-preferred locale
  */
 export function getUserLocale(): Locale {
-    return (getLocaleCookie() || window.navigator.language || window.browserLanguage || window.userLanguage).toLowerCase();
+  return (getLocaleCookie()
+      || window.navigator.language
+      || window.browserLanguage
+      || window.userLanguage)
+    .toLowerCase();
 }
 
 /**
@@ -26,5 +23,5 @@ export function getUserLocale(): Locale {
  * @returns the locale of the page
  */
 export function getPageLocale(): Locale {
-    return document.documentElement.lang.toLowerCase();
+  return document.documentElement.lang.toLowerCase();
 }
