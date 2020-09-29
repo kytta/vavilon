@@ -106,6 +106,22 @@ section on GitHub. Download the minified version and include it in your page:
    <button onclick="setLang('en')">English version</button>
    ```
 
+## Browser support
+
+`vavilon.js` works on [99%][browserslist] of browsers used today:
+
+| ![Chrome][chrome] | ![Safari][safari] | ![Firefox][firefox] | ![MS Edge][edge] | ![Internet Explorer][ie] | ![Opera][opera] |
+|:-----------------:|:-----------------:|:-------------------:|:----------------:|:------------------------:|:---------------:|
+|       **15+**     |       **5+**      |        **45+**      |      **12+**     |          **9+**          |    **12.1+**    |
+
+[chrome]:  https://github.com/alrra/browser-logos/raw/master/src/chrome/chrome_48x48.png
+[edge]:    https://github.com/alrra/browser-logos/raw/master/src/edge/edge_48x48.png
+[firefox]: https://github.com/alrra/browser-logos/raw/master/src/firefox/firefox_48x48.png
+[ie]:      https://github.com/alrra/browser-logos/raw/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png
+[opera]:   https://github.com/alrra/browser-logos/raw/master/src/opera/opera_48x48.png
+[safari]:  https://github.com/alrra/browser-logos/raw/master/src/safari/safari_48x48.png
+[browserslist]: https://browserslist.dev/?q=Y292ZXIgMTAwJSwgbm90IGNocm9tZSA8IDE1LCBub3QgYW5kX2NociA8IDE1LCBub3Qgc2FmYXJpIDwgNSwgbm90IGlvc19zYWYgPCA1LCBub3QgZmlyZWZveCA8IDQ1LCBub3QgYW5kX2ZmIDwgNDUsIG5vdCBlZGdlIDwgMTIsIG5vdCBpZSA8IDksIG5vdCBpZV9tb2IgPCA5LCBub3Qgb3BlcmEgPCAxMi4xLCBub3Qgb3BfbW9iIDwgMTIuMSwgbm90IG9wX21pbmkgPCAxMi4xLCBub3QgYW5kcm9pZCA8IDQuNA%3D%3D
+
 ## Caveats
 
 Despite being a stable release, `vavilon.js` is not completely finished. Here

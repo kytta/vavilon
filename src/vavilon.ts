@@ -1,5 +1,5 @@
 import { Dictionary } from './dictionary';
-import { getUserLocale, getPageLocale } from './locale';
+import { getPageLocale, getUserLocale } from './locale';
 import { setLocaleCookie } from './cookie';
 import { Locale } from './types';
 
@@ -73,19 +73,17 @@ export class Vavilon {
    */
   public replace(): void {
     if (this.elements && this.pageDict) {
-      if (!this.dictionaries[this.pageLocale]) {
-        this.dictionaries[this.pageLocale] = new Dictionary(null);
-      }
+      for (let i = 0; i < this.elements.length; i += 1) {
+        const el = this.elements[i];
+        const strId = el.getAttribute('data-vavilon');
 
-      Array.from(this.elements).forEach((el): void => {
-        const strId = el.dataset.vavilon;
-        if (this.dictionaries[this.pageDict].hasString(strId)) {
+        if (strId != null && this.dictionaries[this.pageDict].hasString(strId)) {
           if (!this.dictionaries[this.pageLocale].hasString(strId)) {
             this.dictionaries[this.pageLocale].strings[strId] = el.innerText.trim();
           }
           el.innerText = this.dictionaries[this.pageDict].strings[strId];
         }
-      });
+      }
     }
   }
 
@@ -95,12 +93,17 @@ export class Vavilon {
    * Note that the dictionaries aren't being loaded, only the URLs are parsed
    */
   public addDicts(): void {
-    Array.from(document.scripts)
-      .filter((e): boolean => Object.prototype.hasOwnProperty.call(e.dataset, 'vavilonDict'))
-      .forEach((ds): void => {
-        const dictLocale = ds.dataset.vavilonDict.toLowerCase();
-        this.dictionaries[dictLocale] = new Dictionary(ds.src);
-      });
+    for (let i = 0; i < document.scripts.length; i += 1) {
+      const el = document.scripts[i];
+      const dictLocale = el.getAttribute('data-vavilon-dict');
+      if (dictLocale != null) {
+        this.dictionaries[dictLocale.toLowerCase()] = new Dictionary(el.src);
+      }
+    }
+
+    if (!this.dictionaries[this.pageLocale]) {
+      this.dictionaries[this.pageLocale] = new Dictionary(null);
+    }
   }
 
   /**
@@ -113,7 +116,7 @@ export class Vavilon {
    */
   public loadDicts(primaryCb?: () => void): void {
     Object.keys(this.dictionaries)
-      .forEach((loc): void => {
+      .forEach((loc) => {
         if (loc === this.userLocale
           || (loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict)) {
           this.pageDict = loc;
@@ -139,7 +142,8 @@ export class Vavilon {
       this.pageDict = localeString;
       setLocaleCookie(this.pageDict);
       return true;
-    } if (this.dictionaries[localeString.slice(0, 2)]) {
+    }
+    if (this.dictionaries[localeString.slice(0, 2)]) {
       this.pageDict = localeString.slice(0, 2);
       setLocaleCookie(this.pageDict);
       return true;
