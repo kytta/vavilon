@@ -12,8 +12,8 @@ import { Locale } from './types';
 export function getUserLocale(): Locale {
   return (getLocaleCookie()
       || window.navigator.language
-      || window.browserLanguage
-      || window.userLanguage)
+      || window.navigator.browserLanguage
+      || window.navigator.userLanguage)
     .toLowerCase();
 }
 
