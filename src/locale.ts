@@ -1,5 +1,5 @@
 import { getLocaleCookie } from './cookie';
-import { Locale } from './types';
+import type { Locale } from './types';
 
 /**
  * Returns the user preferred locale

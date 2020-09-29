@@ -1,4 +1,4 @@
-import { Locale } from './types';
+import type { Locale } from './types';
 
 // This is needed to be able to work with older IE and to be able to assign a new property to Window
 // eslint-disable-next-line @typescript-eslint/no-redeclare

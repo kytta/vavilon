@@ -1,5 +1,5 @@
 import { Vavilon } from './vavilon';
-import { Locale } from './types';
+import type { Locale } from './types';
 
 /**
  * Core vavilon object instance

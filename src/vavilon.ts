@@ -1,7 +1,7 @@
 import { Dictionary } from './dictionary';
 import { getPageLocale, getUserLocale } from './locale';
 import { setLocaleCookie } from './cookie';
-import { Locale } from './types';
+import type { Locale } from './types';
 
 /**
  * An object representing a Vavilon config

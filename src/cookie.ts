@@ -1,4 +1,4 @@
-import { Locale } from './types';
+import type { Locale } from './types';
 
 /**
  * Gets the value of `vavilon-locale` cookie
