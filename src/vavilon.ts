@@ -73,10 +73,6 @@ export class Vavilon {
    */
   public replace(): void {
     if (this.elements && this.pageDict) {
-      if (!this.dictionaries[this.pageLocale]) {
-        this.dictionaries[this.pageLocale] = new Dictionary(null);
-      }
-
       for (let i = 0; i < this.elements.length; i += 1) {
         const el = this.elements[i];
         const strId = el.getAttribute('data-vavilon');
@@ -104,6 +100,10 @@ export class Vavilon {
         this.dictionaries[dictLocale.toLowerCase()] = new Dictionary(el.src);
       }
     }
+
+    if (!this.dictionaries[this.pageLocale]) {
+      this.dictionaries[this.pageLocale] = new Dictionary(null);
+    }
   }
 
   /**
@@ -115,20 +115,19 @@ export class Vavilon {
    * @param primaryCb - an optional callback to execute after the {@link pageDict} has been loaded
    */
   public loadDicts(primaryCb?: () => void): void {
-    const locales = Object.keys(this.dictionaries);
-    for (let i = 0; i < locales.length; i += 1) {
-      const loc = locales[i];
-      if (loc === this.userLocale
+    Object.keys(this.dictionaries)
+      .forEach((loc) => {
+        if (loc === this.userLocale
           || (loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict)) {
-        this.pageDict = loc;
-        this.dictionaries[loc].load((): void => {
-          this.pageDictLoaded = true;
-          primaryCb();
-        });
-      } else {
-        this.dictionaries[loc].load();
-      }
-    }
+          this.pageDict = loc;
+          this.dictionaries[loc].load((): void => {
+            this.pageDictLoaded = true;
+            primaryCb();
+          });
+        } else {
+          this.dictionaries[loc].load();
+        }
+      });
   }
 
   /**
