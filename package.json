@@ -37,9 +37,9 @@
   "scripts": {
     "build": "rollup -c",
     "build:dev": "cross-env NODE_ENV=development rollup -c",
+    "lint": "eslint .",
     "size": "size-limit",
-    "test": "echo \"So far no tests here...\" && exit 0",
-    "test:lint": "eslint .",
+    "test": "yarn lint",
     "postversion": "yarn build",
     "watch": "rollup -c -w"
   },
@@ -64,7 +64,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test:lint"
+      "pre-commit": "yarn lint"
     }
   },
   "size-limit": [
