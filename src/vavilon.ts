@@ -77,6 +77,10 @@ export class Vavilon {
         const el = this.elements[i];
         const strId = el.getAttribute('data-vavilon');
 
+        if (!this.dictionaries[this.pageLocale]) {
+          this.dictionaries[this.pageLocale] = new Dictionary(null);
+        }
+
         if (!this.dictionaries[this.pageLocale].hasString(strId)) {
           this.dictionaries[this.pageLocale].strings[strId] = el.innerText.trim();
         }
@@ -98,10 +102,6 @@ export class Vavilon {
     for (let i = 0; i < dictScriptElements.length; i += 1) {
       const el = dictScriptElements[i];
       this.dictionaries[el.getAttribute('data-vavilon-dict').toLowerCase()] = new Dictionary(el.src);
-    }
-
-    if (!this.dictionaries[this.pageLocale]) {
-      this.dictionaries[this.pageLocale] = new Dictionary(null);
     }
   }
 
