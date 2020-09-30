@@ -29,8 +29,8 @@ exports.config = {
   // providers should work too though). These services define specific user and key (or access key)
   // values you need to put in here in order to connect to these services.
   //
-  user: process.env.BROWSERSTACK_USER,
-  key: process.env.BROWSERSTACK_ACCESSKEY,
+  user: process.env.BROWSERSTACK_USERNAME,
+  key: process.env.BROWSERSTACK_ACCESS_KEY,
 
   // ==================
   // Specify Test Files
