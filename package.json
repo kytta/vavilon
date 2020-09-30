@@ -39,7 +39,9 @@
     "build:dev": "cross-env NODE_ENV=development rollup -c",
     "lint": "eslint .",
     "size": "size-limit",
+    "start:dev": "sirv ./dev --port 8099",
     "test": "yarn lint",
+    "test:wdio": "wdio wdio.conf.js",
     "postversion": "yarn build",
     "watch": "rollup -c -w"
   },
