@@ -31,11 +31,8 @@ jobs:
         run: yarn build
       - name: Test
         run: yarn test
-      - name: Setup Node.js with GitHub's registry
-        uses: actions/setup-node@v1
+      - name: Publish
+        uses: JS-DevTools/npm-publish@v1
         with:
-          node-version: 14
-          registry-url: 'https://npm.pkg.github.com'
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}
