@@ -4,10 +4,13 @@
         "lib": ["dom", "es6"],
         "noImplicitReturns": true,
         "noImplicitAny": true,
-        "module": "es2015"
+        "module": "es2015",
+        "moduleResolution": "node",
+        "types": ["node", "webdriverio", "@wdio/mocha-framework"]
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*.ts",
+        "./test/**/*.ts"
     ],
     "exclude": ["node_modules"]
 }
