@@ -28,7 +28,7 @@ export class Vavilon {
   /**
    * The collection of all vavilon-enabled elements on the page
    */
-  private elements: HTMLCollectionOf<HTMLElement>;
+  private elements: NodeListOf<HTMLElement>;
 
   /**
    * The map of available dictionaries
@@ -65,7 +65,7 @@ export class Vavilon {
    * Finds all vavilon-enabled elements on the page and stores them inside {@link elements}.
    */
   public find(): void {
-    this.elements = document.getElementsByClassName('vavilon') as HTMLCollectionOf<HTMLElement>;
+    this.elements = document.querySelectorAll<HTMLElement>('[data-vavilon]');
   }
 
   /**
@@ -77,10 +77,11 @@ export class Vavilon {
         const el = this.elements[i];
         const strId = el.getAttribute('data-vavilon');
 
-        if (strId != null && this.dictionaries[this.pageDict].hasString(strId)) {
-          if (!this.dictionaries[this.pageLocale].hasString(strId)) {
-            this.dictionaries[this.pageLocale].strings[strId] = el.innerText.trim();
-          }
+        if (!this.dictionaries[this.pageLocale].hasString(strId)) {
+          this.dictionaries[this.pageLocale].strings[strId] = el.innerText.trim();
+        }
+
+        if (this.dictionaries[this.pageDict].hasString(strId)) {
           el.innerText = this.dictionaries[this.pageDict].strings[strId];
         }
       }
@@ -93,12 +94,10 @@ export class Vavilon {
    * Note that the dictionaries aren't being loaded, only the URLs are parsed
    */
   public addDicts(): void {
-    for (let i = 0; i < document.scripts.length; i += 1) {
-      const el = document.scripts[i];
-      const dictLocale = el.getAttribute('data-vavilon-dict');
-      if (dictLocale != null) {
-        this.dictionaries[dictLocale.toLowerCase()] = new Dictionary(el.src);
-      }
+    const dictScriptElements = document.querySelectorAll<HTMLScriptElement>('script[data-vavilon-dict]');
+    for (let i = 0; i < dictScriptElements.length; i += 1) {
+      const el = dictScriptElements[i];
+      this.dictionaries[el.getAttribute('data-vavilon-dict').toLowerCase()] = new Dictionary(el.src);
     }
 
     if (!this.dictionaries[this.pageLocale]) {
