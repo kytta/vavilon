@@ -12,6 +12,10 @@
   },
   "overrides": [
     {
+      "env": {
+        "browser": true,
+        "mocha": true
+      },
       "files": [
         "**/*.ts"
       ],
@@ -21,10 +25,14 @@
         "project": "./tsconfig.json"
       },
       "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "wdio",
+        "mocha"
       ],
       "extends": [
-        "airbnb-typescript/base"
+        "airbnb-typescript/base",
+        "plugin:wdio/recommended",
+        "plugin:mocha/recommended"
       ],
       "rules": {
         "import/prefer-default-export": 0,
