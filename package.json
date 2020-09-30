@@ -32,8 +32,8 @@
     "src",
     "docs"
   ],
-  "browser": "dist/vavilon.js",
-  "types": "dist/vavilon.d.ts",
+  "main": "dist/vavilon.js",
+  "unpkg": "dist/vavilon.min.js",
   "scripts": {
     "build": "rollup -c",
     "build:dev": "cross-env NODE_ENV=development rollup -c",
