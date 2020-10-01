@@ -53,18 +53,21 @@ exports.config = {
       browserVersion: 'latest',
       os: 'Windows',
       os_version: '10',
+      'browserstack.local': 'true',
     },
     {
       browser: 'IE',
       browser_version: '9.0',
       os: 'Windows',
       os_version: '7',
+      'browserstack.local': 'true',
     },
     {
       browser: 'Safari',
       browser_version: '5.1',
       os: 'OS X',
       os_version: 'Snow Leopard',
+      'browserstack.local': 'true',
     },
   ],
 
