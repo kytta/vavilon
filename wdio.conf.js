@@ -54,6 +54,7 @@ exports.config = {
       os: 'Windows',
       os_version: '10',
       'browserstack.local': 'true',
+      'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
     },
     {
       browser: 'IE',
@@ -61,6 +62,7 @@ exports.config = {
       os: 'Windows',
       os_version: '7',
       'browserstack.local': 'true',
+      'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
     },
     {
       browser: 'Safari',
@@ -68,6 +70,7 @@ exports.config = {
       os: 'OS X',
       os_version: 'Snow Leopard',
       'browserstack.local': 'true',
+      'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
     },
   ],
 
