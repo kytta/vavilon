@@ -61,10 +61,10 @@ exports.config = {
       os_version: '7',
     },
     {
-      browser: 'OS X',
-      browser_version: 'Snow Leopard',
-      os: 'Safari',
-      os_version: '5.1',
+      browser: 'Safari',
+      browser_version: '5.1',
+      os: 'OS X',
+      os_version: 'Snow Leopard',
     },
   ],
 
