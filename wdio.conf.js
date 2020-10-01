@@ -1,3 +1,10 @@
+const defaultCapabilityConfig = {
+  'browserstack.local': 'true',
+  'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
+  project: process.env.BROWSERSTACK_PROJECT_NAME,
+  build: process.env.BROWSERSTACK_BUILD_NAME,
+};
+
 exports.config = {
   //
   // ====================
@@ -49,34 +56,25 @@ exports.config = {
   //
   capabilities: [
     {
+      ...defaultCapabilityConfig,
       browser: 'chrome',
       browserVersion: 'latest',
       os: 'Windows',
       os_version: '10',
-      'browserstack.local': 'true',
-      'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
-      project: process.env.BROWSERSTACK_PROJECT_NAME,
-      build: process.env.BROWSERSTACK_BUILD_NAME,
     },
     {
+      ...defaultCapabilityConfig,
       browser: 'IE',
       browser_version: '9.0',
       os: 'Windows',
       os_version: '7',
-      'browserstack.local': 'true',
-      'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
-      project: process.env.BROWSERSTACK_PROJECT_NAME,
-      build: process.env.BROWSERSTACK_BUILD_NAME,
     },
     {
+      ...defaultCapabilityConfig,
       browser: 'Safari',
       browser_version: '5.1',
       os: 'OS X',
       os_version: 'Snow Leopard',
-      'browserstack.local': 'true',
-      'browserstack.localIdentifier': process.env.BROWSERSTACK_LOCAL_IDENTIFIER,
-      project: process.env.BROWSERSTACK_PROJECT_NAME,
-      build: process.env.BROWSERSTACK_BUILD_NAME,
     },
   ],
 
