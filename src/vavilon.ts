@@ -1,6 +1,6 @@
 import { Dictionary } from "./dictionary";
 import { getPageLocale, getUserLocale } from "./locale";
-import { setLocaleCookie } from "./cookie";
+import { writeLanguageTag } from "./localStorage";
 import type { Locale } from "./types";
 
 /**
@@ -152,12 +152,12 @@ export class Vavilon {
   public setLocale(localeString: Locale): boolean {
     if (this.dictionaries[localeString]) {
       this.pageDict = localeString;
-      setLocaleCookie(this.pageDict);
+      writeLanguageTag(this.pageDict);
       return true;
     }
     if (this.dictionaries[localeString.slice(0, 2)]) {
       this.pageDict = localeString.slice(0, 2);
-      setLocaleCookie(this.pageDict);
+      writeLanguageTag(this.pageDict);
       return true;
     }
 

@@ -1,4 +1,4 @@
-import { getLocaleCookie } from "./cookie";
+import { readLanguageTag } from "./localStorage";
 import type { Locale } from "./types";
 
 /**
@@ -11,7 +11,7 @@ import type { Locale } from "./types";
  */
 export function getUserLocale(): Locale {
   return (
-    getLocaleCookie() ||
+    readLanguageTag() ||
     window.navigator.language ||
     window.navigator.browserLanguage ||
     window.navigator.userLanguage
