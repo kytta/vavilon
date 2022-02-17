@@ -1,6 +1,4 @@
 dist
-dev/vavilon.js
 .idea
 node_modules
 pnpm-lock.yaml
-.rpt2_cache
