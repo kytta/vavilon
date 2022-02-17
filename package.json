@@ -35,13 +35,12 @@
   "main": "dist/vavilon.js",
   "unpkg": "dist/vavilon.min.js",
   "scripts": {
-    "build": "rollup -c",
-    "build:dev": "cross-env NODE_ENV=development rollup -c",
+    "build": "vite build",
+    "dev": "vite ./test/demo/",
     "lint": "prettier --check . && eslint .",
     "size": "size-limit",
     "test": "pnpm run lint",
-    "postversion": "pnpm run build",
-    "watch": "rollup -c -w"
+    "postversion": "pnpm run build"
   },
   "devDependencies": {
     "@rollup/plugin-strip": "^2.0.0",
@@ -60,7 +59,8 @@
     "simple-git-hooks": "^2.7.0",
     "size-limit": "^4.6.0",
     "ts-transformer-minify-privates": "^0.3.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.5.5",
+    "vite": "^2.8.3"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix",
