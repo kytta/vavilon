@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "env": {
+    "browser": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+      ]
+    },
+    {
+      "files": ["rollup.config.js"],
+      "env": {
+        "browser": false,
+        "node": true
+      }
+    }
+  ]
+}
