@@ -51,6 +51,7 @@
     "cross-env": "^7.0.2",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
+    "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
     "rollup": "^2.28.2",
     "rollup-plugin-dev": "^1.1.2",
@@ -61,8 +62,14 @@
     "ts-transformer-minify-privates": "^0.3.0",
     "typescript": "^4.0.3"
   },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*": [
+      "prettier --ignore-unknown --write"
+    ]
+  },
   "simple-git-hooks": {
-    "pre-commit": "pnpm run lint"
+    "pre-commit": "pnpx lint-staged"
   },
   "size-limit": [
     {
