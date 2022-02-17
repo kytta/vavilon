@@ -10,12 +10,7 @@ import type { Locale } from "./types";
  * @returns the user-preferred locale
  */
 export function getUserLocale(): Locale {
-  return (
-    readLanguageTag() ||
-    window.navigator.language ||
-    window.navigator.browserLanguage ||
-    window.navigator.userLanguage
-  ).toLowerCase();
+  return (readLanguageTag() || window.navigator.language).toLowerCase();
 }
 
 /**
