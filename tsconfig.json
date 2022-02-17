@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es3",
-    "lib": ["dom", "es6"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "noEmit": true,
     "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "module": "es2015"
+    "noImplicitAny": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src"]
 }
