@@ -26,14 +26,18 @@
     "url": "https://karamoff.dev"
   },
   "files": [
-    "dist/vavilon.js",
-    "dist/vavilon.min.js",
-    "dist/vavilon.d.ts",
-    "src",
-    "docs"
+    "dist"
   ],
-  "main": "dist/vavilon.js",
-  "unpkg": "dist/vavilon.min.js",
+  "main": "./dist/vavilon.umd.js",
+  "unpkg": "./dist/vavilon.iife.js",
+  "jsdelivr": "./dist/vavilon.iife.js",
+  "module": "./dist/vavilon.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vavilon.es.js",
+      "require": "./dist/vavilon.umd.js"
+    }
+  },
   "scripts": {
     "build": "vite build",
     "dev": "vite ./test/demo/",
@@ -74,7 +78,7 @@
   "size-limit": [
     {
       "limit": "1024 B",
-      "path": "./dist/vavilon.min.js"
+      "path": "./dist/vavilon.es.js"
     }
   ]
 }
