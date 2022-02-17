@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+$color-js: #F7DF1E;
+$primary: $color-js;
+$primary-invert: #000;
+$family-sans-serif: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+$family-monospace: "IBM Plex Mono", Monaco, monospace;
+
+@import "../node_modules/bulma/bulma.sass";
