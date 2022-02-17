@@ -39,11 +39,11 @@
     }
   },
   "scripts": {
-    "build": "vite build",
+    "build": "tsc && vite build",
     "dev": "vite ./test/demo/",
     "lint": "prettier --check . && eslint .",
     "size": "size-limit",
-    "test": "pnpm run lint",
+    "test": "pnpm run lint && pnpm run build && pnpm run size",
     "postversion": "pnpm run build"
   },
   "devDependencies": {
