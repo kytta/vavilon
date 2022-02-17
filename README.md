@@ -50,12 +50,12 @@ section on GitHub. Download the minified version and include it in your page:
 
    ```html
    <html lang="en">
-   <head>
+     <head>
        <title>Hello World!</title>
-   </head>
-   <body>
+     </head>
+     <body>
        <h1>How are you?</h1>
-   </body>
+     </body>
    </html>
    ```
 
@@ -67,14 +67,14 @@ section on GitHub. Download the minified version and include it in your page:
    add the `vavilon` class to these elements:
 
    ```html
-      <html lang="en">
-      <head>
-          <title class="vavilon" data-vavilon="hello-world">Hello World!</title>
-      </head>
-      <body>
-          <h1 class="vavilon" data-vavilon="how-are-you">How are you?</h1>
-      </body>
-      </html>
+   <html lang="en">
+     <head>
+       <title class="vavilon" data-vavilon="hello-world">Hello World!</title>
+     </head>
+     <body>
+       <h1 class="vavilon" data-vavilon="how-are-you">How are you?</h1>
+     </body>
+   </html>
    ```
 
 3. Create JSON dictionary files for every language you want to support. Each
@@ -92,7 +92,11 @@ section on GitHub. Download the minified version and include it in your page:
    with a `data-vavilon-dict` attribute holding the dictionary's language code:
 
    ```html
-   <script type="application/json" src="path/to/ru.json" data-vavilon-dict="ru"></script>
+   <script
+     type="application/json"
+     src="path/to/ru.json"
+     data-vavilon-dict="ru"
+   ></script>
    ```
 
 5. [Add](#how-to-install) the latest version of `vavilon.js` to the page. Now
@@ -111,15 +115,15 @@ section on GitHub. Download the minified version and include it in your page:
 `vavilon.js` works on [99%][browserslist] of browsers used today:
 
 | ![Chrome][chrome] | ![Safari][safari] | ![Firefox][firefox] | ![MS Edge][edge] | ![Internet Explorer][ie] | ![Opera][opera] |
-|:-----------------:|:-----------------:|:-------------------:|:----------------:|:------------------------:|:---------------:|
-|       **15+**     |       **5+**      |        **45+**      |      **12+**     |          **9+**          |    **12.1+**    |
+| :---------------: | :---------------: | :-----------------: | :--------------: | :----------------------: | :-------------: |
+|      **15+**      |      **5+**       |       **45+**       |     **12+**      |          **9+**          |    **12.1+**    |
 
-[chrome]:  https://github.com/alrra/browser-logos/raw/master/src/chrome/chrome_48x48.png
-[edge]:    https://github.com/alrra/browser-logos/raw/master/src/edge/edge_48x48.png
+[chrome]: https://github.com/alrra/browser-logos/raw/master/src/chrome/chrome_48x48.png
+[edge]: https://github.com/alrra/browser-logos/raw/master/src/edge/edge_48x48.png
 [firefox]: https://github.com/alrra/browser-logos/raw/master/src/firefox/firefox_48x48.png
-[ie]:      https://github.com/alrra/browser-logos/raw/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png
-[opera]:   https://github.com/alrra/browser-logos/raw/master/src/opera/opera_48x48.png
-[safari]:  https://github.com/alrra/browser-logos/raw/master/src/safari/safari_48x48.png
+[ie]: https://github.com/alrra/browser-logos/raw/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png
+[opera]: https://github.com/alrra/browser-logos/raw/master/src/opera/opera_48x48.png
+[safari]: https://github.com/alrra/browser-logos/raw/master/src/safari/safari_48x48.png
 [browserslist]: https://browserslist.dev/?q=Y292ZXIgMTAwJSwgbm90IGNocm9tZSA8IDE1LCBub3QgYW5kX2NociA8IDE1LCBub3Qgc2FmYXJpIDwgNSwgbm90IGlvc19zYWYgPCA1LCBub3QgZmlyZWZveCA8IDQ1LCBub3QgYW5kX2ZmIDwgNDUsIG5vdCBlZGdlIDwgMTIsIG5vdCBpZSA8IDksIG5vdCBpZV9tb2IgPCA5LCBub3Qgb3BlcmEgPCAxMi4xLCBub3Qgb3BfbW9iIDwgMTIuMSwgbm90IG9wX21pbmkgPCAxMi4xLCBub3QgYW5kcm9pZCA8IDQuNA%3D%3D
 
 ## Caveats
@@ -145,8 +149,8 @@ crucial for you right now, you can use a workaround like this:
 
 ```html
 <p>
-    <b class="vavilon" data-vavilon="hello-1">Hello</b>
-    <span class="vavilon" data-vavilon="hello-2">world</span>!
+  <b class="vavilon" data-vavilon="hello-1">Hello</b>
+  <span class="vavilon" data-vavilon="hello-2">world</span>!
 </p>
 ```
 
@@ -164,7 +168,7 @@ Regarding jQuery, it has not been tested yet either, but I guess it should work
 just fine. If you want to play around with `vavilon.js` and jQuery, I encourage
 you do so.
 
-----
+---
 
 If you encounter any bugs, don't hesitate [creating an issue][issues]
 

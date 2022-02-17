@@ -1,5 +1,5 @@
-import { Vavilon } from './vavilon';
-import type { Locale } from './types';
+import { Vavilon } from "./vavilon";
+import type { Locale } from "./types";
 
 /**
  * Core vavilon object instance
@@ -39,7 +39,9 @@ window.onload = function onload(): void {
  * @param localeString - the locale to switch to
  */
 window.setLang = function setLang(localeString: Locale): void {
-  const changeSuccessful: boolean = vavilon.setLocale(localeString.toLowerCase());
+  const changeSuccessful: boolean = vavilon.setLocale(
+    localeString.toLowerCase()
+  );
 
   if (changeSuccessful) {
     vavilon.replace();
