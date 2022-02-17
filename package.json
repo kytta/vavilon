@@ -64,7 +64,7 @@
       "prettier --ignore-unknown --write"
     ],
     "*.{js,ts}": "eslint --fix",
-    "*.ts": "tsc"
+    "*.ts": "tsc --noEmit"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpx lint-staged"
