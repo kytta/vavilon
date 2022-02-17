@@ -3,11 +3,6 @@ import type { Locale } from "./types";
 // This is needed to be able to work with older IE and to be able to assign a new property to Window
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 declare global {
-  interface NavigatorLanguage {
-    readonly browserLanguage: string;
-    readonly userLanguage: string;
-  }
-
   interface Window {
     /**
      * Changes the page language
