@@ -3,29 +3,21 @@
   "env": {
     "browser": true
   },
-  "extends": [
-    "airbnb-base"
-  ],
+  "extends": ["airbnb-base"],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "overrides": [
     {
-      "files": [
-        "**/*.ts"
-      ],
+      "files": ["**/*.ts"],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "ecmaVersion": 5,
         "project": "./tsconfig.json"
       },
-      "plugins": [
-        "@typescript-eslint"
-      ],
-      "extends": [
-        "airbnb-typescript/base"
-      ],
+      "plugins": ["@typescript-eslint"],
+      "extends": ["airbnb-typescript/base"],
       "rules": {
         "import/prefer-default-export": 0,
         "no-console": 0,

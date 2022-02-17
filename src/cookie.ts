@@ -1,4 +1,4 @@
-import type { Locale } from './types';
+import type { Locale } from "./types";
 
 /**
  * Gets the value of `vavilon-locale` cookie
@@ -6,9 +6,9 @@ import type { Locale } from './types';
  * @returns the value of the cookie, if it is present; `null` otherwise
  */
 export function getLocaleCookie(): string {
-  const parts = (`; ${document.cookie}`).split('; vavilon-locale=');
+  const parts = `; ${document.cookie}`.split("; vavilon-locale=");
   if (parts.length === 2) {
-    return parts[1].split(';')[0];
+    return parts[1].split(";")[0];
   }
   return null;
 }
@@ -20,7 +20,7 @@ export function getLocaleCookie(): string {
  */
 export function setLocaleCookie(locale: Locale): void {
   const date = new Date();
-  date.setTime(date.getTime() + (315360000000)); // one year in ms
+  date.setTime(date.getTime() + 315360000000); // one year in ms
   const expires = `; expires=${date.toUTCString()}`;
-  document.cookie = `vavilon-locale=${locale || ''}${expires}; path=/`;
+  document.cookie = `vavilon-locale=${locale || ""}${expires}; path=/`;
 }

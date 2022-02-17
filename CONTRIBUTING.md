@@ -4,16 +4,17 @@ Thank you for your interest in contributing to vavilon.js. Here are all the
 things that you should know.
 
 **Table of Contents**
-  * [Ways to Contribute](#ways-to-contribute)
-    * [Reporting Bugs](#reporting-bugs)
-    * [Proposing Features](#proposing-features)
-    * [Writing Code](#writing-code)
-    * [Writing Docs](#writing-docs)
-  * [Usual Workflow](#usual-workflow)
-    * [Preparation](#preparation)
-    * [Code Style](#code-style)
-    * [Commit Message Style](#commit-message-style)
-    * [Submission](#submission)
+
+- [Ways to Contribute](#ways-to-contribute)
+  - [Reporting Bugs](#reporting-bugs)
+  - [Proposing Features](#proposing-features)
+  - [Writing Code](#writing-code)
+  - [Writing Docs](#writing-docs)
+- [Usual Workflow](#usual-workflow)
+  - [Preparation](#preparation)
+  - [Code Style](#code-style)
+  - [Commit Message Style](#commit-message-style)
+  - [Submission](#submission)
 
 ## Ways to Contribute
 
@@ -43,7 +44,7 @@ Features are also extremely important for us! If you realize that you can't
 accomplish something with vavilon.js and you believe that others may be stuck
 with this too, you can propose a new feature for vavilon.js.
 
-Before proposing a feature please make sure, that it hasn't been proposed 
+Before proposing a feature please make sure, that it hasn't been proposed
 before. You can do so by going to the [Issues page][issues-features] and
 searching for previously proposed features. Perhaps your feature is already on
 that list or maybe even implemented in a newer version.
@@ -81,12 +82,12 @@ how we do it.
 ### Preparation
 
 1. **Git**
-    1. Fork the repo
-    1. Clone the repository to your local machine
-    3. Start a new branch for your feature or bugfix
+   1. Fork the repo
+   1. Clone the repository to your local machine
+   1. Start a new branch for your feature or bugfix
 2. **Yarn**
-    1. Install the packages with `yarn`. Don't worry, if it will update the
-       yarn.lock file
+   1. Install the packages with `yarn`. Don't worry, if it will update the
+      yarn.lock file
 3. Check that everything is working: `yarn test`
 
 ### Code Style
@@ -97,6 +98,7 @@ You can learn about how to setup your editor [here][eslint-integrations].
 
 If your editor doesn't support ESLint or you don't want to set it up, you can
 run this command in project root:
+
 ```sh
 yarn test:lint
 ```
@@ -115,12 +117,12 @@ provided help.
 
 Nowadays we write the commits in simplified manner with easy to follow rules:
 
-  * use imperative case ("Add feature", not "Added feature")
-  * capitalize the commit message subject
-  * keep subject under 50 characters
-  * provide issue number (if applicable) in the commit message subject
-  * provide description, if you feel like it's needed
-  * wrap description at 80 characters per line
+- use imperative case ("Add feature", not "Added feature")
+- capitalize the commit message subject
+- keep subject under 50 characters
+- provide issue number (if applicable) in the commit message subject
+- provide description, if you feel like it's needed
+- wrap description at 80 characters per line
 
 You can see the examples of good commit messages in the repository's commit
 tree starting from January 29, 2020.
@@ -132,12 +134,10 @@ target branch at `master`, we will change it according to our workflow. Provide
 a clear description of what your PR does and specify the according issue number
 in the description.
 
-----
+---
 
 If you still have any questions about contribution or other parts of the project,
 you can reach us via E-Mail: vavilon(at)karamoff(dot)dev
-
-
 
 [issues-bugs]: https://github.com/vavilon-js/vavilon.js/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3Abug
 [issues-features]: https://github.com/vavilon-js/vavilon.js/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3Aenhancement

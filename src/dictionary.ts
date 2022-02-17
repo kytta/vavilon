@@ -1,4 +1,4 @@
-import { get } from './http';
+import { get } from "./http";
 
 /**
  * An object that defines a dictionary
@@ -14,8 +14,8 @@ export class Dictionary {
   }
 
   /**
-     * Dictionary JSON-file URL
-     */
+   * Dictionary JSON-file URL
+   */
   public url: string;
 
   /**
@@ -36,10 +36,10 @@ export class Dictionary {
   }
 
   /**
-     * Loads the dictionary from it's URL and stores the {@link strings}
-     *
-     * @param cb - an optional callback to be executed after loading is finished
-     */
+   * Loads the dictionary from it's URL and stores the {@link strings}
+   *
+   * @param cb - an optional callback to be executed after loading is finished
+   */
   public load(cb?: () => void): void {
     get(this.url, (r: string): void => {
       this.strings = JSON.parse(r);

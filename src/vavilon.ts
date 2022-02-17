@@ -1,7 +1,7 @@
-import { Dictionary } from './dictionary';
-import { getPageLocale, getUserLocale } from './locale';
-import { setLocaleCookie } from './cookie';
-import type { Locale } from './types';
+import { Dictionary } from "./dictionary";
+import { getPageLocale, getUserLocale } from "./locale";
+import { setLocaleCookie } from "./cookie";
+import type { Locale } from "./types";
 
 /**
  * An object representing a Vavilon config
@@ -65,7 +65,7 @@ export class Vavilon {
    * Finds all vavilon-enabled elements on the page and stores them inside {@link elements}.
    */
   public find(): void {
-    this.elements = document.querySelectorAll<HTMLElement>('[data-vavilon]');
+    this.elements = document.querySelectorAll<HTMLElement>("[data-vavilon]");
   }
 
   /**
@@ -75,14 +75,15 @@ export class Vavilon {
     if (this.elements && this.pageDict) {
       for (let i = 0; i < this.elements.length; i += 1) {
         const el = this.elements[i];
-        const strId = el.getAttribute('data-vavilon');
+        const strId = el.getAttribute("data-vavilon");
 
         if (!this.dictionaries[this.pageLocale]) {
           this.dictionaries[this.pageLocale] = new Dictionary(null);
         }
 
         if (!this.dictionaries[this.pageLocale].hasString(strId)) {
-          this.dictionaries[this.pageLocale].strings[strId] = el.innerText.trim();
+          this.dictionaries[this.pageLocale].strings[strId] =
+            el.innerText.trim();
         }
 
         if (this.dictionaries[this.pageDict].hasString(strId)) {
@@ -98,10 +99,13 @@ export class Vavilon {
    * Note that the dictionaries aren't being loaded, only the URLs are parsed
    */
   public addDicts(): void {
-    const dictScriptElements = document.querySelectorAll<HTMLScriptElement>('script[data-vavilon-dict]');
+    const dictScriptElements = document.querySelectorAll<HTMLScriptElement>(
+      "script[data-vavilon-dict]"
+    );
     for (let i = 0; i < dictScriptElements.length; i += 1) {
       const el = dictScriptElements[i];
-      this.dictionaries[el.getAttribute('data-vavilon-dict').toLowerCase()] = new Dictionary(el.src);
+      this.dictionaries[el.getAttribute("data-vavilon-dict").toLowerCase()] =
+        new Dictionary(el.src);
     }
   }
 
@@ -114,19 +118,20 @@ export class Vavilon {
    * @param primaryCb - an optional callback to execute after the {@link pageDict} has been loaded
    */
   public loadDicts(primaryCb?: () => void): void {
-    Object.keys(this.dictionaries)
-      .forEach((loc) => {
-        if (loc === this.userLocale
-          || (loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict)) {
-          this.pageDict = loc;
-          this.dictionaries[loc].load((): void => {
-            this.pageDictLoaded = true;
-            primaryCb();
-          });
-        } else {
-          this.dictionaries[loc].load();
-        }
-      });
+    Object.keys(this.dictionaries).forEach((loc) => {
+      if (
+        loc === this.userLocale ||
+        (loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict)
+      ) {
+        this.pageDict = loc;
+        this.dictionaries[loc].load((): void => {
+          this.pageDictLoaded = true;
+          primaryCb();
+        });
+      } else {
+        this.dictionaries[loc].load();
+      }
+    });
   }
 
   /**
