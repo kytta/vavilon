@@ -28,7 +28,7 @@ export class Vavilon {
   /**
    * The collection of all vavilon-enabled elements on the page
    */
-  private elements: NodeListOf<HTMLElement>;
+  private elements: NodeListOf<HTMLElement> | null;
 
   /**
    * The map of available dictionaries
@@ -44,7 +44,7 @@ export class Vavilon {
    * However, if the user switches to a new language, and then back to {@link pageLocale}, the
    * value will be {@link pageLocale}.
    */
-  private pageDict: Locale;
+  private pageDict: Locale | null;
 
   /**
    * Indicates whether the {@link pageDict} has been loaded
@@ -59,6 +59,7 @@ export class Vavilon {
     this.dictionaries = {};
 
     this.pageDict = null;
+    this.pageDictLoaded = false;
   }
 
   /**
@@ -77,8 +78,12 @@ export class Vavilon {
         const el = this.elements[i];
         const strId = el.getAttribute("data-vavilon");
 
+        if (strId == null) {
+          continue;
+        }
+
         if (!this.dictionaries[this.pageLocale]) {
-          this.dictionaries[this.pageLocale] = new Dictionary(null);
+          continue;
         }
 
         if (!this.dictionaries[this.pageLocale].hasString(strId)) {
@@ -104,8 +109,11 @@ export class Vavilon {
     );
     for (let i = 0; i < dictScriptElements.length; i += 1) {
       const el = dictScriptElements[i];
-      this.dictionaries[el.getAttribute("data-vavilon-dict").toLowerCase()] =
-        new Dictionary(el.src);
+      const dictLocale = el.getAttribute("data-vavilon-dict");
+      if (dictLocale == null) {
+        continue;
+      }
+      this.dictionaries[dictLocale.toLowerCase()] = new Dictionary(el.src);
     }
   }
 
@@ -126,7 +134,7 @@ export class Vavilon {
         this.pageDict = loc;
         this.dictionaries[loc].load((): void => {
           this.pageDictLoaded = true;
-          primaryCb();
+          if (primaryCb) primaryCb();
         });
       } else {
         this.dictionaries[loc].load();

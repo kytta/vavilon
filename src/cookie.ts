@@ -5,7 +5,7 @@ import type { Locale } from "./types";
  *
  * @returns the value of the cookie, if it is present; `null` otherwise
  */
-export function getLocaleCookie(): string {
+export function getLocaleCookie(): string | null {
   const parts = `; ${document.cookie}`.split("; vavilon-locale=");
   if (parts.length === 2) {
     return parts[1].split(";")[0];
