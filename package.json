@@ -60,10 +60,11 @@
     "vite": "^2.8.3"
   },
   "lint-staged": {
-    "*.{js,ts}": "eslint --fix",
     "*": [
       "prettier --ignore-unknown --write"
-    ]
+    ],
+    "*.{js,ts}": "eslint --fix",
+    "*.ts": "tsc"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpx lint-staged"
