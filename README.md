@@ -1,3 +1,10 @@
+> # THIS PROJECT IS UNMAINTAINED
+>
+> I do not develop this project any more. The closest alternative would be
+> [i18next](https://www.i18next.com/).
+
+---
+
 <div>
 <img src="https://media.githubusercontent.com/media/vavilon-js/assets/master/vavilon.js/logo.png" width="150" alt="vavilon.js logo" align="left">
 <h1>vavilon.js</h1>
