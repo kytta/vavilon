@@ -35,7 +35,7 @@ export class Vavilon {
    *
    * The keys are the {@link Locale} codes, whereas the values are the actual {@link Dictionary}s
    */
-  private readonly dictionaries: { [key: string]: Dictionary };
+  private readonly dictionaries: Record<string, Dictionary>;
 
   /**
    * The dictionary that is used to translate the page
@@ -75,24 +75,24 @@ export class Vavilon {
   public replace(): void {
     if (this.elements && this.pageDict) {
       for (let i = 0; i < this.elements.length; i += 1) {
-        const el = this.elements[i];
+        const el = this.elements[i]!;
         const strId = el.getAttribute("data-vavilon");
 
         if (strId == null) {
           continue;
         }
 
-        if (!this.dictionaries[this.pageLocale]) {
+        if (!(this.pageLocale in this.dictionaries)) {
           continue;
         }
 
-        if (!this.dictionaries[this.pageLocale].hasString(strId)) {
-          this.dictionaries[this.pageLocale].strings[strId] =
+        if (!this.dictionaries[this.pageLocale]!.hasString(strId)) {
+          this.dictionaries[this.pageLocale]!.strings[strId] =
             el.innerText.trim();
         }
 
-        if (this.dictionaries[this.pageDict].hasString(strId)) {
-          el.innerText = this.dictionaries[this.pageDict].strings[strId];
+        if (this.dictionaries[this.pageDict]!.hasString(strId)) {
+          el.innerText = this.dictionaries[this.pageDict]!.strings[strId]!;
         }
       }
     }
@@ -108,7 +108,7 @@ export class Vavilon {
       "script[data-vavilon-dict]",
     );
     for (let i = 0; i < dictScriptElements.length; i += 1) {
-      const el = dictScriptElements[i];
+      const el = dictScriptElements[i]!;
       const dictLocale = el.getAttribute("data-vavilon-dict");
       if (dictLocale == null) {
         continue;
@@ -132,12 +132,12 @@ export class Vavilon {
         (loc.slice(0, 2) === this.userLocale.slice(0, 2) && !this.pageDict)
       ) {
         this.pageDict = loc;
-        this.dictionaries[loc].load((): void => {
+        this.dictionaries[loc]!.load((): void => {
           this.pageDictLoaded = true;
           if (primaryCb) primaryCb();
         });
       } else {
-        this.dictionaries[loc].load();
+        this.dictionaries[loc]!.load();
       }
     });
   }

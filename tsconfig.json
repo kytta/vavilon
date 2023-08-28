@@ -1,13 +1,26 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES5",
+    "lib": ["DOM", "ES5"],
+
     "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+
     "strict": true,
+
     "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitAny": true,
     "noImplicitReturns": true,
-    "noImplicitAny": true
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false
   },
   "include": ["src"]
 }

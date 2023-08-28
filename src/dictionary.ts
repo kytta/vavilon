@@ -8,7 +8,7 @@ import { get } from "./http";
  * into the language of the dictionary
  */
 export class Dictionary {
-  public constructor(url: string, strings: { [id: string]: string } = {}) {
+  public constructor(url: string, strings: Record<string, string> = {}) {
     this.url = url;
     this.strings = strings;
   }
@@ -24,7 +24,7 @@ export class Dictionary {
    * The keys in this object are the unique string IDs, whereas the values are the translated
    * strings
    */
-  public strings: { [id: string]: string };
+  public strings: Record<string, string>;
 
   /**
    * Returns true if a string with certain ID exists in the dictionary
@@ -42,7 +42,7 @@ export class Dictionary {
    */
   public load(cb?: () => void): void {
     get(this.url, (r: string): void => {
-      this.strings = JSON.parse(r);
+      this.strings = JSON.parse(r) as Record<string, string>;
       if (cb) cb();
     });
   }

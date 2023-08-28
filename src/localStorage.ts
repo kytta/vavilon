@@ -8,7 +8,7 @@ const LOCAL_STORAGE_ID = "Vavilon.preferredLanguageTag";
  * @returns language tag if found in localStorage, "unknown" otherwise
  */
 const readLanguageTag = (): Locale => {
-  return window.localStorage.getItem(LOCAL_STORAGE_ID) || "unknown";
+  return window.localStorage.getItem(LOCAL_STORAGE_ID) ?? "unknown";
 };
 
 /**
