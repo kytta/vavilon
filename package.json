@@ -41,7 +41,10 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite ./test/demo/",
-    "lint": "prettier --check . && eslint .",
+    "lint": "pnpm run /^lint:/",
+    "lint:format": "prettier --check .",
+    "lint:eslint": "eslint --ext .ts src",
+    "lint:tsc": "tsc --noEmit",
     "size": "size-limit",
     "test": "pnpm run lint && pnpm run build && pnpm run size",
     "postversion": "pnpm run build",
