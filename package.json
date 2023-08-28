@@ -65,13 +65,15 @@
     "*": [
       "prettier --ignore-unknown --write"
     ],
-    "*.{js,ts}": "eslint --fix",
-    "*.ts": "tsc --noEmit"
+    "src/*.ts": [
+      "eslint --fix",
+      "tsc --noEmit"
+    ]
   },
   "size-limit": [
     {
       "limit": "1024 B",
-      "path": "./dist/vavilon.es.js"
+      "path": "./dist/vavilon.mjs"
     }
   ]
 }
