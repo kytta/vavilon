@@ -67,7 +67,7 @@
     "*.ts": "tsc --noEmit"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpx lint-staged"
+    "pre-commit": "npx lint-staged"
   },
   "size-limit": [
     {
