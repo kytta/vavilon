@@ -13,6 +13,8 @@ export default defineConfig({
       entry: path.resolve("./src/index.ts"),
       name: "Vavilon",
       formats: ["es", "umd", "iife"],
+      // TODO: remove this legacy naming in v2
+      fileName: (format) => `vavilon.${format}.js`,
     },
   },
 });

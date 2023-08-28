@@ -57,8 +57,9 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.2",
     "size-limit": "^8.2.6",
+    "terser": "^5.19.2",
     "typescript": "^5.2.2",
-    "vite": "^2.9.16"
+    "vite": "^4.4.9"
   },
   "lint-staged": {
     "*": [
