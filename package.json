@@ -44,7 +44,8 @@
     "lint": "prettier --check . && eslint .",
     "size": "size-limit",
     "test": "pnpm run lint && pnpm run build && pnpm run size",
-    "postversion": "pnpm run build"
+    "postversion": "pnpm run build",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.2.6",
@@ -52,9 +53,9 @@
     "@typescript-eslint/parser": "^6.4.1",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.2",
-    "simple-git-hooks": "^2.9.0",
     "size-limit": "^8.2.6",
     "typescript": "^5.2.2",
     "vite": "^2.9.16"
@@ -65,9 +66,6 @@
     ],
     "*.{js,ts}": "eslint --fix",
     "*.ts": "tsc --noEmit"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
   },
   "size-limit": [
     {
