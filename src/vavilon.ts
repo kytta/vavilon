@@ -105,7 +105,7 @@ export class Vavilon {
    */
   public addDicts(): void {
     const dictScriptElements = document.querySelectorAll<HTMLScriptElement>(
-      "script[data-vavilon-dict]"
+      "script[data-vavilon-dict]",
     );
     for (let i = 0; i < dictScriptElements.length; i += 1) {
       const el = dictScriptElements[i];
