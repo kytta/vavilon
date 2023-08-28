@@ -1,15 +1,8 @@
-> # THIS PROJECT IS UNMAINTAINED
->
-> I do not develop this project any more. The closest alternative would be
-> [i18next](https://www.i18next.com/).
-
----
-
 <div>
-<img src="https://media.githubusercontent.com/media/vavilon-js/assets/master/vavilon.js/logo.png" width="150" alt="vavilon.js logo" align="left">
+<img src="https://codeberg.org/kytta/vavilon/raw/branch/main/assets/js/logo.png" width="150" alt="vavilon.js logo" align="left">
 <h1>vavilon.js</h1>
 <p>A quick, lightweight and easy-to-use i18n engine for static websites</p>
-<a href="https://www.npmjs.com/package/vavilon"><img alt="npm" src="https://badgen.net/npm/v/vavilon?label="></a>&nbsp;<a href="https://bundlephobia.com/result?p=vavilon"><img alt="npm bundle size" src="https://badgen.net/bundlephobia/minzip/vavilon?color=222&label="></a>
+<a href="https://www.npmjs.com/package/vavilon"><img alt="npm" src="https://img.shields.io/npm/v/vavilon?label="></a>&nbsp;<a href="https://bundlephobia.com/result?p=vavilon"><img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/vavilon?color=222&label="></a>
 </div>
 
 ## How to Install
@@ -119,7 +112,7 @@ section on GitHub. Download the minified version and include it in your page:
 
 ## Browser support
 
-`vavilon.js` works on [99%][browserslist] of browsers used today:
+`vavilon.js` works on [97%][browserslist] of browsers used today:
 
 | ![Chrome][chrome] | ![Safari][safari] | ![Firefox][firefox] | ![MS Edge][edge] | ![Internet Explorer][ie] | ![Opera][opera] |
 | :---------------: | :---------------: | :-----------------: | :--------------: | :----------------------: | :-------------: |
@@ -131,7 +124,7 @@ section on GitHub. Download the minified version and include it in your page:
 [ie]: https://github.com/alrra/browser-logos/raw/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png
 [opera]: https://github.com/alrra/browser-logos/raw/master/src/opera/opera_48x48.png
 [safari]: https://github.com/alrra/browser-logos/raw/master/src/safari/safari_48x48.png
-[browserslist]: https://browserslist.dev/?q=Y292ZXIgMTAwJSwgbm90IGNocm9tZSA8IDE1LCBub3QgYW5kX2NociA8IDE1LCBub3Qgc2FmYXJpIDwgNSwgbm90IGlvc19zYWYgPCA1LCBub3QgZmlyZWZveCA8IDQ1LCBub3QgYW5kX2ZmIDwgNDUsIG5vdCBlZGdlIDwgMTIsIG5vdCBpZSA8IDksIG5vdCBpZV9tb2IgPCA5LCBub3Qgb3BlcmEgPCAxMi4xLCBub3Qgb3BfbW9iIDwgMTIuMSwgbm90IG9wX21pbmkgPCAxMi4xLCBub3QgYW5kcm9pZCA8IDQuNA%3D%3D
+[browserslist]: https://browsersl.ist/#q=cover+100%25%2C+not+chrome+%3C+15%2C+not+and_chr+%3C+15%2C+not+safari+%3C+5%2C+not+ios_saf+%3C+5%2C+not+firefox+%3C+45%2C+not+and_ff+%3C+45%2C+not+edge+%3C+12%2C+not+ie+%3C+9%2C+not+ie_mob+%3C+9%2C+not+opera+%3C+12.1%2C+not+op_mob+%3C+12.1%2C+not+android+%3C+4.4
 
 ## Caveats
 
