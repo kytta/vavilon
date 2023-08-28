@@ -8,7 +8,7 @@
  */
 export function get(
   url: string,
-  callback?: (responseText: string) => void
+  callback?: (responseText: string) => void,
 ): void {
   const xhr = new XMLHttpRequest();
   xhr.onload = function xhrOnload(): void {
