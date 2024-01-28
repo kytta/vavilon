@@ -1,26 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+
+	"include": ["lib/**/*"],
+
   "compilerOptions": {
-    "target": "ES5",
-    "lib": ["DOM", "ES5"],
+		"rootDir": "lib",
 
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "esModuleInterop": true,
-
-    "strict": true,
+    "target": "ES6",
+    "lib": ["DOM", "ES6"],
 
     "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
+    "declaration": true,
+		"declarationDir": "types",
+
+    "module": "ESNext",
+    "moduleResolution": "Node",
+		"allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "checkJs": true,
+
+		// Hides exports flagged with @internal from the d.ts output
+		"stripInternal": true,
+
+    "strict": true,
     "noImplicitAny": true,
-    "noImplicitReturns": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
     "allowUnreachableCode": false,
-    "allowUnusedLabels": false
-  },
-  "include": ["src"]
+    "noUncheckedIndexedAccess": true
+  }
 }

@@ -112,11 +112,11 @@ section on GitHub. Download the minified version and include it in your page:
 
 ## Browser support
 
-`vavilon.js` works on [97%][browserslist] of browsers used today:
+`vavilon.js` is written in ECMAScript 5 and works on [97%][browserslist] of browsers used today:
 
 | ![Chrome][chrome] | ![Safari][safari] | ![Firefox][firefox] | ![MS Edge][edge] | ![Internet Explorer][ie] | ![Opera][opera] |
 | :---------------: | :---------------: | :-----------------: | :--------------: | :----------------------: | :-------------: |
-|      **15+**      |      **5+**       |       **45+**       |     **12+**      |          **9+**          |    **12.1+**    |
+|      **4+**       |     **3.1+**      |       **2+**        |     **12+**      |         **10+**          |     **9+**      |
 
 [chrome]: https://github.com/alrra/browser-logos/raw/master/src/chrome/chrome_48x48.png
 [edge]: https://github.com/alrra/browser-logos/raw/master/src/edge/edge_48x48.png
@@ -124,7 +124,7 @@ section on GitHub. Download the minified version and include it in your page:
 [ie]: https://github.com/alrra/browser-logos/raw/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png
 [opera]: https://github.com/alrra/browser-logos/raw/master/src/opera/opera_48x48.png
 [safari]: https://github.com/alrra/browser-logos/raw/master/src/safari/safari_48x48.png
-[browserslist]: https://browsersl.ist/#q=cover+100%25%2C+not+chrome+%3C+15%2C+not+and_chr+%3C+15%2C+not+safari+%3C+5%2C+not+ios_saf+%3C+5%2C+not+firefox+%3C+45%2C+not+and_ff+%3C+45%2C+not+edge+%3C+12%2C+not+ie+%3C+9%2C+not+ie_mob+%3C+9%2C+not+opera+%3C+12.1%2C+not+op_mob+%3C+12.1%2C+not+android+%3C+4.4
+[browserslist]: https://browsersl.ist/#q=supports+es5%2C+supports+use-strict
 
 ## Caveats
 

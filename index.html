@@ -21,21 +21,21 @@
     </style>
 
     <script
-      src="ru.json"
+      src="./testing/ru.json"
       type="application/json"
       data-vavilon-dict="ru"
     ></script>
     <script
-      src="de.json"
+      src="./testing/de.json"
       type="application/json"
       data-vavilon-dict="de"
     ></script>
     <script
-      src="deCH.json"
+      src="./testing/deCH.json"
       type="application/json"
       data-vavilon-dict="de-CH"
     ></script>
-    <script src="./script.ts" type="module"></script>
+    <script src="./index.js"></script>
   </head>
   <body>
     <header>
@@ -46,10 +46,10 @@
         Use the buttons below to switch between languages
       </p>
       <div>
-        <button onclick="setLang('en')">English</button>
-        <button onclick="setLang('ru')">Русский / Russian</button>
-        <button onclick="setLang('de')">Deutsch / German</button>
-        <button onclick="setLang('de-CH')">
+        <button onclick="Vavilon.setLang('en')">English</button>
+        <button onclick="Vavilon.setLang('ru')">Русский / Russian</button>
+        <button onclick="Vavilon.setLang('de')">Deutsch / German</button>
+        <button onclick="Vavilon.setLang('de-CH')">
           Deutsch (Schweiz) / Swiss German
         </button>
       </div>

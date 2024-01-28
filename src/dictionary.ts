@@ -14,19 +14,6 @@ export class Dictionary {
   }
 
   /**
-   * Dictionary JSON-file URL
-   */
-  public url: string;
-
-  /**
-   * Dictionary strings with IDs
-   *
-   * The keys in this object are the unique string IDs, whereas the values are the translated
-   * strings
-   */
-  public strings: Record<string, string>;
-
-  /**
    * Returns true if a string with certain ID exists in the dictionary
    *
    * @param id - the string ID

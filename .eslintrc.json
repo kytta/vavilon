@@ -1,20 +1,15 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier"
   ],
   "parserOptions": {
-    "project": true,
-    "tsconfigRootDir": ".",
-    "ecmaVersion": 5
-  },
-  "rules": {
-    "@typescript-eslint/prefer-for-of": "off",
-    "@typescript-eslint/prefer-string-starts-ends-with": "off"
+    "ecmaVersion": 6,
+    "sourceType": "module"
   }
 }

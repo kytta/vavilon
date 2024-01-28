@@ -40,7 +40,7 @@
   },
   "scripts": {
     "build": "tsc && vite build",
-    "dev": "vite ./test/demo/",
+    "dev": "vite",
     "lint": "pnpm run /^lint:/",
     "lint:format": "prettier --check .",
     "lint:eslint": "eslint --ext .ts src",
@@ -64,7 +64,7 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9"
   },
-  "browserslist": "cover 95%",
+  "browserslist": "supports es5, supports use-strict",
   "lint-staged": {
     "*": [
       "prettier --ignore-unknown --write"
